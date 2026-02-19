@@ -1,0 +1,32 @@
+{
+  "pages": [
+    {
+      "pg": 1,
+      "blocks": [
+        {
+          "type": "text",
+          "side": "left",
+          "text": "Swordahls Grimoire",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "side": "right",
+          "text": "Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire Swordahls girmoire ",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "pg": 1,
+      "blocks": [
+        {
+          "type": "image",
+          "side": "left",
+          "text": "Drod slayer",
+          "src": "/assets/uploads/img_6356.heic"
+        }
+      ]
+    }
+  ]
+}
