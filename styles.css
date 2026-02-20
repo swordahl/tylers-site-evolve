@@ -535,5 +535,5 @@ body{
 .shop-art {
   width: 100vw;
   height: 100vh;
-  object-fit: contain; /* shows whole image without cropping */
+  object-fit: fill;
 }
