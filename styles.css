@@ -512,54 +512,35 @@ body{
   width:0%;
   background:rgba(220,240,255,.65);
 }
-/* ================================================= */
-/* ================= SHOP PAGE ===================== */
-/* ================================================= */
+/* ================= SHOP PAGE HARD RESET ================= */
 
 body.shop-page {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: #ff7bd5; /* pink background */
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: block !important;
+  height: 100vh !important;
+  width: 100vw !important;
 }
 
-/* Container */
 .shop-stage {
-  position: fixed;
-  inset: 0;
-}
-
-/* Background art fills screen */
-.shop-bg {
+  position: fixed !important;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+}
+
+.shop-art {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: fill !important;
   display: block;
 }
 
-/* BORDER positioned inside the black rectangle area */
-.shop-border {
-  position: absolute;
-
-  /* Adjusted to match your screenshot area */
-  top: 60%;
-  left: 33%;
-
-  width: 23%;
-  height: 50%;
-
-  transform: translate(-50%, -50%);
-
-  filter:
-    drop-shadow(0 0 10px white)
-    drop-shadow(0 0 25px rgba(255,255,255,0.8))
-    drop-shadow(0 0 50px rgba(255,255,255,0.6));
-}
-
-/* Back button */
 .back-btn {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 100;
+  z-index: 999;
 }
