@@ -93,3 +93,46 @@ html, body {
 .lore-page .lore-art {
   content: url("assets/lore-page.jpg");
 }
+/* ===================================== */
+/* ===== MOBILE LORE READABILITY ======= */
+/* ===================================== */
+
+.lore-stage{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Make the book scale properly */
+.lore-art{
+  width:100vw;
+  height:auto;
+  max-height:100vh;
+  object-fit:contain;
+}
+
+/* Hide right page entirely on mobile */
+.lore-right{
+  display:none !important;
+}
+
+/* Expand left page to readable width */
+.lore-left{
+  left:14%;
+  top:20%;
+  width:72%;
+  height:58%;
+  padding:20px;
+  font-size:18px;
+  line-height:1.7;
+}
+
+/* Better mobile typography */
+.lore-left{
+  font-size:18px;
+}
+
+.lore-text{
+  white-space:pre-wrap;
+  word-break:break-word;
+}
