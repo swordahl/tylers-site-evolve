@@ -552,10 +552,12 @@ body.shop-page {
   position: fixed;
 
   left: 31vw;
-  bottom: 0.6vh;
 
-  width: 29vw;     /* modest increase */
-  height: 64vh;    /* modest increase */
+  /* Lock the top exactly where your grey mark is */
+  top: 34vh;          /* adjust 1vh up/down if needed */
+
+  width: 29vw;
+  height: 66vh;
 
   transform: translateX(-50%);
   z-index: 10;
