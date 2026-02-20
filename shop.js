@@ -1,21 +1,38 @@
-const items = [
-  "assets/item1.png",
-  "assets/item2.png",
-  "assets/item3.png"
-];
-
-let currentItem = 0;
+// ===== AUTO ITEM DETECTION SYSTEM =====
 
 const itemImage = document.getElementById("itemImage");
 const changeBtn = document.getElementById("changeItemBtn");
 
-changeBtn.addEventListener("click", () => {
+let items = [];
+let currentItem = 0;
 
-  // If only one item exists, do nothing
-  if (items.length <= 1) return;
+// Automatically detect item-#.png files
+function loadItems(index = 1) {
+  const testImage = new Image();
+  const path = `assets/item-${index}.png`;
+
+  testImage.onload = function () {
+    items.push(path);
+    loadItems(index + 1); // try next number
+  };
+
+  testImage.onerror = function () {
+    // When no more files exist:
+    if (items.length > 0) {
+      itemImage.src = items[0]; // show first item
+    }
+  };
+
+  testImage.src = path;
+}
+
+loadItems();
+
+// Change item ONLY if more than one exists
+changeBtn.addEventListener("click", () => {
+  if (items.length <= 1) return; // <-- this prevents change
 
   currentItem++;
-
   if (currentItem >= items.length) {
     currentItem = 0;
   }
