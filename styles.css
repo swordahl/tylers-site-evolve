@@ -244,3 +244,23 @@ html,body{
   object-fit:fill;   /* STRETCH TO FIT */
   display:block;
 }
+/* ================================= */
+/* ============ SHOP PAGE ========== */
+/* ================================= */
+
+.shop-page {
+  min-width: 0;        /* overrides desktop lock */
+  overflow: hidden;
+}
+
+.shop-stage {
+  position: fixed;
+  inset: 0;
+}
+
+.shop-art {
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;    /* stretches image fully */
+  display: block;
+}
