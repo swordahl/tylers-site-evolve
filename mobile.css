@@ -33,24 +33,25 @@ html, body {
 /* ================================================= */
 
 .music-page .music-stage {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
 
-/* Scale art properly on mobile */
+/* Make art fill width only */
 .music-page .music-art {
-  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: auto;
-  max-height: 100vh;
   object-fit: contain;
 }
 
-/* Slightly smaller play buttons for mobile */
+/* Buttons stay absolute but scale properly */
 .music-page .play-btn {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
 }
 
 .music-page .play-btn img {
@@ -58,20 +59,19 @@ html, body {
   height: 18px;
 }
 
-/* Fix popup position for mobile */
+/* Keep original percentage positions */
+.music-page .pb1 { left:34.822%; top:22.644%; }
+.music-page .pb2 { left:74.486%; top:29.925%; }
+.music-page .pb3 { left:33.310%; top:38.220%; }
+.music-page .pb4 { left:68.907%; top:43.026%; }
+.music-page .pb5 { left:62.279%; top:53.231%; }
+.music-page .pb6 { left:40.117%; top:55.368%; }
+.music-page .pb7 { left:52.741%; top:58.222%; }
+
+/* Popup center fix */
 .music-page .track-popup {
   left: 50%;
-  top: 8%;
+  top: 10%;
   transform: translate(-50%, 0);
   max-width: 90vw;
-}
-/* Fine tune vertical alignment of play buttons on mobile */
-.music-page .pb1,
-.music-page .pb2,
-.music-page .pb3,
-.music-page .pb4,
-.music-page .pb5,
-.music-page .pb6,
-.music-page .pb7 {
-  top: calc(var(--btn-top, 0%) + 6%);
 }
