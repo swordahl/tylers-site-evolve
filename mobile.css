@@ -65,3 +65,13 @@ html, body {
   transform: translate(-50%, 0);
   max-width: 90vw;
 }
+/* Fine tune vertical alignment of play buttons on mobile */
+.music-page .pb1,
+.music-page .pb2,
+.music-page .pb3,
+.music-page .pb4,
+.music-page .pb5,
+.music-page .pb6,
+.music-page .pb7 {
+  top: calc(var(--btn-top, 0%) + 6%);
+}
