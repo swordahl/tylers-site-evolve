@@ -212,19 +212,13 @@ html,body{
   display:block;
 }
 
-/* (rest of your file remains unchanged exactly as you posted) */
-/* ================================= */
-/* ============ SHOP PAGE ========== */
-/* ================================= */
-
-
-}
-/* ================================= */
-/* ============ SHOP PAGE ========== */
-/* ================================= */
+/* ================================================= */
+/* ================= SHOP PAGE ===================== */
+/* ================================================= */
 
 .shop-page {
-  min-width: 0;        /* overrides desktop lock */
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -236,6 +230,6 @@ html,body{
 .shop-art {
   width: 100vw;
   height: 100vh;
-  object-fit: fill;    /* stretches image fully */
+  object-fit: fill; /* THIS stretches vertically */
   display: block;
 }
