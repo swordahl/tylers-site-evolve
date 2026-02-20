@@ -1,3 +1,6 @@
 html, body {
   min-width: 0 !important;
 }
+.art {
+  content: url("assets/Landing-mobile.jpg");
+}
