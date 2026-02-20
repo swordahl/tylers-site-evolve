@@ -554,14 +554,13 @@ body.shop-page {
   left: 31vw;
   bottom: 0.6vh;
 
-  width: 26vw;      /* was 22.8vw */
-  height: 58vh;     /* was 51.9vh */
+  width: 39vw;      /* 1.5x bigger */
+  height: 87vh;     /* 1.5x bigger */
 
   transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
 }
-
 .frame-border {
   position: absolute;
   width: 100%;
