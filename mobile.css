@@ -36,25 +36,34 @@ html, body {
 
 
 /* ===================================== */
-/* ===== MUSIC PAGE MOBILE FIX ========= */
+/* ===== MUSIC PAGE MOBILE CENTER ====== */
 /* ===================================== */
 
-/* IMPORTANT: make stage relative to image */
+/* Make body a flex container ONLY on music page */
+.music-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Stage becomes positioning container */
 .music-page .music-stage {
   position: relative;
   width: 100%;
-  display: block;
+  max-width: 900px;  /* prevents stretching on large phones/tablets */
 }
 
-/* Let image define height naturally */
+/* Image scales strictly by width */
 .music-page .music-art {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Slightly smaller play buttons */
+/* Buttons stay positioned relative to stage */
 .music-page .play-btn {
+  position: absolute;
   width: 36px;
   height: 36px;
 }
@@ -64,7 +73,7 @@ html, body {
   height: 18px;
 }
 
-/* Keep popup visible + centered */
+/* Popup stays visible and centered */
 .music-page .track-popup {
   left: 50%;
   top: 6%;
@@ -72,11 +81,7 @@ html, body {
   max-width: 90vw;
 }
 
-
-/* ===================================== */
-/* ===== SCROLL FIX FOR MOBILE ========= */
-/* ===================================== */
-
+/* Ensure mobile scrolling works if needed */
 .music-page body {
   height: auto;
   overflow-y: auto;
