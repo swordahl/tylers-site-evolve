@@ -4,6 +4,7 @@
 const state = {
   pages: [],
   idx: 0,
+  mobileSide: 0, // 0 = left, 1 = right (mobile only)
   turnSfx: new Audio("assets/sfx/page-turn-8bit.mp3"),
 };
 
@@ -16,13 +17,16 @@ const btnNext = document.querySelector(".lore-next");
 const modal = document.getElementById("loreModal");
 const modalBody = document.getElementById("loreModalBody");
 
+function isMobile(){
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
 function safeText(t){
   return (t ?? "").toString();
 }
 
 function normalizePages(raw){
   const arr = Array.isArray(raw?.pages) ? raw.pages : [];
-  // sort by pg numeric if provided, else keep order
   arr.sort((a,b)=> (Number(a.pg||0) - Number(b.pg||0)));
   return arr.map((p,i)=> ({
     pg: Number(p.pg || (i+1)),
@@ -38,23 +42,51 @@ function ensurePageExists(targetIdx){
 }
 
 function render(){
+
   ensurePageExists(state.idx);
   const page = state.pages[state.idx];
-  elPg.textContent = "PG " + page.pg;
+  const blocks = page.blocks || [];
 
   elLeft.innerHTML = "";
   elRight.innerHTML = "";
 
-  const blocks = page.blocks || [];
-  for(const b of blocks){
-    const side = (b.side === "right") ? "right" : "left";
-    const host = (side === "right") ? elRight : elLeft;
-    host.appendChild(renderBlock(b));
+  if(isMobile()){
+
+    // MOBILE: single page flip mode
+    const sideToShow = state.mobileSide === 0 ? "left" : "right";
+
+    const filtered = blocks.filter(b =>
+      sideToShow === "left"
+        ? b.side !== "right"
+        : b.side === "right"
+    );
+
+    for(const b of filtered){
+      elLeft.appendChild(renderBlock(b));
+    }
+
+    elRight.style.display = "none";
+    elLeft.style.display = "block";
+
+    elPg.textContent = "PG " + page.pg;
+
+  } else {
+
+    // DESKTOP: spread mode
+    for(const b of blocks){
+      const side = (b.side === "right") ? elRight : elLeft;
+      side.appendChild(renderBlock(b));
+    }
+
+    elRight.style.display = "block";
+    elLeft.style.display = "block";
+
+    elPg.textContent = "PG " + page.pg;
   }
 
-  // If completely empty, show faint placeholder so user sees area
-  if(!elLeft.children.length) elLeft.appendChild(placeholder());
-  if(!elRight.children.length) elRight.appendChild(placeholder());
+  if(!elLeft.children.length){
+    elLeft.appendChild(placeholder());
+  }
 }
 
 function placeholder(){
@@ -72,9 +104,9 @@ function renderBlock(b){
   if(type === "text"){
     const p = document.createElement("div");
     p.className = "lore-text";
-    // preserve line breaks
     p.textContent = safeText(b.text);
     wrap.appendChild(p);
+
     if(b.caption){
       const c = document.createElement("div");
       c.className = "lore-caption";
@@ -92,6 +124,7 @@ function renderBlock(b){
     img.src = safeText(b.src);
     img.addEventListener("click", ()=> openMedia({kind:"image", src: img.src, caption: b.caption}));
     wrap.appendChild(img);
+
     if(b.caption){
       const c = document.createElement("div");
       c.className = "lore-caption";
@@ -108,6 +141,7 @@ function renderBlock(b){
     btn.textContent = "PLAY";
     btn.addEventListener("click", ()=> openMedia({kind:"video", src: safeText(b.src), caption: b.caption}));
     wrap.appendChild(btn);
+
     if(b.caption){
       const c = document.createElement("div");
       c.className = "lore-caption";
@@ -117,7 +151,6 @@ function renderBlock(b){
     return wrap;
   }
 
-  // fallback
   const p = document.createElement("div");
   p.className = "lore-text";
   p.textContent = safeText(b.text || "");
@@ -126,7 +159,6 @@ function renderBlock(b){
 }
 
 function openMedia(m){
-  // clear
   modalBody.innerHTML = "";
   modal.setAttribute("aria-hidden","false");
   modal.classList.add("open");
@@ -159,7 +191,6 @@ function openMedia(m){
 function closeModal(){
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden","true");
-  // stop video if any
   const v = modalBody.querySelector("video");
   if(v){ try{ v.pause(); }catch(e){} }
   modalBody.innerHTML = "";
@@ -186,21 +217,44 @@ function playTurn(){
 }
 
 function prev(){
-  if(state.idx > 0){
-    state.idx -= 1;
-    playTurn();
-    render();
-  }else{
-    // stay at pg 1
-    playTurn();
+
+  if(isMobile()){
+
+    if(state.mobileSide === 1){
+      state.mobileSide = 0;
+    } else if(state.idx > 0){
+      state.idx -= 1;
+      state.mobileSide = 1;
+    }
+
+  } else {
+
+    if(state.idx > 0){
+      state.idx -= 1;
+    }
   }
+
+  playTurn();
+  render();
 }
 
 function next(){
-  state.idx += 1;
+
+  if(isMobile()){
+
+    if(state.mobileSide === 0){
+      state.mobileSide = 1;
+    } else {
+      state.idx += 1;
+      state.mobileSide = 0;
+    }
+
+  } else {
+
+    state.idx += 1;
+  }
+
   ensurePageExists(state.idx);
-  // auto assign pg numbers in sequence
-  state.pages[state.idx].pg = state.idx + 1;
   playTurn();
   render();
 }
@@ -218,6 +272,7 @@ async function boot(){
     console.warn("Lore pages.json not found or invalid", err);
   }
   state.idx = 0;
+  state.mobileSide = 0;
   render();
 }
 
