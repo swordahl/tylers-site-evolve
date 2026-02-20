@@ -554,8 +554,8 @@ body.shop-page {
   left: 31vw;
   bottom: 0.6vh;
 
-  width: 33vw;      /* controlled increase */
-  height: 73vh;     /* controlled increase */
+  width: 29vw;     /* modest increase */
+  height: 64vh;    /* modest increase */
 
   transform: translateX(-50%);
   z-index: 10;
