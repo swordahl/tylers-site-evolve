@@ -581,53 +581,48 @@ body.shop-page {
 }
 
 
-/* ================= CHANGE BUTTON ================= */
+/* ================= ROTMG INVENTORY BUTTON ================= */
 
 .change-btn {
   position: fixed;
   left: 62vw;
-  bottom: 20vh;              /* moved higher */
+  bottom: 22vh;
 
   transform: translateX(-50%);
-  padding: 12px 26px;
 
-  background: white;
-  color: black;
+  padding: 10px 22px;
 
-  border: 2px solid white;
+  background: #ffffff;
+  color: #000;
 
   font-family: monospace;
-  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 2px;
+
+  border: 3px solid #000;         /* hard pixel border */
+  outline: 3px solid #ffffff;     /* double border effect */
 
   cursor: pointer;
   z-index: 20;
-  transition: 0.3s ease;
 
-  /* iridescent rune glow */
+  /* hard glow like inventory selection */
   box-shadow:
-    0 0 6px #ff00ff,
-    0 0 12px #00ffff,
-    0 0 18px #00ff88,
-    0 0 24px #ffff00;
+    0 0 0 2px #000,
+    0 0 6px #00ffff,
+    0 0 10px #ff00ff;
+
+  transition: 0.15s ease;
 }
 
+/* Hover = selected inventory slot */
 .change-btn:hover {
-  transform: translateX(-50%) scale(1.05);
+  background: #000;
+  color: #fff;
 
   box-shadow:
-    0 0 10px #ff00ff,
-    0 0 20px #00ffff,
-    0 0 30px #00ff88,
-    0 0 40px #ffff00;
-}
-@keyframes runeGlow {
-  0% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #00ffff; }
-  25% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ff88; }
-  50% { box-shadow: 0 0 8px #00ff88, 0 0 16px #ffff00; }
-  75% { box-shadow: 0 0 8px #ffff00, 0 0 16px #ff00ff; }
-  100% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #00ffff; }
-}
-
-.change-btn {
-  animation: runeGlow 4s linear infinite;
+    0 0 0 2px #fff,
+    0 0 10px #00ffff,
+    0 0 20px #ff00ff,
+    0 0 30px #00ff88;
 }
