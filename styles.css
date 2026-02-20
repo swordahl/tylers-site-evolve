@@ -551,12 +551,11 @@ body.shop-page {
 .item-frame {
   position: fixed;
 
-  /* Exact proportional placement from image-map math */
-  left: 31vw;          /* center of mapped box */
-  bottom: 0.6vh;       /* exact bottom offset */
+  left: 31vw;
+  bottom: 0.6vh;
 
-  width: 22.8vw;       /* exact proportional width */
-  height: 51.9vh;      /* exact proportional height */
+  width: 26vw;      /* was 22.8vw */
+  height: 58vh;     /* was 51.9vh */
 
   transform: translateX(-50%);
   z-index: 10;
