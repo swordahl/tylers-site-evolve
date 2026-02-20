@@ -550,11 +550,11 @@ body.shop-page {
 
 .item-frame {
   position: fixed;
-  left: 23%;          /* moved further left */
-  top: 60%;           /* brought down */
-  width: 360px;       /* wider */
-  height: 520px;      /* taller */
-  transform: translate(-50%, -50%);
+  left: 23%;
+  bottom: 40px;      /* pushes it near bottom of screen */
+  width: 380px;
+  height: 540px;
+  transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
 }
