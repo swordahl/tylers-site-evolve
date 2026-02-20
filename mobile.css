@@ -86,3 +86,10 @@ html, body {
   height: auto;
   overflow-y: auto;
 }
+/* ===================================== */
+/* ===== LORE MOBILE ART SWAP ========= */
+/* ===================================== */
+
+.lore-page .lore-art {
+  content: url("assets/lore-page.jpg");
+}
