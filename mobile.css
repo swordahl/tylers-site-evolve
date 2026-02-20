@@ -1,15 +1,14 @@
+/* ===== REMOVE DESKTOP MIN WIDTH LOCK ===== */
 html, body {
   min-width: 0 !important;
 }
-.art {
-  content: url("assets/Landing-mobile.jpg");
-}
-/* ===== MOBILE LABEL POSITIONING ===== */
 
+/* ===== MOBILE LABEL POSITIONING ===== */
 :root {
   --shop-x: 28%;
   --lore-x: 46%;
   --music-x: 72%;
+
   --shop-y: 12%;
   --lore-y: 12%;
   --music-y: 12%;
@@ -28,30 +27,31 @@ html, body {
     drop-shadow(0 0 6px rgba(255,255,255,0.9))
     drop-shadow(0 0 14px rgba(255,255,255,0.6));
 }
+
+
 /* ================================================= */
 /* ============ MUSIC PAGE MOBILE FIXES =========== */
 /* ================================================= */
 
 .music-page .music-stage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
 }
 
-/* Make art fill width only */
+/* Scale art properly on mobile */
 .music-page .music-art {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  width: 100vw;
   height: auto;
+  max-height: 100vh;
   object-fit: contain;
 }
 
-/* Buttons stay absolute but scale properly */
+/* Slightly smaller play buttons for mobile */
 .music-page .play-btn {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
 }
 
 .music-page .play-btn img {
@@ -59,19 +59,10 @@ html, body {
   height: 18px;
 }
 
-/* Keep original percentage positions */
-.music-page .pb1 { left:34.822%; top:22.644%; }
-.music-page .pb2 { left:74.486%; top:29.925%; }
-.music-page .pb3 { left:33.310%; top:38.220%; }
-.music-page .pb4 { left:68.907%; top:43.026%; }
-.music-page .pb5 { left:62.279%; top:53.231%; }
-.music-page .pb6 { left:40.117%; top:55.368%; }
-.music-page .pb7 { left:52.741%; top:58.222%; }
-
-/* Popup center fix */
+/* Fix popup position for mobile */
 .music-page .track-popup {
   left: 50%;
-  top: 10%;
+  top: 8%;
   transform: translate(-50%, 0);
   max-width: 90vw;
 }
