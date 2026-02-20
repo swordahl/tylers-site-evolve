@@ -13,7 +13,11 @@
 <div class="backdrop"></div>
 
 <main class="stage">
-  <img class="art" src="assets/landing.png">
+
+  <picture>
+    <source srcset="assets/Landing-mobile.jpg" media="(max-width: 768px)">
+    <img class="art" src="assets/landing.png">
+  </picture>
 
   <a class="label label-shop" href="shop.html">
     <img src="assets/shop.png">
@@ -33,6 +37,7 @@
   <a class="zone zone-shop" href="shop.html"></a>
   <a class="zone zone-lore" href="lore.html"></a>
   <a class="zone zone-music" href="music.html"></a>
+
 </main>
 
 <script src="script.js"></script>
