@@ -546,28 +546,17 @@ body.shop-page {
 }
 
 
-/* ================= ITEM FRAME (LOCKED TO DRAWN BOX) ================= */
-
-/*
-Based on your mapped rectangle:
-x1 = 590
-y1 = 1016
-x2 = 1272
-y2 = 1903
-
-Converted proportionally to viewport.
-*/
+/* ================= ITEM FRAME (EXACT IMAGE-MAP LOCK) ================= */
 
 .item-frame {
   position: fixed;
 
-  /* Horizontal placement */
-  left: 41vw;              /* aligns with white box center */
-  bottom: 0vh;             /* sits on bottom edge */
+  /* Exact proportional placement from image-map math */
+  left: 31vw;          /* center of mapped box */
+  bottom: 0.6vh;       /* exact bottom offset */
 
-  /* Size */
-  width: 24vw;             /* proportional width */
-  height: 48vh;            /* proportional height */
+  width: 22.8vw;       /* exact proportional width */
+  height: 51.9vh;      /* exact proportional height */
 
   transform: translateX(-50%);
   z-index: 10;
@@ -598,8 +587,9 @@ Converted proportionally to viewport.
 
 .change-btn {
   position: fixed;
-  left: 62vw;          /* aligned to right empty area */
-  bottom: 12vh;        /* sits above lower art */
+  left: 62vw;          /* right-side empty zone */
+  bottom: 12vh;
+
   transform: translateX(-50%);
   padding: 10px 20px;
   background: black;
