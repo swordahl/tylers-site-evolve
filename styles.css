@@ -571,15 +571,15 @@ body.shop-page {
 
 .item-image {
   position: absolute;
-  top: 50%;
+  top: 42%;              /* was 50% */
   left: 50%;
   width: 75%;
   height: auto;
+
   transform: translate(-50%, -50%);
   object-fit: contain;
   pointer-events: none;
 }
-
 
 /* ================= ROTMG INVENTORY BUTTON ================= */
 
