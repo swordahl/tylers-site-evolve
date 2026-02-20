@@ -516,21 +516,32 @@ body{
 /* ================= SHOP PAGE ===================== */
 /* ================================================= */
 
-.shop-page {
+/* Override global layout */
+body.shop-page {
   margin: 0;
   padding: 0;
+  display: block !important;
   overflow: hidden;
+  background: #000;
   height: 100vh;
   width: 100vw;
 }
 
+/* Fullscreen container */
 .shop-stage {
   position: fixed;
   inset: 0;
-  background-image: url("assets/shop-img.jpg");
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+/* Fullscreen centered art */
+.shop-art {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.2);
+  pointer-events: none;
 }
 
 /* Floating back button */
@@ -538,29 +549,5 @@ body{
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 10;
-}
-/* FORCE SHOP TO IGNORE GLOBAL LAYOUT */
-
-body.shop-page {
-  display: block !important;
-  height: 100vh !important;
-  width: 100vw !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-.shop-stage {
-  position: fixed !important;
-  inset: 0 !important;
-}
-
-.shop-stage img,
-.shop-art {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  object-fit: fill !important;
+  z-index: 100;
 }
