@@ -540,3 +540,27 @@ body{
   left: 20px;
   z-index: 10;
 }
+/* FORCE SHOP TO IGNORE GLOBAL LAYOUT */
+
+body.shop-page {
+  display: block !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.shop-stage {
+  position: fixed !important;
+  inset: 0 !important;
+}
+
+.shop-stage img,
+.shop-art {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: fill !important;
+}
