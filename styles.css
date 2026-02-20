@@ -24,23 +24,7 @@ html,body{
 .stage{position:fixed;inset:0;display:grid;place-items:center;}
 .art{width:100vw;height:100vh;object-fit:contain;}
 
-/* ================================================= */
-/* ================= SHOP PAGE ===================== */
-/* ================================================= */
 
-.shop-stage{
-  position:fixed;
-  inset:0;
-  display:grid;
-  place-items:center;
-}
-
-.shop-art{
-  width:100vw;
-  height:100vh;
-  object-fit:contain; /* change to cover if you want no bars */
-  display:block;
-}
 
 /* ================================================= */
 /* ================= LORE PAGE ===================== */
