@@ -550,10 +550,10 @@ body.shop-page {
 
 .item-frame {
   position: fixed;
-  left: 30%;
-  top: 52%;
-  width: 420px;      /* bigger */
-  height: 560px;     /* taller */
+  left: 23%;          /* moved further left */
+  top: 60%;           /* brought down */
+  width: 360px;       /* wider */
+  height: 520px;      /* taller */
   transform: translate(-50%, -50%);
   z-index: 10;
   pointer-events: none;
@@ -571,7 +571,7 @@ body.shop-page {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 72%;
+  width: 75%;         /* slightly larger inside frame */
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: contain;
@@ -583,7 +583,7 @@ body.shop-page {
 
 .change-btn {
   position: fixed;
-  left: 50%;
+  left: 48%;          /* moved to bottom-right zone */
   top: 78%;
   transform: translate(-50%, -50%);
   padding: 10px 20px;
