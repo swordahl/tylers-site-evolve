@@ -233,16 +233,7 @@ html,body{
 /* ============ SHOP PAGE ========== */
 /* ================================= */
 
-.shop-stage{
-  position:fixed;
-  inset:0;
-}
 
-.shop-art{
-  width:100vw;
-  height:100vh;
-  object-fit:fill;   /* STRETCH TO FIT */
-  display:block;
 }
 /* ================================= */
 /* ============ SHOP PAGE ========== */
