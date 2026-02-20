@@ -550,11 +550,10 @@ body.shop-page {
 
 .item-frame {
   position: fixed;
-  left: 23%;
-  bottom: 40px;      /* pushes it near bottom of screen */
+  left: 320px;      /* exact horizontal anchor */
+  bottom: 0px;      /* sits on bottom of screen */
   width: 380px;
   height: 540px;
-  transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
 }
