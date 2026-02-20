@@ -512,3 +512,28 @@ body{
   width:0%;
   background:rgba(220,240,255,.65);
 }
+/* ================================================= */
+/* ================= SHOP PAGE ===================== */
+/* ================================================= */
+
+.shop-page {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.shop-stage {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.shop-art {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain; /* shows whole image without cropping */
+}
