@@ -546,14 +546,30 @@ body.shop-page {
 }
 
 
-/* ================= ITEM FRAME ================= */
+/* ================= ITEM FRAME (LOCKED TO DRAWN BOX) ================= */
+
+/*
+Based on your mapped rectangle:
+x1 = 590
+y1 = 1016
+x2 = 1272
+y2 = 1903
+
+Converted proportionally to viewport.
+*/
 
 .item-frame {
   position: fixed;
-  left: 320px;      /* exact horizontal anchor */
-  bottom: 0px;      /* sits on bottom of screen */
-  width: 380px;
-  height: 540px;
+
+  /* Horizontal placement */
+  left: 41vw;              /* aligns with white box center */
+  bottom: 0vh;             /* sits on bottom edge */
+
+  /* Size */
+  width: 24vw;             /* proportional width */
+  height: 48vh;            /* proportional height */
+
+  transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
 }
@@ -570,7 +586,7 @@ body.shop-page {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 75%;         /* slightly larger inside frame */
+  width: 75%;
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: contain;
@@ -582,9 +598,9 @@ body.shop-page {
 
 .change-btn {
   position: fixed;
-  left: 48%;          /* moved to bottom-right zone */
-  top: 78%;
-  transform: translate(-50%, -50%);
+  left: 62vw;          /* aligned to right empty area */
+  bottom: 12vh;        /* sits above lower art */
+  transform: translateX(-50%);
   padding: 10px 20px;
   background: black;
   color: #ffe600;
