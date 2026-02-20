@@ -585,21 +585,49 @@ body.shop-page {
 
 .change-btn {
   position: fixed;
-  left: 62vw;          /* right-side empty zone */
-  bottom: 12vh;
+  left: 62vw;
+  bottom: 20vh;              /* moved higher */
 
   transform: translateX(-50%);
-  padding: 10px 20px;
-  background: black;
-  color: #ffe600;
-  border: 2px solid #ffe600;
+  padding: 12px 26px;
+
+  background: white;
+  color: black;
+
+  border: 2px solid white;
+
   font-family: monospace;
+  letter-spacing: 1px;
+
   cursor: pointer;
   z-index: 20;
-  transition: 0.2s ease;
+  transition: 0.3s ease;
+
+  /* iridescent rune glow */
+  box-shadow:
+    0 0 6px #ff00ff,
+    0 0 12px #00ffff,
+    0 0 18px #00ff88,
+    0 0 24px #ffff00;
 }
 
 .change-btn:hover {
-  background: #ffe600;
-  color: black;
+  transform: translateX(-50%) scale(1.05);
+
+  box-shadow:
+    0 0 10px #ff00ff,
+    0 0 20px #00ffff,
+    0 0 30px #00ff88,
+    0 0 40px #ffff00;
+}
+@keyframes runeGlow {
+  0% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #00ffff; }
+  25% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ff88; }
+  50% { box-shadow: 0 0 8px #00ff88, 0 0 16px #ffff00; }
+  75% { box-shadow: 0 0 8px #ffff00, 0 0 16px #ff00ff; }
+  100% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #00ffff; }
+}
+
+.change-btn {
+  animation: runeGlow 4s linear infinite;
 }
