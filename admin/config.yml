@@ -6,6 +6,7 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+
   - name: "lorebook"
     label: "Lore Book"
     files:
@@ -41,3 +42,16 @@ collections:
                   - { label: "Text", name: "text", widget: "text", required: false }
                   - { label: "Media File", name: "src", widget: "file", required: false }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
+
+  - name: "shop"
+    label: "Shop Items"
+    folder: "content/shop"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - { label: "Item Name", name: "name", widget: "string" }
+      - { label: "Item Image", name: "image", widget: "image" }
+      - { label: "Stats", name: "stats", widget: "text" }
+      - { label: "Description", name: "desc", widget: "text" }
