@@ -1,41 +1,65 @@
-// ===== AUTO ITEM DETECTION SYSTEM =====
+// ===== ADMIN CONTROLLED SHOP SYSTEM =====
 
 const itemImage = document.getElementById("itemImage");
 const changeBtn = document.getElementById("changeItemBtn");
 
+// You MUST add these text containers in HTML
+const itemName = document.getElementById("itemName");
+const itemStats = document.getElementById("itemStats");
+const itemDesc = document.getElementById("itemDesc");
+
 let items = [];
 let currentItem = 0;
 
-// Automatically detect item-#.png files
-function loadItems(index = 1) {
-  const testImage = new Image();
-  const path = `assets/item-${index}.png`;
+// Fetch all shop items from content/shop folder
+async function loadShopItems() {
+  try {
+    const response = await fetch("/content/shop/");
+    const text = await response.text();
 
-  testImage.onload = function () {
-    items.push(path);
-    loadItems(index + 1); // try next number
-  };
+    // Extract JSON file names from directory listing
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(text, "text/html");
+    const links = [...htmlDoc.querySelectorAll("a")];
 
-  testImage.onerror = function () {
-    // When no more files exist:
-    if (items.length > 0) {
-      itemImage.src = items[0]; // show first item
+    const jsonFiles = links
+      .map(link => link.getAttribute("href"))
+      .filter(href => href && href.endsWith(".json"));
+
+    for (let file of jsonFiles) {
+      const res = await fetch(`/content/shop/${file}`);
+      const data = await res.json();
+      items.push(data);
     }
-  };
 
-  testImage.src = path;
+    if (items.length > 0) {
+      displayItem(0);
+    }
+
+  } catch (err) {
+    console.error("Shop load error:", err);
+  }
 }
 
-loadItems();
+function displayItem(index) {
+  const item = items[index];
+
+  itemImage.src = item.image;
+  itemName.textContent = item.name;
+  itemStats.textContent = item.stats;
+  itemDesc.textContent = item.desc;
+}
 
 // Change item ONLY if more than one exists
 changeBtn.addEventListener("click", () => {
-  if (items.length <= 1) return; // <-- this prevents change
+  if (items.length <= 1) return;
 
   currentItem++;
   if (currentItem >= items.length) {
     currentItem = 0;
   }
 
-  itemImage.src = items[currentItem];
+  displayItem(currentItem);
 });
+
+loadShopItems();
