@@ -99,13 +99,29 @@ function pickFeatured(count=7){
     }
   }
 
-  document.querySelectorAll(".play-btn").forEach((btn, i)=>{
-    const t = featured[i];
-    const title = t?.title || `Track ${i+1}`;
-    btn.setAttribute("aria-label", `Play ${title}`);
-    btn.title = title;
+ document.querySelectorAll(".play-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+
+    const slot = parseInt(btn.dataset.slot, 10);
+
+    // If clicking the same slot
+    if(nowPlayingSlot === slot){
+
+      if(!player.paused){
+        player.pause();
+      } else {
+        player.play().catch(()=>{});
+      }
+
+      return;
+    }
+
+    // Otherwise play new slot
+    playSlash();
+    playSlot(slot);
+
   });
-}
+});
 
 // ===== UI =====
 function clearPlayingUI(){
