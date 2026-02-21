@@ -43,15 +43,19 @@ collections:
                   - { label: "Media File", name: "src", widget: "file", required: false }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
 
-  - name: "shop"
-    label: "Shop Items"
-    folder: "content/shop"
-    create: true
-    slug: "{{slug}}"
-    format: "json"
-    extension: "json"
-    fields:
-      - { label: "Item Name", name: "name", widget: "string" }
-      - { label: "Item Image", name: "image", widget: "image" }
-      - { label: "Stats", name: "stats", widget: "text" }
-      - { label: "Description", name: "desc", widget: "text" }
+ - name: "shop"
+  label: "Shop Items"
+  files:
+    - name: "items"
+      label: "Shop Items"
+      file: "content/shop/index.json"
+      format: "json"
+      fields:
+        - label: "Items"
+          name: "items"
+          widget: "list"
+          fields:
+            - { label: "Item Name", name: "name", widget: "string" }
+            - { label: "Item Image", name: "image", widget: "image" }
+            - { label: "Stats", name: "stats", widget: "text" }
+            - { label: "Description", name: "desc", widget: "text" }
