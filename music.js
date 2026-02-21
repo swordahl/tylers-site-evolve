@@ -8,19 +8,20 @@ const popupBar = document.getElementById("trackBar");
 
 function notify(msg){
   console.warn(msg);
-  const p = document.getElementById("trackPopup");
-  const t = document.getElementById("trackTitle");
-  if(p && t){
-    t.textContent = msg;
-    p.classList.add("show");
-    setTimeout(()=>{ p.classList.remove("show"); }, 3200);
-  }else{
+  if(popup && popupTitle){
+    popupTitle.textContent = msg;
+    popup.classList.add("show");
+    setTimeout(()=> popup.classList.remove("show"), 3200);
+  } else {
     alert(msg);
   }
 }
 
 function playSlash(){
-  try{ slash.currentTime = 0; slash.play().catch(()=>{}); }catch(e){}
+  try{
+    slash.currentTime = 0;
+    slash.play().catch(()=>{});
+  }catch(e){}
 }
 
 // ===== TRACK SYSTEM =====
@@ -43,7 +44,6 @@ async function loadTracks(){
       return;
     }
   }catch(err){}
-
   notify("No playlist found.");
   featured = new Array(7).fill(null);
 }
@@ -60,7 +60,7 @@ function parseM3U(text){
     const idx = file.lastIndexOf("tracks/");
     if(idx !== -1){
       file = file.substring(idx);
-    }else{
+    } else {
       const base = file.split("/").pop();
       if(!base) continue;
       file = "tracks/" + base;
@@ -89,7 +89,7 @@ function pickFeatured(count=7){
 
   if(TRACKS.length >= count){
     featured = shuffle(TRACKS).slice(0,count);
-  }else{
+  } else {
     const shuffled = shuffle(TRACKS);
     featured = [];
     let i = 0;
@@ -99,33 +99,18 @@ function pickFeatured(count=7){
     }
   }
 
- document.querySelectorAll(".play-btn").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-
-    const slot = parseInt(btn.dataset.slot, 10);
-
-    // If clicking the same slot
-    if(nowPlayingSlot === slot){
-
-      if(!player.paused){
-        player.pause();
-      } else {
-        player.play().catch(()=>{});
-      }
-
-      return;
-    }
-
-    // Otherwise play new slot
-    playSlash();
-    playSlot(slot);
-
+  document.querySelectorAll(".play-btn").forEach((btn, i)=>{
+    const t = featured[i];
+    const title = t?.title || `Track ${i+1}`;
+    btn.setAttribute("aria-label", `Play ${title}`);
+    btn.title = title;
   });
-});
+}
 
 // ===== UI =====
 function clearPlayingUI(){
-  document.querySelectorAll(".play-btn").forEach(b=>b.classList.remove("is-playing"));
+  document.querySelectorAll(".play-btn")
+    .forEach(b=>b.classList.remove("is-playing"));
   nowPlayingSlot = null;
 }
 
@@ -136,11 +121,12 @@ function showPopup(title){
   popupTitle.textContent = title || "Unknown Track";
   popup.classList.add("show");
   if(popupBar) popupBar.style.width = "0%";
+
   if(barTimer) clearInterval(barTimer);
 
   barTimer = setInterval(()=>{
     if(!player || player.paused || !player.duration || !isFinite(player.duration)) return;
-    const pct = Math.max(0, Math.min(100, (player.currentTime / player.duration) * 100));
+    const pct = (player.currentTime / player.duration) * 100;
     if(popupBar) popupBar.style.width = pct.toFixed(1) + "%";
   }, 120);
 }
@@ -153,7 +139,7 @@ function hidePopup(){
   if(popupBar) popupBar.style.width = "0%";
 }
 
-// ===== PLAYBACK (UPDATED WITH SAFE FALLBACK) =====
+// ===== PLAYBACK =====
 function playSlot(slot){
 
   if(!TRACKS.length){
@@ -173,7 +159,6 @@ function playSlot(slot){
 
     player.pause();
     player.currentTime = 0;
-
     player.src = path;
     player.load();
 
@@ -184,7 +169,8 @@ function playSlot(slot){
       document.querySelectorAll(".play-btn")
         .forEach(b=>b.classList.remove("is-playing"));
 
-      const activeBtn = document.querySelector(`.play-btn[data-slot="${slot}"]`);
+      const activeBtn =
+        document.querySelector(`.play-btn[data-slot="${slot}"]`);
       if(activeBtn) activeBtn.classList.add("is-playing");
 
       showPopup(trackObj.title || `Track ${slot+1}`);
@@ -192,35 +178,41 @@ function playSlot(slot){
     }).catch(()=>{
 
       attempts++;
-
       if(attempts >= maxAttempts){
         notify("No playable tracks found.");
         return;
       }
 
-      const replacement = TRACKS[(Math.random()*TRACKS.length)|0];
+      const replacement =
+        TRACKS[(Math.random()*TRACKS.length)|0];
       tryPlay(replacement);
     });
   }
 
-  const initial = featured[slot] || TRACKS[(Math.random()*TRACKS.length)|0];
+  const initial =
+    featured[slot] ||
+    TRACKS[(Math.random()*TRACKS.length)|0];
+
   tryPlay(initial);
 }
 
-function flashButton(slot){
-  const btn = document.querySelector(`.play-btn[data-slot="${slot}"]`);
-  if(!btn) return;
-  btn.animate([
-    {transform:"translate(-50%,-50%) scale(1.0)"},
-    {transform:"translate(-50%,-50%) scale(1.06)"},
-    {transform:"translate(-50%,-50%) scale(1.0)"},
-  ], {duration:220, easing:"ease-out"});
-}
-
+// ===== CLICK HANDLER (FIXED TOGGLE) =====
 document.querySelectorAll(".play-btn").forEach(btn=>{
   btn.addEventListener("click", ()=>{
-    playSlash();
+
     const slot = parseInt(btn.dataset.slot, 10);
+
+    // Same slot toggle
+    if(nowPlayingSlot === slot){
+      if(!player.paused){
+        player.pause();
+      } else {
+        player.play().catch(()=>{});
+      }
+      return;
+    }
+
+    playSlash();
     playSlot(slot);
   });
 });
@@ -234,15 +226,19 @@ const emitters = [
   {x: 92, y: 55, color:"#a78bfa"},
 ];
 
-const runeChars = "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛋᛏᛒᛖᛗᛚᛜᛞᛟᛝ";
+const runeChars =
+  "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛋᛏᛒᛖᛗᛚᛜᛞᛟᛝ";
+
 let runeTimer = null;
 
 function spawnRune(){
   if(!runeLayer) return;
+
   const e = emitters[(Math.random()*emitters.length)|0];
   const span = document.createElement("span");
   span.className = "rune";
-  span.textContent = runeChars[(Math.random()*runeChars.length)|0];
+  span.textContent =
+    runeChars[(Math.random()*runeChars.length)|0];
 
   const dx = (Math.random()*80 - 40);
   const dy = -(Math.random()*120 + 60);
@@ -250,12 +246,14 @@ function spawnRune(){
 
   span.style.left = e.x + "%";
   span.style.top  = e.y + "%";
-  span.style.setProperty("--dx", dx.toFixed(1) + "px");
-  span.style.setProperty("--dy", dy.toFixed(1) + "px");
-  span.style.setProperty("--dur", dur.toFixed(0) + "ms");
+  span.style.setProperty("--dx", dx+"px");
+  span.style.setProperty("--dy", dy+"px");
+  span.style.setProperty("--dur", dur+"ms");
 
   span.style.color = e.color;
-  span.style.textShadow = `0 0 8px ${e.color}, 0 0 22px ${e.color}`;
+  span.style.textShadow =
+    `0 0 8px ${e.color}, 0 0 22px ${e.color}`;
+
   runeLayer.appendChild(span);
   setTimeout(()=>span.remove(), dur + 80);
 }
@@ -276,19 +274,14 @@ function stopRunes(){
 }
 
 player.addEventListener("play", startRunes);
-player.addEventListener("pause", ()=>{ stopRunes(); hidePopup(); });
-player.addEventListener("ended", ()=>{ stopRunes(); hidePopup(); clearPlayingUI(); });
-
-player.addEventListener("play", ()=>{
-  if(nowPlayingSlot !== null){
-    const t = featured[nowPlayingSlot];
-    showPopup(t?.title || `Track ${nowPlayingSlot+1}`);
-  }
-});
-
 player.addEventListener("pause", ()=>{
-  document.querySelectorAll(".play-btn").forEach(b=>b.classList.remove("is-playing"));
+  stopRunes();
+  hidePopup();
+});
+player.addEventListener("ended", ()=>{
+  stopRunes();
+  hidePopup();
+  clearPlayingUI();
 });
 
 loadTracks().catch(()=>{});
-
