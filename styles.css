@@ -241,6 +241,21 @@ html,body{
   opacity:.95;
   filter: drop-shadow(0 0 10px rgba(160,90,255,.65));
 }
+/* ============================= */
+/* SOUNDCLOUD ICON */
+/* ============================= */
+
+.soundcloud-link{
+  position: absolute;
+  top: 90px;
+  right: 120px;
+  z-index: 20;
+}
+
+.soundcloud-link img{
+  width: 28px;
+  height: auto;
+}
 /* ===== ORIGINAL RUNE HALO ===== */
 
 .play-btn::after{
