@@ -59,3 +59,5 @@ collections:
               - { label: "Item Image", name: "image", widget: "image" }
               - { label: "Stats", name: "stats", widget: "text" }
               - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Price (USD)", name: "price", widget: "number" }
+              - { label: "Checkout Link (Stripe)", name: "stripe", widget: "string", required: false }
