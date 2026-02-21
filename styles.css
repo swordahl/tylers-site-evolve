@@ -582,16 +582,16 @@ body.shop-page {
   pointer-events: none;
 }
 
-/* ================= INVISIBLE TEXT REGION ================= */
+/* ================= INVISIBLE TEXT REGION (PRECISION LOCK) ================= */
 
 .item-info {
   position: fixed;
 
-  /* Adjust these 4 values to perfectly fit your marked pink zone */
-  left: 62vw;
-  top: 38vh;
-  width: 26vw;
-  height: 30vh;
+  left: 70vw;      /* moved further right */
+  top: 44vh;       /* lower start */
+
+  width: 18vw;     /* narrower column */
+  height: 32vh;    /* taller vertical scroll zone */
 
   transform: translateX(-50%);
 
@@ -603,23 +603,16 @@ body.shop-page {
 
   font-family: monospace;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #000;
 
   z-index: 15;
 }
 
-/* Remove scrollbar visibility */
+/* Hide scrollbar visually */
 .item-info::-webkit-scrollbar {
   width: 0px;
-  background: transparent;
 }
-
-/* Optional: slightly softer text blend */
-.item-info {
-  mix-blend-mode: multiply;
-}
-
 /* ================= INVENTORY BUTTON ================= */
 
 .change-btn {
