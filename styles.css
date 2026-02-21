@@ -587,11 +587,11 @@ body.shop-page {
 .item-info {
   position: fixed;
 
-  left: 72vw;     /* moved further right */
-  top: 48vh;      /* moved down */
+  left: 72.4vw;
+  top: 55.8vh;
 
-  width: 16vw;    /* narrower column */
-  height: 30vh;
+  width: 11.2vw;
+  height: 29.5vh;
 
   transform: translateX(-50%);
 
@@ -607,7 +607,6 @@ body.shop-page {
   color: #000;
 
   z-index: 15;
-
   mix-blend-mode: multiply;
 }
 
