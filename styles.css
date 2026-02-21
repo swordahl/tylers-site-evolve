@@ -587,11 +587,11 @@ body.shop-page {
 .item-info {
   position: fixed;
 
-  left: 70vw;      /* moved further right */
-  top: 44vh;       /* lower start */
+  left: 72vw;     /* moved further right */
+  top: 48vh;      /* moved down */
 
-  width: 18vw;     /* narrower column */
-  height: 32vh;    /* taller vertical scroll zone */
+  width: 16vw;    /* narrower column */
+  height: 30vh;
 
   transform: translateX(-50%);
 
@@ -607,9 +607,10 @@ body.shop-page {
   color: #000;
 
   z-index: 15;
+
+  mix-blend-mode: multiply;
 }
 
-/* Hide scrollbar visually */
 .item-info::-webkit-scrollbar {
   width: 0px;
 }
