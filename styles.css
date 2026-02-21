@@ -626,3 +626,39 @@ body.shop-page {
     0 0 20px #ff00ff,
     0 0 30px #00ff88;
 }
+/* ================= ITEM TEXT PANEL (LOCKED TO PINK ZONE) ================= */
+
+.item-info {
+  position: fixed;
+
+  left: 62vw;      /* align with button area */
+  top: 38vh;       /* match vertical start of frame */
+
+  width: 28vw;
+  height: 28vh;
+
+  transform: translateX(-50%);
+
+  overflow-y: auto;
+  padding: 14px;
+
+  background: rgba(255, 255, 255, 0.75);
+  border: 3px solid #000;
+
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.4;
+
+  color: #000;
+
+  z-index: 15;
+}
+
+/* Scrollbar styling (optional but clean) */
+.item-info::-webkit-scrollbar {
+  width: 6px;
+}
+
+.item-info::-webkit-scrollbar-thumb {
+  background: #000;
+}
