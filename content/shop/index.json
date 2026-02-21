@@ -1,3 +1,10 @@
 {
-  "items": []
+  "items": [
+    {
+      "name": "Swordahls Dungeon Guitar",
+      "image": "/assets/uploads/item-1.png",
+      "stats": "+3 strumming dexterity ",
+      "desc": "Crafted with runes of Prot to keep you safe on the way to the lower floors."
+    }
+  ]
 }
