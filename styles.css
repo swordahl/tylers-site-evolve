@@ -655,3 +655,21 @@ body.shop-page {
     0 0 20px #ff00ff,
     0 0 30px #00ff88;
 }
+.external-link {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.external-link img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+.external-link img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
