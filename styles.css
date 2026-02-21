@@ -734,3 +734,32 @@ body.shop-page {
   }
 
 }
+/* ===================================== */
+/* ===== LORE DESKTOP YOUTUBE LINK ===== */
+/* ===================================== */
+
+.lore-page .youtube-link {
+  position: fixed;
+  bottom: 4%;
+  right: 4%;
+  z-index: 1000;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lore-page .youtube-link img {
+  width: 100%;
+  height: auto;
+  opacity: 0.85;
+  transition: 0.2s ease;
+}
+
+.lore-page .youtube-link img:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
