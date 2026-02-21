@@ -248,7 +248,7 @@ html,body{
 .soundcloud-link{
   position: absolute;
   top: 90px;
-  right: 250px;
+  right: 500px;
   z-index: 20;
 }
 
