@@ -136,3 +136,33 @@ html, body {
   white-space:pre-wrap;
   word-break:break-word;
 }
+/* ===================================== */
+/* ===== MUSIC MOBILE SOUNDCLOUD ======= */
+/* ===================================== */
+
+.music-page .soundcloud-link {
+  position: fixed;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 44px;
+  height: 44px;
+}
+
+.music-page .soundcloud-link img {
+  width: 100%;
+  height: auto;
+  opacity: 0.85;
+  transition: 0.2s ease;
+}
+
+.music-page .soundcloud-link img:active {
+  transform: scale(0.92);
+  opacity: 1;
+}
