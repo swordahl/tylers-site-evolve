@@ -8,36 +8,51 @@
 </head>
 <body class="shop-page">
 
-  <a class="back-btn" href="index.html">BACK</a>
-
-  <div class="shop-stage">
-    <img src="assets/shop-img.jpg" class="shop-art" alt="Shop Page Art" />
+  <!-- MOBILE LOCK -->
+  <div class="mobile-lock">
+    <div class="mobile-lock-inner">
+      <h1>Request for Access denied.</h1>
+      <p>
+        To unlock the Sentian Merchant Trade connection
+        please upgrade to desktop...
+      </p>
+    </div>
   </div>
 
-  <!-- ITEM DISPLAY AREA -->
-  <div class="item-frame">
-    <img src="assets/shop-border.png" class="frame-border" alt="Item Frame" />
-    <img id="itemImage" class="item-image" alt="Shop Item" />
+  <!-- DESKTOP SHOP CONTENT -->
+  <div class="shop-content">
+
+    <a class="back-btn" href="index.html">BACK</a>
+
+    <div class="shop-stage">
+      <img src="assets/shop-img.jpg" class="shop-art" alt="Shop Page Art" />
+    </div>
+
+    <!-- ITEM DISPLAY AREA -->
+    <div class="item-frame">
+      <img src="assets/shop-border.png" class="frame-border" alt="Item Frame" />
+      <img id="itemImage" class="item-image" alt="Shop Item" />
+    </div>
+
+    <!-- ITEM TEXT INFO -->
+    <div class="item-info">
+      <h2 id="itemName"></h2>
+      <p id="itemStats"></p>
+      <p id="itemDesc"></p>
+
+      <p id="itemPrice" class="item-price"></p>
+      <button id="buyBtn" class="buy-btn">CLAIM RELIC</button>
+    </div>
+
+    <button id="changeItemBtn" class="change-btn">
+      CHANGE ITEM →
+    </button>
+
+    <!-- Cursor Elements -->
+    <div id="rune-layer"></div>
+    <div id="custom-cursor"></div>
+
   </div>
-
-  <!-- ITEM TEXT INFO -->
-  <div class="item-info">
-    <h2 id="itemName"></h2>
-    <p id="itemStats"></p>
-    <p id="itemDesc"></p>
-
-    <!-- NEW -->
-    <p id="itemPrice" class="item-price"></p>
-    <button id="buyBtn" class="buy-btn">CLAIM RELIC</button>
-  </div>
-
-  <button id="changeItemBtn" class="change-btn">
-    CHANGE ITEM →
-  </button>
-
-  <!-- Cursor Elements -->
-  <div id="rune-layer"></div>
-  <div id="custom-cursor"></div>
 
   <script src="shop.js"></script>
   <script src="script.js"></script>
