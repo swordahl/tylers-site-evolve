@@ -523,6 +523,8 @@ body.shop-page {
   width: 100vw !important;
 }
 
+/* ================= BACKGROUND ART ================= */
+
 .shop-stage {
   position: fixed !important;
   top: 0;
@@ -545,22 +547,21 @@ body.shop-page {
   z-index: 999;
 }
 
-
-/* ================= ITEM FRAME (EXACT IMAGE-MAP LOCK) ================= */
+/* ================= ITEM FRAME (LOCKED) ================= */
 
 .item-frame {
   position: fixed;
-
   left: 31vw;
-  top: 38vh;        /* pushes it down closer to your grey mark */
+  top: 38vh;
 
   width: 29vw;
-  height: 58vh;     /* controlled height so it doesn’t overshoot */
+  height: 58vh;
 
   transform: translateX(-50%);
   z-index: 10;
   pointer-events: none;
 }
+
 .frame-border {
   position: absolute;
   width: 100%;
@@ -571,7 +572,7 @@ body.shop-page {
 
 .item-image {
   position: absolute;
-  top: 42%;              /* was 50% */
+  top: 42%;
   left: 50%;
   width: 75%;
   height: auto;
@@ -581,7 +582,45 @@ body.shop-page {
   pointer-events: none;
 }
 
-/* ================= ROTMG INVENTORY BUTTON ================= */
+/* ================= INVISIBLE TEXT REGION ================= */
+
+.item-info {
+  position: fixed;
+
+  /* Adjust these 4 values to perfectly fit your marked pink zone */
+  left: 62vw;
+  top: 38vh;
+  width: 26vw;
+  height: 30vh;
+
+  transform: translateX(-50%);
+
+  overflow-y: auto;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000;
+
+  z-index: 15;
+}
+
+/* Remove scrollbar visibility */
+.item-info::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Optional: slightly softer text blend */
+.item-info {
+  mix-blend-mode: multiply;
+}
+
+/* ================= INVENTORY BUTTON ================= */
 
 .change-btn {
   position: fixed;
@@ -589,7 +628,6 @@ body.shop-page {
   bottom: 22vh;
 
   transform: translateX(-50%);
-
   padding: 10px 22px;
 
   background: #ffffff;
@@ -600,13 +638,12 @@ body.shop-page {
   font-size: 14px;
   letter-spacing: 2px;
 
-  border: 3px solid #000;         /* hard pixel border */
-  outline: 3px solid #ffffff;     /* double border effect */
+  border: 3px solid #000;
+  outline: 3px solid #ffffff;
 
   cursor: pointer;
   z-index: 20;
 
-  /* hard glow like inventory selection */
   box-shadow:
     0 0 0 2px #000,
     0 0 6px #00ffff,
@@ -615,7 +652,6 @@ body.shop-page {
   transition: 0.15s ease;
 }
 
-/* Hover = selected inventory slot */
 .change-btn:hover {
   background: #000;
   color: #fff;
@@ -625,40 +661,4 @@ body.shop-page {
     0 0 10px #00ffff,
     0 0 20px #ff00ff,
     0 0 30px #00ff88;
-}
-/* ================= ITEM TEXT PANEL (LOCKED TO PINK ZONE) ================= */
-
-.item-info {
-  position: fixed;
-
-  left: 62vw;      /* align with button area */
-  top: 38vh;       /* match vertical start of frame */
-
-  width: 28vw;
-  height: 28vh;
-
-  transform: translateX(-50%);
-
-  overflow-y: auto;
-  padding: 14px;
-
-  background: rgba(255, 255, 255, 0.75);
-  border: 3px solid #000;
-
-  font-family: monospace;
-  font-size: 13px;
-  line-height: 1.4;
-
-  color: #000;
-
-  z-index: 15;
-}
-
-/* Scrollbar styling (optional but clean) */
-.item-info::-webkit-scrollbar {
-  width: 6px;
-}
-
-.item-info::-webkit-scrollbar-thumb {
-  background: #000;
 }
