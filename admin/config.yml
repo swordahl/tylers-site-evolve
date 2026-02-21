@@ -43,7 +43,7 @@ collections:
                   - { label: "Media File", name: "src", widget: "file", required: false }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
 
-  - name: "shop"
+   - name: "shop"
     label: "Shop Items"
     files:
       - name: "items"
@@ -59,3 +59,11 @@ collections:
               - { label: "Item Image", name: "image", widget: "image" }
               - { label: "Stats", name: "stats", widget: "text" }
               - { label: "Description", name: "desc", widget: "text" }
+
+              - { label: "Price (USD)", name: "price", widget: "number" }
+
+              - { label: "Stripe Checkout Link", name: "stripe", widget: "string", required: false }
+
+              - { label: "One of One Relic?", name: "unique", widget: "boolean", default: true }
+
+              - { label: "Available?", name: "available", widget: "boolean", default: true }
