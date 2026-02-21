@@ -7,6 +7,9 @@ const itemName = document.getElementById("itemName");
 const itemStats = document.getElementById("itemStats");
 const itemDesc = document.getElementById("itemDesc");
 
+const itemPrice = document.getElementById("itemPrice");
+const buyBtn = document.getElementById("buyBtn");
+
 let items = [];
 let currentItem = 0;
 
@@ -29,10 +32,31 @@ async function loadShopItems() {
 function displayItem(index) {
   const item = items[index];
 
+  if (!item) return;
+
+  // Core content
   itemImage.src = item.image;
   itemName.textContent = item.name;
   itemStats.textContent = item.stats;
   itemDesc.textContent = item.desc;
+
+  // Price
+  if (item.price) {
+    itemPrice.textContent = "$" + item.price;
+    itemPrice.style.display = "block";
+  } else {
+    itemPrice.style.display = "none";
+  }
+
+  // Checkout Button
+  if (item.stripe) {
+    buyBtn.style.display = "block";
+    buyBtn.onclick = () => {
+      window.location.href = item.stripe;
+    };
+  } else {
+    buyBtn.style.display = "none";
+  }
 }
 
 changeBtn.addEventListener("click", () => {
