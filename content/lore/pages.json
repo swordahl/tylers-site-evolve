@@ -18,17 +18,6 @@
       ]
     },
     {
-      "pg": 1,
-      "blocks": [
-        {
-          "type": "image",
-          "side": "left",
-          "text": "Drod slayer",
-          "src": "/assets/uploads/img_6356.heic"
-        }
-      ]
-    },
-    {
       "pg": 3,
       "blocks": [
         {
