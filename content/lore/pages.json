@@ -27,6 +27,16 @@
           "src": "/assets/uploads/img_6356.heic"
         }
       ]
+    },
+    {
+      "pg": 3,
+      "blocks": [
+        {
+          "type": "text",
+          "side": "left",
+          "text": "Rumination involves repetitive thinking or dwelling on negative feelings and distress and their causes and consequences. This is important to recognize because i almost stayed in a loop of this for a long time. i call that the dungeon, you know how to beat the dungeon"
+        }
+      ]
     }
   ]
 }
