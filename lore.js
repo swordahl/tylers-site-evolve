@@ -97,82 +97,72 @@ function placeholder(){
 }
 
 function renderBlock(b){
-  const type = (b.type || "text").toString();
+
   const wrap = document.createElement("div");
-  wrap.className = "lore-block lore-" + type;
+  wrap.className = "lore-block";
+
+  const text = safeText(b.text);
+  const src = cleanSrc(b.src || "");
+  const caption = safeText(b.caption);
 
   // TEXT
-  if(type === "text"){
+  if(text){
     const p = document.createElement("div");
     p.className = "lore-text";
-    p.textContent = safeText(b.text);
+    p.textContent = text;
     wrap.appendChild(p);
-
-    if(b.caption){
-      const c = document.createElement("div");
-      c.className = "lore-caption";
-      c.textContent = safeText(b.caption);
-      wrap.appendChild(c);
-    }
-    return wrap;
   }
 
-  // IMAGE
-  if(type === "image"){
-    const img = document.createElement("img");
-    img.className = "lore-thumb";
-    img.loading = "lazy";
-    img.alt = safeText(b.caption || "Image");
-    img.src = cleanSrc(b.src);
-    img.addEventListener("click", ()=> 
-      openMedia({kind:"image", src: img.src, caption: b.caption})
-    );
-    wrap.appendChild(img);
+  // MEDIA AUTO-DETECT
+  if(src){
 
-    if(b.caption){
-      const c = document.createElement("div");
-      c.className = "lore-caption";
-      c.textContent = safeText(b.caption);
-      wrap.appendChild(c);
+    const ext = src.split(".").pop().toLowerCase();
+
+    // IMAGE
+    if(["jpg","jpeg","png","webp","gif","svg"].includes(ext)){
+      const img = document.createElement("img");
+      img.className = "lore-thumb";
+      img.loading = "lazy";
+      img.src = src;
+      img.alt = caption || "Image";
+
+      img.addEventListener("click", ()=> 
+        openMedia({kind:"image", src: img.src, caption})
+      );
+
+      wrap.appendChild(img);
     }
-    return wrap;
+
+    // VIDEO
+    else if(["mp4","webm","mov"].includes(ext)){
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "lore-video-tile pixel-btn";
+      btn.textContent = "PLAY";
+
+      btn.addEventListener("click", ()=> 
+        openMedia({kind:"video", src, caption})
+      );
+
+      wrap.appendChild(btn);
+    }
+
+    // AUDIO
+    else if(["mp3","wav","ogg"].includes(ext)){
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.src = src;
+      audio.className = "lore-audio";
+      wrap.appendChild(audio);
+    }
   }
 
-  // VIDEO
-  if(type === "video"){
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "lore-video-tile pixel-btn";
-    btn.textContent = "PLAY";
-    btn.addEventListener("click", ()=> 
-      openMedia({kind:"video", src: cleanSrc(b.src), caption: b.caption})
-    );
-    wrap.appendChild(btn);
-
-    if(b.caption){
-      const c = document.createElement("div");
-      c.className = "lore-caption";
-      c.textContent = safeText(b.caption);
-      wrap.appendChild(c);
-    }
-    return wrap;
-  }
-
-  // AUDIO (NEW)
-  if(type === "audio"){
-    const audio = document.createElement("audio");
-    audio.controls = true;
-    audio.src = cleanSrc(b.src);
-    audio.className = "lore-audio";
-    wrap.appendChild(audio);
-
-    if(b.caption){
-      const c = document.createElement("div");
-      c.className = "lore-caption";
-      c.textContent = safeText(b.caption);
-      wrap.appendChild(c);
-    }
-    return wrap;
+  // CAPTION
+  if(caption){
+    const c = document.createElement("div");
+    c.className = "lore-caption";
+    c.textContent = caption;
+    wrap.appendChild(c);
   }
 
   return wrap;
