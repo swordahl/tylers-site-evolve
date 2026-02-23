@@ -25,6 +25,10 @@ function safeText(t){
   return (t ?? "").toString();
 }
 
+function cleanSrc(src){
+  return safeText(src).replace(/^\/+/, "");
+}
+
 function normalizePages(raw){
   const arr = Array.isArray(raw?.pages) ? raw.pages : [];
   arr.sort((a,b)=> (Number(a.pg||0) - Number(b.pg||0)));
@@ -52,7 +56,6 @@ function render(){
 
   if(isMobile()){
 
-    // MOBILE: single page flip mode
     const sideToShow = state.mobileSide === 0 ? "left" : "right";
 
     const filtered = blocks.filter(b =>
@@ -68,11 +71,8 @@ function render(){
     elRight.style.display = "none";
     elLeft.style.display = "block";
 
-    elPg.textContent = "PG " + page.pg;
-
   } else {
 
-    // DESKTOP: spread mode
     for(const b of blocks){
       const side = (b.side === "right") ? elRight : elLeft;
       side.appendChild(renderBlock(b));
@@ -80,13 +80,13 @@ function render(){
 
     elRight.style.display = "block";
     elLeft.style.display = "block";
-
-    elPg.textContent = "PG " + page.pg;
   }
 
   if(!elLeft.children.length){
     elLeft.appendChild(placeholder());
   }
+
+  elPg.textContent = "PG " + page.pg;
 }
 
 function placeholder(){
@@ -101,6 +101,7 @@ function renderBlock(b){
   const wrap = document.createElement("div");
   wrap.className = "lore-block lore-" + type;
 
+  // TEXT
   if(type === "text"){
     const p = document.createElement("div");
     p.className = "lore-text";
@@ -116,13 +117,16 @@ function renderBlock(b){
     return wrap;
   }
 
+  // IMAGE
   if(type === "image"){
     const img = document.createElement("img");
     img.className = "lore-thumb";
     img.loading = "lazy";
     img.alt = safeText(b.caption || "Image");
-    img.src = safeText(b.src);
-    img.addEventListener("click", ()=> openMedia({kind:"image", src: img.src, caption: b.caption}));
+    img.src = cleanSrc(b.src);
+    img.addEventListener("click", ()=> 
+      openMedia({kind:"image", src: img.src, caption: b.caption})
+    );
     wrap.appendChild(img);
 
     if(b.caption){
@@ -134,12 +138,15 @@ function renderBlock(b){
     return wrap;
   }
 
+  // VIDEO
   if(type === "video"){
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "lore-video-tile pixel-btn";
     btn.textContent = "PLAY";
-    btn.addEventListener("click", ()=> openMedia({kind:"video", src: safeText(b.src), caption: b.caption}));
+    btn.addEventListener("click", ()=> 
+      openMedia({kind:"video", src: cleanSrc(b.src), caption: b.caption})
+    );
     wrap.appendChild(btn);
 
     if(b.caption){
@@ -151,10 +158,23 @@ function renderBlock(b){
     return wrap;
   }
 
-  const p = document.createElement("div");
-  p.className = "lore-text";
-  p.textContent = safeText(b.text || "");
-  wrap.appendChild(p);
+  // AUDIO (NEW)
+  if(type === "audio"){
+    const audio = document.createElement("audio");
+    audio.controls = true;
+    audio.src = cleanSrc(b.src);
+    audio.className = "lore-audio";
+    wrap.appendChild(audio);
+
+    if(b.caption){
+      const c = document.createElement("div");
+      c.className = "lore-caption";
+      c.textContent = safeText(b.caption);
+      wrap.appendChild(c);
+    }
+    return wrap;
+  }
+
   return wrap;
 }
 
@@ -169,7 +189,7 @@ function openMedia(m){
     img.className = "lore-modal-media";
     img.alt = safeText(m.caption || "Image");
     modalBody.appendChild(img);
-  }else{
+  } else {
     const vid = document.createElement("video");
     vid.src = m.src;
     vid.className = "lore-modal-media";
@@ -219,16 +239,13 @@ function playTurn(){
 function prev(){
 
   if(isMobile()){
-
     if(state.mobileSide === 1){
       state.mobileSide = 0;
     } else if(state.idx > 0){
       state.idx -= 1;
       state.mobileSide = 1;
     }
-
   } else {
-
     if(state.idx > 0){
       state.idx -= 1;
     }
@@ -241,16 +258,13 @@ function prev(){
 function next(){
 
   if(isMobile()){
-
     if(state.mobileSide === 0){
       state.mobileSide = 1;
     } else {
       state.idx += 1;
       state.mobileSide = 0;
     }
-
   } else {
-
     state.idx += 1;
   }
 
