@@ -1,13 +1,14 @@
 {
   "pages": [
     {
-      "pg": 2,
+      "pg": 1,
       "blocks": [
         {
           "type": "text",
           "side": "left",
-          "text": "Swordahls Grimoire",
-          "caption": ""
+          "text": "Swordahls Grimoire\n\nꀸꍏꀤ꒒ꌩ ꆰꀎꍟꌗ꓄ ꌗꂦꈤꁅ *ꋪꍟꎇꋪꍟꌗꃅꍟꌗ ꀤꈤ 24 ꃅꂦꀎꋪꌗ*",
+          "caption": "",
+          "src": "/assets/uploads/prgq.mp3"
         },
         {
           "type": "text",
@@ -18,13 +19,13 @@
       ]
     },
     {
-      "pg": 1,
+      "pg": 4,
       "blocks": [
         {
           "type": "text",
           "side": "left",
-          "text": "Rumination (rune-immitation) involves repetitive thinking or dwelling on negative feelings and distress and their causes and consequences. This is important to recognize because i almost stayed in a loop of this for a long time. i call that the dungeon, you know how to beat the dungeon\nhere will be a daily file song of the day\n",
-          "src": "/assets/uploads/prgq.mp3"
+          "text": "Rumination (rune-immitation) involves repetitive thinking or dwelling on negative feelings and distress and their causes and consequences. This is important to recognize because i almost stayed in a loop of this for a long time. i call that the dungeon, you know how to beat the dungeon (edit feb23  just dont drod out)\n\n",
+          "src": ""
         }
       ]
     },
