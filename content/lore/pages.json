@@ -39,6 +39,16 @@
           "src": "/assets/uploads/screenshot-2026-02-23-at-9.04.08 pm.png"
         }
       ]
+    },
+    {
+      "pg": 5,
+      "blocks": [
+        {
+          "type": "text",
+          "side": "left",
+          "text": "At my fingertips i have the will to summon anything. \n\nbut when my heart gets sad my fingertips dont wanna summon anymore\n\nill be drod swordahl you never change"
+        }
+      ]
     }
   ]
 }
