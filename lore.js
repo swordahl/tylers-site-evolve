@@ -13,6 +13,7 @@ const elRight = document.querySelector(".lore-right");
 const elPg = document.querySelector(".lore-pg");
 const btnPrev = document.querySelector(".lore-prev");
 const btnNext = document.querySelector(".lore-next");
+const latestBtn = document.getElementById("latestEntryBtn");
 
 const modal = document.getElementById("loreModal");
 const modalBody = document.getElementById("loreModalBody");
@@ -105,7 +106,6 @@ function renderBlock(b){
   const src = cleanSrc(b.src || "");
   const caption = safeText(b.caption);
 
-  // TEXT
   if(text){
     const p = document.createElement("div");
     p.className = "lore-text";
@@ -113,12 +113,10 @@ function renderBlock(b){
     wrap.appendChild(p);
   }
 
-  // MEDIA AUTO-DETECT
   if(src){
 
     const ext = src.split(".").pop().toLowerCase();
 
-    // IMAGE
     if(["jpg","jpeg","png","webp","gif","svg"].includes(ext)){
       const img = document.createElement("img");
       img.className = "lore-thumb";
@@ -133,7 +131,6 @@ function renderBlock(b){
       wrap.appendChild(img);
     }
 
-    // VIDEO
     else if(["mp4","webm","mov"].includes(ext)){
       const btn = document.createElement("button");
       btn.type = "button";
@@ -147,7 +144,6 @@ function renderBlock(b){
       wrap.appendChild(btn);
     }
 
-    // AUDIO
     else if(["mp3","wav","ogg"].includes(ext)){
       const audio = document.createElement("audio");
       audio.controls = true;
@@ -157,7 +153,6 @@ function renderBlock(b){
     }
   }
 
-  // CAPTION
   if(caption){
     const c = document.createElement("div");
     c.className = "lore-caption";
@@ -206,19 +201,6 @@ function closeModal(){
   modalBody.innerHTML = "";
 }
 
-modal.addEventListener("click", (e)=>{
-  const t = e.target;
-  if(t && t.dataset && t.dataset.close === "1"){
-    closeModal();
-  }
-});
-
-document.addEventListener("keydown", (e)=>{
-  if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
-  if(e.key === "ArrowLeft") prev();
-  if(e.key === "ArrowRight") next();
-});
-
 function playTurn(){
   try{
     state.turnSfx.currentTime = 0;
@@ -227,7 +209,6 @@ function playTurn(){
 }
 
 function prev(){
-
   if(isMobile()){
     if(state.mobileSide === 1){
       state.mobileSide = 0;
@@ -240,13 +221,11 @@ function prev(){
       state.idx -= 1;
     }
   }
-
   playTurn();
   render();
 }
 
 function next(){
-
   if(isMobile()){
     if(state.mobileSide === 0){
       state.mobileSide = 1;
@@ -265,6 +244,28 @@ function next(){
 
 btnPrev?.addEventListener("click", prev);
 btnNext?.addEventListener("click", next);
+
+/* ================================================= */
+/* ======== LEGENDARY RETURN TO PRESENT ============ */
+/* ================================================= */
+
+latestBtn?.addEventListener("click", () => {
+
+  // flash aura
+  latestBtn.classList.add("lore-flash");
+  setTimeout(() => {
+    latestBtn.classList.remove("lore-flash");
+  }, 400);
+
+  if(state.pages.length > 0){
+    state.idx = state.pages.length - 1;
+    state.mobileSide = 0;
+    playTurn();
+    render();
+  }
+});
+
+/* ================================================= */
 
 async function boot(){
   try{
