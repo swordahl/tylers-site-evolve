@@ -4,16 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Swordahl — Lore</title>
+
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mobile.css" media="(max-width: 768px)">
+
+  <!-- Optional: Cinzel font for legendary aesthetic -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="lore-body lore-page">
 
   <main class="lore-stage">
+
+    <!-- Background book image -->
     <img class="lore-art" src="assets/lore_page.png" alt="Lore book">
 
+    <!-- Back Button -->
     <a class="back-btn pixel-btn" href="index.html">BACK</a>
+
+    <!-- LEGENDARY RETURN BUTTON -->
+    <button id="latestEntryBtn" class="lore-latest-legendary">
+      ⟡ RETURN TO THE PRESENT CHRONICLE ⟡
+      <span class="mana-pulse"></span>
+    </button>
 
     <!-- Page containers -->
     <section class="lore-page lore-left" aria-label="Left page"></section>
@@ -29,8 +42,13 @@
     <!-- Modal -->
     <div class="lore-modal" id="loreModal" aria-hidden="true">
       <div class="lore-modal-backdrop" data-close="1"></div>
-      <div class="lore-modal-content" role="dialog" aria-modal="true" aria-label="Media viewer">
-        <button class="lore-modal-close pixel-btn" type="button" data-close="1">X</button>
+      <div class="lore-modal-content"
+           role="dialog"
+           aria-modal="true"
+           aria-label="Media viewer">
+        <button class="lore-modal-close pixel-btn"
+                type="button"
+                data-close="1">X</button>
         <div id="loreModalBody"></div>
       </div>
     </div>
@@ -44,8 +62,9 @@
     <img src="/assets/icons/youtube-play.svg" alt="YouTube">
   </a>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
   <script src="lore.js"></script>
- 
+
 </body>
 </html>
