@@ -4,7 +4,7 @@
 const state = {
   pages: [],
   idx: 0,
-  mobileSide: 0, // 0 = left, 1 = right (mobile only)
+  mobileSide: 0,
   turnSfx: new Audio("assets/sfx/page-turn-8bit.mp3"),
 };
 
@@ -28,6 +28,16 @@ function safeText(t){
 
 function cleanSrc(src){
   return safeText(src).replace(/^\/+/, "");
+}
+
+/* ===========================
+   🔥 LINKIFY FUNCTION
+=========================== */
+function linkify(text){
+  const urlPattern = /(https?:\/\/[^\s]+)/g;
+  return safeText(text).replace(urlPattern, function(url){
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
 }
 
 function normalizePages(raw){
@@ -109,7 +119,10 @@ function renderBlock(b){
   if(text){
     const p = document.createElement("div");
     p.className = "lore-text";
-    p.textContent = text;
+
+    // 🔥 CHANGE: now allows clickable links
+    p.innerHTML = linkify(text);
+
     wrap.appendChild(p);
   }
 
@@ -245,13 +258,7 @@ function next(){
 btnPrev?.addEventListener("click", prev);
 btnNext?.addEventListener("click", next);
 
-/* ================================================= */
-/* ======== LEGENDARY RETURN TO PRESENT ============ */
-/* ================================================= */
-
 latestBtn?.addEventListener("click", () => {
-
-  // flash aura
   latestBtn.classList.add("lore-flash");
   setTimeout(() => {
     latestBtn.classList.remove("lore-flash");
@@ -264,8 +271,6 @@ latestBtn?.addEventListener("click", () => {
     render();
   }
 });
-
-/* ================================================= */
 
 async function boot(){
   try{
