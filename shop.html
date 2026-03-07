@@ -12,36 +12,33 @@
 
 <body>
 
+<button id="saveLayout" class="save-layout">Save Layout</button>
+
 <div class="ui-canvas">
 
-    <!-- LEFT PANEL -->
+    <div class="ui-box character-panel" data-id="character-panel">
 
-    <div class="ui-box character-panel">
-
-        <div class="character-name">
-            Sentia Relic
-        </div>
+        <div class="character-name">Sentia Relic</div>
 
         <div class="character-stats">
-            Power: 12<br>
-            Magic: 7<br>
-            Weight: 4
+        Power: 12<br>
+        Magic: 7<br>
+        Weight: 4
         </div>
 
         <div class="character-description">
-            A relic recovered from the caverns beneath Sentia.
+        A relic recovered from the caverns beneath Sentia.
         </div>
 
         <button class="character-buy">
-            Acquire Relic - 4 gold
+        Acquire Relic - 4 gold
         </button>
 
     </div>
 
 
-    <!-- RELIC FRAME -->
 
-    <div class="ui-box relic-frame">
+    <div class="ui-box relic-frame" data-id="relic-frame">
 
         <img src="/assets/shop-border/shop-border1.png" class="border-art">
 
@@ -54,13 +51,10 @@
     </div>
 
 
-    <!-- QUESTERS MENU -->
 
-    <div class="ui-box quester-panel">
+    <div class="ui-box quester-panel" data-id="quester-panel">
 
-        <div class="quester-title">
-            Questers
-        </div>
+        <div class="quester-title">Questers</div>
 
         <div class="quester">Swordahl</div>
         <div class="quester">Archivist</div>
@@ -71,13 +65,13 @@
 </div>
 
 
-<!-- NPC BUBBLE -->
 
-<div class="npc-dialogue">
+<div class="npc-dialogue ui-box" data-id="npc-dialogue">
 
-    <div class="dialogue-bubble" id="npcText"></div>
+<div class="dialogue-bubble" id="npcText"></div>
 
 </div>
+
 
 <script src="/shop.js"></script>
 
