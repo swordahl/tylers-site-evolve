@@ -1,12 +1,9 @@
-/* EDIT MODE */
-
 const params = new URLSearchParams(window.location.search);
 const editMode = params.get("edit") === "true";
 
 if(editMode){
 document.body.classList.add("edit-mode");
 }
-
 
 
 /* LOAD LAYOUT */
@@ -30,14 +27,13 @@ Object.assign(el.style, layout[id]);
 
 }catch(e){
 
-console.log("layout not created yet");
+console.log("layout not found");
 
 }
 
 }
 
 loadLayout();
-
 
 
 /* LOAD PRODUCT FROM ADMIN */
@@ -54,8 +50,7 @@ const item = data.items[0];
 document.getElementById("relicName").textContent = item.name;
 document.getElementById("relicStats").textContent = item.stats;
 document.getElementById("relicDesc").textContent = item.desc;
-document.getElementById("relicBuy").textContent =
-"Acquire Relic - " + item.price + " gold";
+document.getElementById("relicBuy").textContent = "Acquire Relic - " + item.price + " gold";
 
 document.getElementById("relicImage").src = item.image;
 
@@ -64,8 +59,7 @@ document.getElementById("relicImage").src = item.image;
 loadShop();
 
 
-
-/* DRAG SYSTEM */
+/* DRAG */
 
 if(editMode){
 
@@ -76,6 +70,8 @@ let offsetY=0;
 let dragging=false;
 
 el.addEventListener("mousedown",e=>{
+
+if(el.classList.contains("locked")) return;
 
 dragging=true;
 
@@ -104,6 +100,62 @@ dragging=false;
 }
 
 
+/* LOCK */
+
+document.querySelectorAll(".lock-btn").forEach(btn=>{
+
+btn.onclick=(e)=>{
+
+e.stopPropagation();
+
+const box=btn.parentElement;
+
+box.classList.toggle("locked");
+
+};
+
+});
+
+
+/* RESIZE */
+
+if(editMode){
+
+document.querySelectorAll(".resize-handle").forEach(handle=>{
+
+const box=handle.parentElement;
+
+let resizing=false;
+
+handle.addEventListener("mousedown",e=>{
+
+if(box.classList.contains("locked")) return;
+
+e.stopPropagation();
+
+resizing=true;
+
+});
+
+document.addEventListener("mousemove",e=>{
+
+if(!resizing) return;
+
+box.style.width=e.clientX-box.offsetLeft+"px";
+box.style.height=e.clientY-box.offsetTop+"px";
+
+});
+
+document.addEventListener("mouseup",()=>{
+
+resizing=false;
+
+});
+
+});
+
+}
+
 
 /* SAVE LAYOUT */
 
@@ -127,8 +179,6 @@ width:el.style.width
 
 });
 
-console.log("COPY THIS INTO layout.json:");
-
 console.log(JSON.stringify(layout,null,2));
 
 alert("Layout JSON printed in console");
@@ -136,7 +186,6 @@ alert("Layout JSON printed in console");
 };
 
 }
-
 
 
 /* NPC TEXT */
