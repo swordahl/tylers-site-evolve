@@ -1,36 +1,27 @@
-async function loadShop() {
+async function loadShop(){
 
-  try {
+const res = await fetch("/content/shop/index.json");
+const data = await res.json();
 
-    const response = await fetch("/content/shop/index.json");
-    const data = await response.json();
+const layer = document.querySelector(".relic-layer");
 
-    const display = document.querySelector(".shop-display");
+data.items.forEach(item => {
 
-    data.items.forEach(item => {
+const relic = document.createElement("div");
+relic.className = "relic";
 
-      const relic = document.createElement("div");
-      relic.className = "relic";
+relic.style.left = item.x + "%";
+relic.style.top = item.y + "%";
 
-      relic.style.left = item.x + "%";
-      relic.style.top = item.y + "%";
+const img = document.createElement("img");
+img.src = "/assets/shop-border/border" + item.border + ".png";
 
-      const border = document.createElement("img");
-      border.className = "relic-border";
-      border.src = "/assets/shop-border/shop-border" + item.border + ".png";
+relic.appendChild(img);
 
-      relic.appendChild(border);
+layer.appendChild(relic);
 
-      display.appendChild(relic);
-
-    });
-
-  } catch (error) {
-
-    console.error("Shop failed to load:", error);
-
-  }
+});
 
 }
 
-document.addEventListener("DOMContentLoaded", loadShop);
+loadShop();
