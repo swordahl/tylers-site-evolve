@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,39 +10,42 @@
 
 </head>
 
+
 <body>
 
-<div class="relic-screen">
 
-    <!-- LEFT CHARACTER PANEL -->
+<!-- UI CANVAS (everything sits on this layer) -->
 
-    <div class="character-panel">
+<div class="ui-canvas">
+
+
+    <!-- LEFT INFO PANEL -->
+
+    <div class="ui-box character-panel">
 
         <div class="character-name">
-            Sentia Relic
+            Gawndela
         </div>
 
         <div class="character-stats">
-            Power: 12<br>
-            Magic: 7<br>
-            Weight: 4
+            The original Guul of the dungeon.
         </div>
 
         <div class="character-description">
-            A relic recovered from the caverns beneath Sentia.
+            Gawndela does not like verrfolk..
         </div>
 
         <button class="character-buy">
-            Acquire Relic
+            Acquire Relic - 4 gold
         </button>
 
     </div>
 
 
 
-    <!-- CENTER RELIC FRAME -->
+    <!-- RELIC FRAME (center) -->
 
-    <div class="relic-frame">
+    <div class="ui-box relic-frame">
 
         <img src="/assets/shop-border/shop-border1.png" class="border-art">
 
@@ -55,9 +59,9 @@
 
 
 
-    <!-- RIGHT QUESTERS MENU -->
+    <!-- QUESTERS PANEL -->
 
-    <div class="quester-panel">
+    <div class="ui-box quester-panel">
 
         <div class="quester-title">
             Questers
@@ -68,6 +72,8 @@
         <div class="quester">Keeper</div>
 
     </div>
+
+
 
 </div>
 
@@ -86,4 +92,5 @@
 <script src="/shop.js"></script>
 
 </body>
+
 </html>
