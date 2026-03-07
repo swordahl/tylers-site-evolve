@@ -1,4 +1,6 @@
+/* ============================ */
 /* SHOP PAGE */
+/* ============================ */
 
 .shop-body{
 background:#f4f1e8;
@@ -7,33 +9,36 @@ text-align:center;
 margin:0;
 }
 
-/* title */
+/* ============================ */
+/* TITLE */
+/* ============================ */
 
 .shop-title{
-margin-top:100px;
+margin-top:80px;
 font-size:32px;
 letter-spacing:2px;
 }
 
-/* artifact layout */
+/* ============================ */
+/* ARTIFACT DISPLAY */
+/* ============================ */
 
-#shop-grid{
+.shop-display{
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
+align-items:flex-start;
 gap:140px;
-padding:120px 40px;
+margin-top:120px;
 }
 
-/* artifact container */
+/* artifact frame container */
 
-.artifact{
+.artifact-slot{
 position:relative;
-width:340px;
-text-align:center;
+width:380px;
 }
 
-/* border frame */
+/* frame image */
 
 .artifact-border{
 width:100%;
@@ -44,22 +49,43 @@ display:block;
 
 .artifact-product{
 position:absolute;
-top:42%;
+top:60%;
 left:50%;
 transform:translate(-50%,-50%);
 width:55%;
-height:auto;
+pointer-events:none;
 }
 
-/* name */
+/* ============================ */
+/* BUY BUTTON */
+/* ============================ */
 
-.artifact-name{
-margin-top:12px;
-font-size:18px;
+.buy-btn{
+margin-top:18px;
+padding:10px 26px;
+
+font-family:serif;
+font-size:14px;
+
+background:#fff;
+border:1px solid #000;
+
+cursor:pointer;
 }
 
-/* price */
+/* ============================ */
+/* CONTROLS */
+/* ============================ */
 
-.artifact-price{
-font-weight:bold;
+.shop-controls{
+text-align:center;
+margin-top:80px;
 }
+
+#cycle{
+font-size:36px;
+border:none;
+background:none;
+cursor:pointer;
+}
+
