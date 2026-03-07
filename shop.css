@@ -10,6 +10,7 @@ font-family:monospace;
 position:relative;
 width:100vw;
 height:100vh;
+overflow:hidden;
 }
 
 /* UI ELEMENTS */
@@ -23,27 +24,21 @@ position:absolute;
 .edit-mode .ui-box{
 outline:2px dashed #3b82f6;
 cursor:move;
+user-select:none;
 }
 
 /* SAVE BUTTON */
 
 .save-layout{
-
 position:fixed;
 top:20px;
 right:20px;
-
 padding:10px 16px;
-
 background:black;
 color:white;
-
 border:none;
-
 display:none;
-
 z-index:999;
-
 }
 
 .edit-mode .save-layout{
@@ -53,25 +48,17 @@ display:block;
 /* LOCK BUTTON */
 
 .lock-btn{
-
 position:absolute;
 top:-10px;
 right:-10px;
-
 background:black;
 color:white;
-
 border:none;
-
 width:22px;
 height:22px;
-
 font-size:12px;
-
 cursor:pointer;
-
 display:none;
-
 }
 
 .edit-mode .lock-btn{
@@ -81,21 +68,14 @@ display:block;
 /* RESIZE HANDLE */
 
 .resize-handle{
-
 position:absolute;
-
 width:14px;
 height:14px;
-
 right:-7px;
 bottom:-7px;
-
 background:#3b82f6;
-
 cursor:nwse-resize;
-
 display:none;
-
 }
 
 .edit-mode .resize-handle{
@@ -111,24 +91,25 @@ top:12%;
 width:260px;
 }
 
-/* RELIC FRAME */
 
-.relic-frame{
+/* SHOP FRAME */
+
+.shop-frame{
 left:38%;
 top:18%;
 width:900px;
 max-width:42vw;
+position:absolute;
 }
 
-.border-art{
+.shopborder1{
 width:100%;
 display:block;
 }
 
-/* SAFE ZONE */
+/* PRODUCT SAFE ZONE */
 
-.relic-zone{
-
+.product-zone{
 position:absolute;
 
 left:18%;
@@ -140,49 +121,37 @@ height:45%;
 display:flex;
 align-items:center;
 justify-content:center;
-
 }
 
 .relic-product{
-
 max-width:100%;
 max-height:100%;
 object-fit:contain;
-
 }
+
 
 /* QUESTERS */
 
 .quester-panel{
-
 right:4%;
 top:12%;
-
 width:220px;
-
 border:3px solid black;
 padding:12px;
-
 background:#ded9cf;
-
 }
 
 /* NPC */
 
 .npc-dialogue{
-
 right:60px;
 bottom:40px;
-
 max-width:260px;
 position:fixed;
-
 }
 
 .dialogue-bubble{
-
 background:white;
 border:3px solid black;
 padding:14px;
-
 }
