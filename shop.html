@@ -1,18 +1,89 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+
 <meta charset="UTF-8">
 <title>Sentia Relic Archive</title>
+
 <link rel="stylesheet" href="/shop.css">
+
 </head>
 
 <body>
 
-<div class="relic-wall"></div>
+<div class="relic-screen">
+
+    <!-- LEFT CHARACTER PANEL -->
+
+    <div class="character-panel">
+
+        <div class="character-name">
+            Sentia Relic
+        </div>
+
+        <div class="character-stats">
+            Power: 12<br>
+            Magic: 7<br>
+            Weight: 4
+        </div>
+
+        <div class="character-description">
+            A relic recovered from the caverns beneath Sentia.
+        </div>
+
+        <button class="character-buy">
+            Acquire Relic
+        </button>
+
+    </div>
+
+
+
+    <!-- CENTER RELIC FRAME -->
+
+    <div class="relic-frame">
+
+        <img src="/assets/shop-border/shop-border1.png" class="border-art">
+
+        <div class="relic-zone">
+
+            <img src="/assets/uploads/relic.png" class="relic-product">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RIGHT QUESTERS MENU -->
+
+    <div class="quester-panel">
+
+        <div class="quester-title">
+            Questers
+        </div>
+
+        <div class="quester">Swordahl</div>
+        <div class="quester">Archivist</div>
+        <div class="quester">Keeper</div>
+
+    </div>
+
+</div>
+
+
+
+<!-- NPC CHARACTER DIALOGUE -->
+
+<div class="npc-dialogue">
+
+    <div class="dialogue-bubble" id="npcText"></div>
+
+</div>
+
+
 
 <script src="/shop.js"></script>
 
 </body>
-
 </html>
