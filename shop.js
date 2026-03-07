@@ -68,3 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+document.addEventListener("click", function(e){
+
+const x = ((e.pageX / window.innerWidth) * 100).toFixed(2);
+const y = ((e.pageY / document.body.scrollHeight) * 100).toFixed(2);
+
+alert(`x:${x}  y:${y}`);
+
+});
