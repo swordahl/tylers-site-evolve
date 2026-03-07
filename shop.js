@@ -1,48 +1,81 @@
+let items = [];
+let startIndex = 0;
+
 async function loadShop() {
 
-  try {
+try {
 
-    const response = await fetch("content/shop/index.json");
-    const data = await response.json();
+```
+const res = await fetch("content/shop/index.json");
+const data = await res.json();
 
-    const grid = document.getElementById("shop-grid");
+items = data.items || [];
 
-    if (!data.items) return;
+renderItems();
+```
 
-    data.items.forEach(item => {
+} catch (error) {
 
-      const artifact = document.createElement("div");
-      artifact.className = "artifact";
-
-      const border = document.createElement("img");
-      border.className = "artifact-border";
-      border.src = "assets/shop-border/shop-border1.png";
-
-      const product = document.createElement("img");
-      product.className = "artifact-product";
-      product.src = item.image;
-
-      const name = document.createElement("div");
-      name.className = "artifact-name";
-      name.textContent = item.name;
-
-      const price = document.createElement("div");
-      price.className = "artifact-price";
-      price.textContent = item.price + " gold";
-
-      artifact.appendChild(border);
-      artifact.appendChild(product);
-      artifact.appendChild(name);
-      artifact.appendChild(price);
-
-      grid.appendChild(artifact);
-
-    });
-
-  } catch (error) {
-    console.error("Shop failed to load:", error);
-  }
+```
+console.error("Shop failed to load:", error);
+```
 
 }
 
-document.addEventListener("DOMContentLoaded", loadShop);
+}
+
+function renderItems(){
+
+const slotImages = [
+document.getElementById("item1"),
+document.getElementById("item2"),
+document.getElementById("item3")
+];
+
+for(let i = 0; i < 3; i++){
+
+```
+const item = items[startIndex + i];
+
+if(item){
+
+  slotImages[i].src = item.image;
+  slotImages[i].style.display = "block";
+
+}else{
+
+  slotImages[i].style.display = "none";
+
+}
+```
+
+}
+
+}
+
+function cycleItems(){
+
+if(items.length <= 3) return;
+
+startIndex++;
+
+if(startIndex + 3 > items.length){
+startIndex = 0;
+}
+
+renderItems();
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+loadShop();
+
+const cycleBtn = document.getElementById("cycle");
+
+if(cycleBtn){
+cycleBtn.addEventListener("click", cycleItems);
+}
+
+});
+
