@@ -1,93 +1,58 @@
-/* page */
-
 body{
 margin:0;
-overflow:auto;
 background:#f6f3ea;
+font-family:serif;
 }
 
-/* giant archive canvas */
+.archive-title{
+text-align:center;
+margin:40px 0;
+}
 
-.archive-stage{
+/* archive panels */
 
+.archive-panel{
 position:relative;
-
-/* scaled down but still large */
-
-width:1800px;
-height:3600px;
-
+margin:120px auto;
+width:900px;
 }
 
-/* archive wall drawing */
+/* border drawing */
 
-.archive-wall{
-
-position:absolute;
-
-top:0;
-left:0;
-
-width:1800px;
-height:auto;
-
-pointer-events:none;
-
-/* prevents browser shrinking */
-
-max-width:none;
-
+.archive-border{
+width:100%;
+display:block;
 }
 
-/* layer where relic frames appear */
+/* artifact layout */
 
-#relic-layer{
-
+.artifact-row{
 position:absolute;
 
-top:0;
+top:35%;
 left:0;
 
 width:100%;
-height:100%;
 
+display:flex;
+justify-content:space-evenly;
 }
 
-/* relic frame container */
+/* artifact */
 
-.relic{
-
-position:absolute;
-
-transform:translate(-50%,-50%);
-
+.artifact{
+text-align:center;
 }
 
-/* relic frame image */
-
-.relic img{
-
-width:260px;
+.artifact img{
+width:140px;
 height:auto;
-
-display:block;
-
 }
 
-/* optional buy button styling */
-
-.buy-btn{
-
+.artifact button{
 margin-top:10px;
-
 padding:6px 14px;
-
 border:1px solid black;
-
 background:white;
-
-font-family:serif;
-
 cursor:pointer;
-
 }
