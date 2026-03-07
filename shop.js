@@ -17,7 +17,6 @@ const layout = await res.json();
 Object.keys(layout).forEach(id=>{
 
 const el = document.querySelector(`[data-id="${id}"]`);
-
 if(!el) return;
 
 Object.assign(el.style, layout[id]);
@@ -35,7 +34,7 @@ console.log("layout not found");
 loadLayout();
 
 
-/* LOAD RELIC DATA FROM ADMIN */
+/* LOAD SHOP ITEM */
 
 async function loadShop(){
 
@@ -44,7 +43,7 @@ try{
 const res = await fetch("/content/shop/index.json");
 const data = await res.json();
 
-if(!data.items || data.items.length === 0) return;
+if(!data.items || data.items.length===0) return;
 
 const item = data.items[0];
 
@@ -53,7 +52,8 @@ const item = data.items[0];
 document.getElementById("relicName").textContent = item.name || "";
 document.getElementById("relicStats").textContent = item.stats || "";
 document.getElementById("relicDesc").textContent = item.desc || "";
-document.getElementById("relicBuy").textContent = "Acquire Relic - " + (item.price || 0) + " gold";
+document.getElementById("relicBuy").textContent =
+"Acquire Relic - " + (item.price || 0) + " gold";
 
 /* IMAGE */
 
@@ -65,7 +65,7 @@ img.src = item.image;
 
 }catch(e){
 
-console.log("Shop load failed");
+console.log("shop load failed");
 
 }
 
@@ -188,7 +188,8 @@ layout[id]={
 
 left:el.style.left,
 top:el.style.top,
-width:el.style.width
+width:el.style.width,
+height:el.style.height
 
 };
 
