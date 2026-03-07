@@ -30,7 +30,7 @@ Object.assign(el.style, layout[id]);
 
 }catch(e){
 
-console.log("no layout yet");
+console.log("layout not created yet");
 
 }
 
@@ -40,7 +40,32 @@ loadLayout();
 
 
 
-/* DRAGGING */
+/* LOAD PRODUCT FROM ADMIN */
+
+async function loadShop(){
+
+const res = await fetch("/content/shop/index.json");
+const data = await res.json();
+
+if(!data.items || data.items.length === 0) return;
+
+const item = data.items[0];
+
+document.getElementById("relicName").textContent = item.name;
+document.getElementById("relicStats").textContent = item.stats;
+document.getElementById("relicDesc").textContent = item.desc;
+document.getElementById("relicBuy").textContent =
+"Acquire Relic - " + item.price + " gold";
+
+document.getElementById("relicImage").src = item.image;
+
+}
+
+loadShop();
+
+
+
+/* DRAG SYSTEM */
 
 if(editMode){
 
@@ -102,11 +127,11 @@ width:el.style.width
 
 });
 
-console.log("SAVE THIS JSON:");
+console.log("COPY THIS INTO layout.json:");
 
 console.log(JSON.stringify(layout,null,2));
 
-alert("Layout JSON printed in console. Copy it into layout.json");
+alert("Layout JSON printed in console");
 
 };
 
