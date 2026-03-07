@@ -48,3 +48,19 @@ body {
   max-height: 100%;
   object-fit: contain;
 }
+.relic-zone{
+
+position:absolute;
+
+left:30%;
+top:34%;
+
+width:40%;
+height:46%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:2px solid red;   /* TEMPORARY */
+}
