@@ -1,1 +1,17 @@
+{
+  "frames": [
+    {
+      "id": "characterFrame",
+      "image": "/assets/shop-border/shop-border1.png",
+      "width": 900,
+      "height": 1895,
 
+      "productZone": {
+        "x": 0.18,
+        "y": 0.45,
+        "width": 0.32,
+        "height": 0.45
+      }
+    }
+  ]
+}
