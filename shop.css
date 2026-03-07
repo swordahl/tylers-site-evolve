@@ -1,3 +1,7 @@
+/* ================================= */
+/* BASE */
+/* ================================= */
+
 body{
   margin:0;
   background:#ded9cf;
@@ -5,31 +9,40 @@ body{
 }
 
 
-/* MAIN LAYOUT */
 
-.relic-screen{
+/* ================================= */
+/* UI CANVAS (drag system foundation) */
+/* ================================= */
 
-  display:grid;
+.ui-canvas{
 
-  grid-template-columns:320px 1fr 260px;
+  position:relative;
 
-  gap:40px;
+  width:100vw;
+  height:100vh;
 
-  width:1200px;
-  max-width:95vw;
+}
 
-  margin:120px auto;
+/* every UI element lives on the canvas */
 
-  align-items:start;
+.ui-box{
+
+  position:absolute;
 
 }
 
 
+
+/* ================================= */
 /* LEFT CHARACTER PANEL */
+/* ================================= */
 
 .character-panel{
 
-  padding:10px;
+  left:6%;
+  top:12%;
+
+  width:260px;
 
 }
 
@@ -68,17 +81,24 @@ body{
 }
 
 
+
+/* ================================= */
 /* RELIC FRAME */
+/* ================================= */
 
 .relic-frame{
 
-  position:relative;
+  left:38%;
+  top:18%;
 
   width:900px;
-  max-width:90vw;
+  max-width:42vw;
 
 }
 
+
+
+/* frame image */
 
 .border-art{
 
@@ -88,7 +108,10 @@ body{
 }
 
 
+
+/* ================================= */
 /* RELIC SAFE ZONE */
+/* ================================= */
 
 .relic-zone{
 
@@ -103,18 +126,17 @@ body{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
 }
 
 
-/* PRODUCT IMAGE */
+
+/* relic image */
 
 .relic-product{
 
   max-width:100%;
-
   max-height:100%;
 
   object-fit:contain;
@@ -122,24 +144,29 @@ body{
 }
 
 
-/* QUESTERS MENU */
+
+/* ================================= */
+/* QUESTERS PANEL */
+/* ================================= */
 
 .quester-panel{
+
+  right:4%;
+  top:12%;
+
+  width:220px;
 
   border:3px solid black;
 
   padding:12px;
 
-  max-height:420px;
-
-  overflow-y:auto;
+  background:#ded9cf;
 
 }
 
 .quester-title{
 
   font-size:20px;
-
   margin-bottom:10px;
 
 }
@@ -147,7 +174,6 @@ body{
 .quester{
 
   padding:6px;
-
   cursor:pointer;
 
 }
@@ -159,14 +185,16 @@ body{
 }
 
 
+
+/* ================================= */
 /* NPC DIALOGUE */
+/* ================================= */
 
 .npc-dialogue{
 
   position:fixed;
 
   right:60px;
-
   bottom:40px;
 
   max-width:260px;
