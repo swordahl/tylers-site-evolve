@@ -4,8 +4,6 @@ background:#ded9cf;
 overflow-y:auto;
 }
 
-/* RELIC WALL */
-
 .relic-wall{
 width:100%;
 display:flex;
@@ -13,12 +11,9 @@ flex-direction:column;
 align-items:center;
 }
 
-/* FRAME */
-
 .relic-frame{
 
 position:relative;
-
 width:70vw;
 max-width:900px;
 
@@ -26,15 +21,11 @@ margin:140px auto;
 
 }
 
-/* BORDER */
-
 .border-art{
 width:100%;
 height:auto;
 display:block;
 }
-
-/* SAFE ZONE */
 
 .relic-safezone{
 
@@ -51,8 +42,6 @@ align-items:center;
 justify-content:center;
 
 }
-
-/* PRODUCT IMAGE */
 
 .relic-product{
 
