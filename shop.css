@@ -1,58 +1,127 @@
 body{
+
 margin:0;
 background:#f6f3ea;
 font-family:serif;
+
 }
+
+
 
 .archive-title{
+
 text-align:center;
-margin:40px 0;
+margin:60px 0;
+
+letter-spacing:3px;
+
 }
 
-/* archive panels */
+
 
 .archive-panel{
+
 position:relative;
-margin:120px auto;
+
 width:900px;
+
+margin:140px auto;
+
 }
 
-/* border drawing */
+
 
 .archive-border{
+
 width:100%;
 display:block;
+
+/* makes border feel mounted */
+
+filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.25));
+
 }
 
-/* artifact layout */
+
 
 .artifact-row{
+
 position:absolute;
 
-top:35%;
+top:34%;
 left:0;
 
 width:100%;
 
 display:flex;
 justify-content:space-evenly;
+
 }
 
-/* artifact */
+
 
 .artifact{
+
+width:160px;
+
 text-align:center;
+
 }
+
+
 
 .artifact img{
+
 width:140px;
 height:auto;
+
+/* magical hover */
+
+transition:0.2s;
+
 }
 
+
+
+.artifact img:hover{
+
+transform:scale(1.05);
+
+filter: drop-shadow(0 0 12px rgba(255,220,120,0.7));
+
+}
+
+
+
+.artifact h3{
+
+margin:8px 0 4px;
+
+font-size:16px;
+
+}
+
+
+
+.artifact p{
+
+font-size:12px;
+margin-bottom:8px;
+
+}
+
+
+
 .artifact button{
-margin-top:10px;
+
 padding:6px 14px;
+
 border:1px solid black;
+
 background:white;
+
 cursor:pointer;
+
+font-family:serif;
+
 }
