@@ -5,7 +5,6 @@ if(editMode){
 document.body.classList.add("edit-mode");
 }
 
-
 /* LOAD LAYOUT */
 
 async function loadLayout(){
@@ -36,73 +35,46 @@ console.log("layout not found");
 loadLayout();
 
 
-/* FRAME RENDER SYSTEM */
+/* LOAD RELIC DATA FROM ADMIN */
 
 async function loadShop(){
 
-const frameRes = await fetch("/content/shop/frames.json");
-const frameData = await frameRes.json();
+try{
 
-const itemRes = await fetch("/content/shop/index.json");
-const itemData = await itemRes.json();
+const res = await fetch("/content/shop/index.json");
+const data = await res.json();
 
-const frames = frameData.frames;
-const items = itemData.items;
+if(!data.items || data.items.length === 0) return;
 
-const wall = document.querySelector(".relic-wall");
+const item = data.items[0];
 
-frames.forEach(frame => {
+/* TEXT */
 
-const frameEl = document.createElement("div");
-frameEl.className = "relic-frame";
+document.getElementById("relicName").textContent = item.name || "";
+document.getElementById("relicStats").textContent = item.stats || "";
+document.getElementById("relicDesc").textContent = item.desc || "";
+document.getElementById("relicBuy").textContent = "Acquire Relic - " + (item.price || 0) + " gold";
 
-frameEl.style.width = frame.width + "px";
-frameEl.style.height = frame.height + "px";
+/* IMAGE */
 
-const border = document.createElement("img");
-border.src = frame.image;
-border.className = "border-art";
+const img = document.getElementById("relicImage");
 
-frameEl.appendChild(border);
-
-/* product safe zone */
-
-const zone = document.createElement("div");
-zone.className = "product-zone";
-
-zone.style.left = (frame.productZone.x * 100) + "%";
-zone.style.top = (frame.productZone.y * 100) + "%";
-
-zone.style.width = (frame.productZone.width * 100) + "%";
-zone.style.height = (frame.productZone.height * 100) + "%";
-
-frameEl.appendChild(zone);
-
-/* find items that belong to this frame */
-
-const frameItems = items.filter(i => i.frame === frame.id);
-
-if(frameItems.length > 0){
-
-const item = frameItems[0];
-
-const product = document.createElement("img");
-product.src = item.image;
-product.className = "relic-product";
-
-zone.appendChild(product);
-
+if(img){
+img.src = item.image;
 }
 
-wall.appendChild(frameEl);
+}catch(e){
 
-});
+console.log("Shop load failed");
+
+}
 
 }
 
 loadShop();
 
-/* DRAG */
+
+/* DRAG SYSTEM */
 
 if(editMode){
 
@@ -143,7 +115,7 @@ dragging=false;
 }
 
 
-/* LOCK */
+/* LOCK BUTTON */
 
 document.querySelectorAll(".lock-btn").forEach(btn=>{
 
@@ -231,7 +203,7 @@ alert("Layout JSON printed in console");
 }
 
 
-/* NPC TEXT */
+/* NPC TYPEWRITER */
 
 const text="Ah… another relic uncovered within Sentia.";
 
