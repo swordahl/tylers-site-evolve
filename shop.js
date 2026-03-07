@@ -36,28 +36,71 @@ console.log("layout not found");
 loadLayout();
 
 
-/* LOAD PRODUCT FROM ADMIN */
+/* FRAME RENDER SYSTEM */
 
 async function loadShop(){
 
-const res = await fetch("/content/shop/index.json");
-const data = await res.json();
+const frameRes = await fetch("/content/shop/frames.json");
+const frameData = await frameRes.json();
 
-if(!data.items || data.items.length === 0) return;
+const itemRes = await fetch("/content/shop/index.json");
+const itemData = await itemRes.json();
 
-const item = data.items[0];
+const frames = frameData.frames;
+const items = itemData.items;
 
-document.getElementById("relicName").textContent = item.name;
-document.getElementById("relicStats").textContent = item.stats;
-document.getElementById("relicDesc").textContent = item.desc;
-document.getElementById("relicBuy").textContent = "Acquire Relic - " + item.price + " gold";
+const wall = document.querySelector(".relic-wall");
 
-document.getElementById("relicImage").src = item.image;
+frames.forEach(frame => {
+
+const frameEl = document.createElement("div");
+frameEl.className = "relic-frame";
+
+frameEl.style.width = frame.width + "px";
+frameEl.style.height = frame.height + "px";
+
+const border = document.createElement("img");
+border.src = frame.image;
+border.className = "border-art";
+
+frameEl.appendChild(border);
+
+/* product safe zone */
+
+const zone = document.createElement("div");
+zone.className = "product-zone";
+
+zone.style.left = (frame.productZone.x * 100) + "%";
+zone.style.top = (frame.productZone.y * 100) + "%";
+
+zone.style.width = (frame.productZone.width * 100) + "%";
+zone.style.height = (frame.productZone.height * 100) + "%";
+
+frameEl.appendChild(zone);
+
+/* find items that belong to this frame */
+
+const frameItems = items.filter(i => i.frame === frame.id);
+
+if(frameItems.length > 0){
+
+const item = frameItems[0];
+
+const product = document.createElement("img");
+product.src = item.image;
+product.className = "relic-product";
+
+zone.appendChild(product);
+
+}
+
+wall.appendChild(frameEl);
+
+});
 
 }
 
 loadShop();
-
 
 /* DRAG */
 
