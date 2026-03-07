@@ -1,15 +1,12 @@
 {
   "items": [
     {
-      "price": 4,
       "name": "ꁅꋫꅏꁹꃸꑾ꒒ꋫ",
-      "border": 1,
-      "desc": "Gawndela does not like verrfolk..",
-      "x": 56.53,
-      "y": 14.89,
-      "type": "frame",
       "image": "/assets/uploads/img_0514.png",
-      "stats": "The original Guul of the dungeon."
+      "price": 4,
+      "frame": "characterFrame",
+      "stats": "The original Guul of the dungeon.",
+      "desc": "Gawndela does not like verrfolk.."
     }
   ]
 }
