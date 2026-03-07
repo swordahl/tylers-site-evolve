@@ -27,18 +27,22 @@ body {
   display: block;
 }
 
-/* RELIC ZONE */
+.relic-zone{
 
-.relic-zone {
-  position: absolute;
-  left: 30%;
-  top: 34%;
-  width: 40%;
-  height: 46%;
+position:absolute;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* adjusted to match your green box */
+
+left:26%;
+top:38%;
+
+width:36%;
+height:44%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 }
 
 /* PRODUCT */
