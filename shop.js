@@ -11,7 +11,7 @@ const frame = document.createElement("div");
 frame.className = "relic-frame";
 
 frame.innerHTML = `
-<img src="/assets/shop-border1.png" class="border-art">
+<img src="/assets/shop-border/shop-border1.png" class="border-art">
 
 <div class="relic-safezone">
 <img src="${item.image}" class="relic-product">
