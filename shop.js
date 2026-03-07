@@ -76,3 +76,30 @@ const y = ((e.pageY / document.body.scrollHeight) * 100).toFixed(2);
 alert(`x:${x}  y:${y}`);
 
 });
+// coordinate helper (only for designing)
+
+document.addEventListener("click", function(e){
+
+const x = ((e.pageX / window.innerWidth) * 100).toFixed(2);
+const y = ((e.pageY / document.body.scrollHeight) * 100).toFixed(2);
+
+const popup = document.createElement("div");
+
+popup.innerText = `x:${x}  y:${y}`;
+
+popup.style.position = "fixed";
+popup.style.left = "20px";
+popup.style.bottom = "20px";
+popup.style.background = "black";
+popup.style.color = "white";
+popup.style.padding = "8px 12px";
+popup.style.fontSize = "14px";
+popup.style.zIndex = "9999";
+
+document.body.appendChild(popup);
+
+setTimeout(() => {
+popup.remove();
+}, 2000);
+
+});
