@@ -1,118 +1,97 @@
-/* ========================= */
-/* SHOP PAGE */
-/* ========================= */
+/* ================================= */
+/* SENTIA RELIC ARCHIVE SHOP PAGE */
+/* ================================= */
 
-.shop-body{
-background:#f4f1e8;
-font-family:serif;
+body.shop-body{
 margin:0;
-text-align:center;
+background:#e9e4db;
+font-family:serif;
+overflow-x:hidden;
 }
 
-/* ========================= */
 /* TITLE */
-/* ========================= */
 
 .shop-title{
-margin-top:80px;
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
 font-size:32px;
 letter-spacing:2px;
+z-index:100;
 }
 
-/* ========================= */
-/* RELIC DISPLAY AREA */
-/* ========================= */
+/* MASSIVE CANVAS AREA */
 
 .shop-display{
 position:relative;
 width:100%;
-height:650px;
-margin-top:120px;
+height:6000px;
 }
 
-/* ========================= */
-/* ARTIFACT FRAME SLOT */
-/* ========================= */
+/* RELIC FRAME CONTAINER */
 
-.artifact-slot{
+.relic{
 position:absolute;
-width:360px;
-text-align:center;
+transform:translate(-50%, -50%);
 }
 
-/* LEFT FRAME */
-
-.artifact-slot:nth-child(1){
-left:6%;
-}
-
-/* CENTER FRAME */
-
-.artifact-slot:nth-child(2){
-left:50%;
-transform:translateX(-50%);
-}
-
-/* RIGHT FRAME */
-
-.artifact-slot:nth-child(3){
-right:6%;
-}
-
-/* ========================= */
 /* FRAME IMAGE */
-/* ========================= */
 
-.artifact-border{
-width:100%;
-display:block;
-position:relative;
-z-index:1;
-}
-
-/* ========================= */
-/* PRODUCT IMAGE */
-/* ========================= */
-
-.artifact-product{
-position:absolute;
-top:60%;
-left:50%;
-transform:translate(-50%,-50%);
-width:55%;
-z-index:2;
+.relic-border{
+width:320px;
 pointer-events:none;
 }
 
-/* ========================= */
+/* PRODUCT IMAGE */
+
+.relic-product{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%, -50%);
+width:160px;
+}
+
 /* BUY BUTTON */
-/* ========================= */
 
-.buy-btn{
-margin-top:20px;
-padding:10px 26px;
-
+.relic-buy{
+position:absolute;
+left:50%;
+bottom:-60px;
+transform:translateX(-50%);
+padding:8px 20px;
+border:1px solid black;
+background:white;
+cursor:pointer;
 font-family:serif;
+}
+
+/* HOVER EFFECT */
+
+.relic:hover .relic-border{
+filter:brightness(1.1);
+}
+
+/* MOBILE ADJUSTMENTS */
+
+@media (max-width: 768px){
+
+.shop-title{
+font-size:22px;
+}
+
+.relic-border{
+width:220px;
+}
+
+.relic-product{
+width:120px;
+}
+
+.relic-buy{
+bottom:-50px;
 font-size:14px;
-
-background:#fff;
-border:1px solid #000;
-
-cursor:pointer;
 }
 
-/* ========================= */
-/* ARROW CONTROL */
-/* ========================= */
-
-.shop-controls{
-text-align:center;
-margin-top:80px;
-}
-
-#cycle{
-font-size:42px;
-background:none;
-border:none;
-cursor:pointer;
 }
