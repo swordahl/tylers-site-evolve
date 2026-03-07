@@ -4,7 +4,7 @@
       "name": "ꁅꋫꅏꁹꃸꑾ꒒ꋫ",
       "image": "/assets/uploads/img_0514.png",
       "price": 4,
-      "frame": "characterFrame",
+      "frame": 1,
       "stats": "The original Guul of the dungeon.",
       "desc": "Gawndela does not like verrfolk.."
     }
