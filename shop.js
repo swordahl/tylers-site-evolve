@@ -10,13 +10,21 @@ data.items.forEach(item => {
 const frame = document.createElement("div");
 frame.className = "relic-frame";
 
-frame.innerHTML = `
-<img src="/assets/shop-border/shop-border1.png" class="border-art">
+const border = document.createElement("img");
+border.src = "/assets/shop-border/shop-border1.png";
+border.className = "border-art";
 
-<div class="relic-safezone">
-<img src="${item.image}" class="relic-product">
-</div>
-`;
+const safezone = document.createElement("div");
+safezone.className = "relic-safezone";
+
+const product = document.createElement("img");
+product.src = item.image;
+product.className = "relic-product";
+
+safezone.appendChild(product);
+
+frame.appendChild(border);
+frame.appendChild(safezone);
 
 wall.appendChild(frame);
 
