@@ -1,31 +1,65 @@
-async function loadShop(){
+/* ================================= */
+/* EDIT MODE DETECTION */
+/* ================================= */
 
-const response = await fetch("/content/shop/index.json");
-const data = await response.json();
+const params = new URLSearchParams(window.location.search);
+const editMode = params.get("edit") === "true";
 
-if(!data.items || data.items.length === 0) return;
+if(editMode){
+document.body.classList.add("edit-mode");
+}
 
-const item = data.items[0];
 
-document.querySelector(".relic-product").src = item.image;
 
-document.querySelector(".character-name").textContent = item.name;
+/* ================================= */
+/* DRAG SYSTEM */
+/* ================================= */
 
-document.querySelector(".character-stats").textContent = item.stats;
+if(editMode){
 
-document.querySelector(".character-description").textContent = item.desc;
+document.querySelectorAll(".ui-box").forEach(el => {
 
-document.querySelector(".character-buy").textContent =
-"Acquire Relic - " + item.price + " gold";
+let offsetX = 0;
+let offsetY = 0;
+let isDragging = false;
+
+el.addEventListener("mousedown", e => {
+
+isDragging = true;
+
+offsetX = e.clientX - el.offsetLeft;
+offsetY = e.clientY - el.offsetTop;
+
+document.body.style.userSelect = "none";
+
+});
+
+document.addEventListener("mousemove", e => {
+
+if(!isDragging) return;
+
+el.style.left = (e.clientX - offsetX) + "px";
+el.style.top = (e.clientY - offsetY) + "px";
+
+});
+
+document.addEventListener("mouseup", () => {
+
+isDragging = false;
+
+document.body.style.userSelect = "auto";
+
+});
+
+});
 
 }
 
-loadShop();
 
 
-
-
-/* NPC dialogue typing */
+/* ================================= */
+/* NPC TYPING */
+/* ================================= */
 
 const text = "Ah… another relic uncovered within Sentia.";
 
