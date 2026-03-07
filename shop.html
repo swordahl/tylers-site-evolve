@@ -16,61 +16,62 @@
 
 <div class="ui-canvas">
 
-    <div class="ui-box character-panel" data-id="character-panel">
+<!-- CHARACTER PANEL -->
 
-        <div class="character-name">Sentia Relic</div>
+<div class="ui-box character-panel" data-id="character-panel">
 
-        <div class="character-stats">
-        Power: 12<br>
-        Magic: 7<br>
-        Weight: 4
-        </div>
+<div class="character-name" id="relicName"></div>
 
-        <div class="character-description">
-        A relic recovered from the caverns beneath Sentia.
-        </div>
+<div class="character-stats" id="relicStats"></div>
 
-        <button class="character-buy">
-        Acquire Relic - 4 gold
-        </button>
+<div class="character-description" id="relicDesc"></div>
 
-    </div>
-
-
-
-    <div class="ui-box relic-frame" data-id="relic-frame">
-
-        <img src="/assets/shop-border/shop-border1.png" class="border-art">
-
-        <div class="relic-zone">
-
-            <img src="/assets/uploads/relic.png" class="relic-product">
-
-        </div>
-
-    </div>
-
-
-
-    <div class="ui-box quester-panel" data-id="quester-panel">
-
-        <div class="quester-title">Questers</div>
-
-        <div class="quester">Swordahl</div>
-        <div class="quester">Archivist</div>
-        <div class="quester">Keeper</div>
-
-    </div>
+<button class="character-buy" id="relicBuy"></button>
 
 </div>
 
 
+
+<!-- RELIC FRAME -->
+
+<div class="ui-box relic-frame" data-id="relic-frame">
+
+<img src="/assets/shop-border/shop-border1.png" class="border-art">
+
+<div class="relic-zone">
+
+<img id="relicImage" class="relic-product">
+
+</div>
+
+</div>
+
+
+
+<!-- QUESTERS -->
+
+<div class="ui-box quester-panel" data-id="quester-panel">
+
+<div class="quester-title">Questers</div>
+
+<div class="quester">Swordahl</div>
+<div class="quester">Archivist</div>
+<div class="quester">Keeper</div>
+
+</div>
+
+</div>
+
+
+
+<!-- NPC -->
 
 <div class="npc-dialogue ui-box" data-id="npc-dialogue">
 
 <div class="dialogue-bubble" id="npcText"></div>
 
 </div>
+
 
 
 <script src="/shop.js"></script>
