@@ -1,11 +1,36 @@
 {
-"items": [
-{
-"name": "Swordahls Dungeon Guitar",
-"image": "/assets/uploads/item-1.png",
-"stats": "+3 strumming dexterity",
-"desc": "Crafted with runes of Prot to keep you safe on the way to the lower floors.",
-"price": 100
-}
-]
+  "items": [
+
+    {
+      "type": "product",
+      "name": "Dungeon Guitar",
+      "image": "/assets/uploads/guitar.png",
+      "price": "100",
+      "x": 40,
+      "y": 45,
+      "border": 1
+    },
+
+    {
+      "type": "frame",
+      "x": 56.53,
+      "y": 14.89,
+      "border": 3
+    },
+
+    {
+      "type": "frame",
+      "x": 75.58,
+      "y": 14.84,
+      "border": 1
+    },
+
+    {
+      "type": "frame",
+      "x": 74.08,
+      "y": 16.32,
+      "border": 2
+    }
+
+  ]
 }
