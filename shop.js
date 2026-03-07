@@ -3,79 +3,68 @@ let startIndex = 0;
 
 async function loadShop() {
 
-try {
+  try {
 
-```
-const res = await fetch("content/shop/index.json");
-const data = await res.json();
+    const response = await fetch("/content/shop/index.json");
+    const data = await response.json();
 
-items = data.items || [];
+    items = data.items || [];
 
-renderItems();
-```
+    renderItems();
 
-} catch (error) {
+  } catch (error) {
 
-```
-console.error("Shop failed to load:", error);
-```
+    console.error("Shop failed to load:", error);
+
+  }
 
 }
 
-}
+function renderItems() {
 
-function renderItems(){
+  const slots = [
+    document.getElementById("item1"),
+    document.getElementById("item2"),
+    document.getElementById("item3")
+  ];
 
-const slotImages = [
-document.getElementById("item1"),
-document.getElementById("item2"),
-document.getElementById("item3")
-];
+  for (let i = 0; i < 3; i++) {
 
-for(let i = 0; i < 3; i++){
+    const item = items[startIndex + i];
 
-```
-const item = items[startIndex + i];
+    if (item) {
+      slots[i].src = item.image;
+      slots[i].style.display = "block";
+    } else {
+      slots[i].style.display = "none";
+    }
 
-if(item){
-
-  slotImages[i].src = item.image;
-  slotImages[i].style.display = "block";
-
-}else{
-
-  slotImages[i].style.display = "none";
-
-}
-```
+  }
 
 }
 
-}
+function cycleItems() {
 
-function cycleItems(){
+  if (items.length <= 3) return;
 
-if(items.length <= 3) return;
+  startIndex++;
 
-startIndex++;
+  if (startIndex + 3 > items.length) {
+    startIndex = 0;
+  }
 
-if(startIndex + 3 > items.length){
-startIndex = 0;
-}
-
-renderItems();
+  renderItems();
 
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-loadShop();
+  loadShop();
 
-const cycleBtn = document.getElementById("cycle");
+  const arrow = document.getElementById("cycle");
 
-if(cycleBtn){
-cycleBtn.addEventListener("click", cycleItems);
-}
+  if (arrow) {
+    arrow.addEventListener("click", cycleItems);
+  }
 
 });
-
