@@ -25,3 +25,22 @@ wall.appendChild(frame);
 }
 
 loadShop();
+const text = "Ah… another relic uncovered within Sentia.";
+
+let i = 0;
+
+function type(){
+
+    if(i < text.length){
+
+        document.getElementById("npcText").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(type,30);
+
+    }
+
+}
+
+type();
