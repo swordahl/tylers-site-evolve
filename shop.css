@@ -7,39 +7,42 @@ overflow-y:auto;
 /* WALL */
 
 .relic-wall{
+width:100%;
 display:flex;
-justify-content:center;
-padding:100px 0;
+flex-direction:column;
+align-items:center;
 }
 
-/* FRAME */
+/* EACH FRAME */
 
 .relic-frame{
 position:relative;
-height:95vh;
+width:90vw;
+max-width:1400px;
+margin:120px 0;
 }
 
-/* BORDER IMAGE */
+/* BORDER */
 
 .border-art{
-height:100%;
-width:auto;
+width:100%;
+height:auto;
 display:block;
 }
 
 /* PRODUCT IMAGE */
 
 .relic-product{
+
 position:absolute;
 
-top:22%;
+top:26%;
 left:50%;
 
 transform:translateX(-50%);
 
-max-width:38%;
+max-width:35%;
 max-height:45%;
 
 object-fit:contain;
-pointer-events:none;
 }
