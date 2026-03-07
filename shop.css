@@ -1,60 +1,51 @@
 body{
 margin:0;
 background:#ded9cf;
-overflow-y:auto;
 }
 
 /* WALL */
 
 .relic-wall{
-width:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
 }
 
-/* FRAME (holds border + relic) */
+/* FRAME */
 
 .relic-frame{
 
 position:relative;
 
-/* border original width */
 width:900px;
-
-/* responsive scaling */
 max-width:90vw;
 
-margin:140px auto;
+margin:120px auto;
 
 }
 
-/* BORDER DRAWING */
+/* BORDER */
 
 .border-art{
 
 width:100%;
-height:auto;
-
 display:block;
 
 }
 
-/* SAFE ZONE INSIDE DRAWING */
+/* SAFE ZONE */
 
-.relic-safezone{
+.relic-zone{
 
 position:absolute;
 
-/* measured from drawing proportions */
+/* these percentages scale with border */
 
-left:31%;
-top:33%;
+left:30%;
+top:34%;
 
-width:38%;
+width:40%;
 height:46%;
-
-/* center relic inside box */
 
 display:flex;
 align-items:center;
@@ -62,7 +53,7 @@ justify-content:center;
 
 }
 
-/* PRODUCT IMAGE */
+/* PRODUCT */
 
 .relic-product{
 
@@ -70,7 +61,5 @@ max-width:100%;
 max-height:100%;
 
 object-fit:contain;
-
-pointer-events:none;
 
 }
