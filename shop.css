@@ -1,6 +1,6 @@
-/* ================================= */
-/* SENTIA RELIC ARCHIVE SHOP PAGE */
-/* ================================= */
+/* =============================== */
+/* SENTIA RELIC ARCHIVE */
+/* =============================== */
 
 body.shop-body{
 margin:0;
@@ -21,7 +21,7 @@ letter-spacing:2px;
 z-index:100;
 }
 
-/* MASSIVE CANVAS AREA */
+/* SCROLL CANVAS */
 
 .shop-display{
 position:relative;
@@ -29,17 +29,17 @@ width:100%;
 height:6000px;
 }
 
-/* RELIC FRAME CONTAINER */
+/* RELIC CONTAINER */
 
 .relic{
 position:absolute;
-transform:translate(-50%, -50%);
+transform:translate(-50%,-50%);
 }
 
-/* FRAME IMAGE */
+/* SMALL FRAME */
 
 .relic-border{
-width:320px;
+width:140px;   /* ← smaller */
 pointer-events:none;
 }
 
@@ -49,8 +49,8 @@ pointer-events:none;
 position:absolute;
 left:50%;
 top:50%;
-transform:translate(-50%, -50%);
-width:160px;
+transform:translate(-50%,-50%);
+width:70px;
 }
 
 /* BUY BUTTON */
@@ -58,40 +58,25 @@ width:160px;
 .relic-buy{
 position:absolute;
 left:50%;
-bottom:-60px;
+bottom:-35px;
 transform:translateX(-50%);
-padding:8px 20px;
+padding:5px 12px;
 border:1px solid black;
 background:white;
+font-size:12px;
 cursor:pointer;
-font-family:serif;
 }
 
-/* HOVER EFFECT */
+/* MOBILE */
 
-.relic:hover .relic-border{
-filter:brightness(1.1);
-}
-
-/* MOBILE ADJUSTMENTS */
-
-@media (max-width: 768px){
-
-.shop-title{
-font-size:22px;
-}
+@media (max-width:768px){
 
 .relic-border{
-width:220px;
+width:110px;
 }
 
 .relic-product{
-width:120px;
-}
-
-.relic-buy{
-bottom:-50px;
-font-size:14px;
+width:60px;
 }
 
 }
