@@ -6,12 +6,15 @@ font-family:monospace;
 
 
 
-/* UI CANVAS */
+/* CANVAS */
 
 .ui-canvas{
+
 position:relative;
+
 width:100vw;
 height:100vh;
+
 }
 
 
@@ -19,7 +22,9 @@ height:100vh;
 /* UI ELEMENTS */
 
 .ui-box{
+
 position:absolute;
+
 }
 
 
@@ -27,8 +32,11 @@ position:absolute;
 /* EDIT MODE */
 
 .edit-mode .ui-box{
+
 outline:2px dashed #3b82f6;
+
 cursor:move;
+
 }
 
 
@@ -63,9 +71,12 @@ display:block;
 /* CHARACTER PANEL */
 
 .character-panel{
+
 left:6%;
 top:12%;
+
 width:260px;
+
 }
 
 
@@ -73,17 +84,22 @@ width:260px;
 /* RELIC FRAME */
 
 .relic-frame{
+
 left:38%;
 top:18%;
+
 width:900px;
 max-width:42vw;
+
 }
 
 
 
 .border-art{
+
 width:100%;
 display:block;
+
 }
 
 
@@ -147,6 +163,7 @@ background:#ded9cf;
 
 right:60px;
 bottom:40px;
+
 max-width:260px;
 
 position:fixed;
