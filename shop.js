@@ -3,43 +3,45 @@ async function loadShop(){
 const response = await fetch("/content/shop/index.json");
 const data = await response.json();
 
-const wall = document.querySelector(".relic-wall");
+if(!data.items || data.items.length === 0) return;
 
-data.items.forEach(item => {
+const item = data.items[0];
 
-const frame = document.createElement("div");
-frame.className = "relic-frame";
+document.querySelector(".relic-product").src = item.image;
 
-frame.innerHTML = `
-<img src="/assets/shop-border/shop-border1.png" class="border-art">
+document.querySelector(".character-name").textContent = item.name;
 
-<div class="relic-zone">
-<img src="${item.image}" class="relic-product">
-</div>
-`;
+document.querySelector(".character-stats").textContent = item.stats;
 
-wall.appendChild(frame);
+document.querySelector(".character-description").textContent = item.desc;
 
-});
+document.querySelector(".character-buy").textContent =
+"Acquire Relic - " + item.price + " gold";
 
 }
 
 loadShop();
+
+
+
+
+/* NPC dialogue typing */
+
 const text = "Ah… another relic uncovered within Sentia.";
 
 let i = 0;
 
 function type(){
 
-    if(i < text.length){
+if(i < text.length){
 
-        document.getElementById("npcText").innerHTML += text.charAt(i);
+document.getElementById("npcText").innerHTML += text.charAt(i);
 
-        i++;
+i++;
 
-        setTimeout(type,30);
+setTimeout(type,30);
 
-    }
+}
 
 }
 
