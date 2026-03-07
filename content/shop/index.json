@@ -2,16 +2,6 @@
   "items": [
 
     {
-      "type": "product",
-      "name": "Dungeon Guitar",
-      "image": "/assets/uploads/guitar.png",
-      "price": "100",
-      "x": 40,
-      "y": 45,
-      "border": 1
-    },
-
-    {
       "type": "frame",
       "x": 56.53,
       "y": 14.89,
