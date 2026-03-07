@@ -3,22 +3,22 @@ async function loadShop(){
 const res = await fetch("/content/shop/index.json");
 const data = await res.json();
 
-const layer = document.querySelector(".relic-layer");
+const wall = document.querySelector(".relic-wall");
 
 data.items.forEach(item => {
 
-const relic = document.createElement("div");
-relic.className = "relic";
+const frame = document.createElement("section");
+frame.className = "relic-frame";
 
-relic.style.left = item.x + "%";
-relic.style.top = item.y + "%";
+frame.innerHTML = `
 
-const img = document.createElement("img");
-img.src = "/assets/shop-border/border" + item.border + ".png";
+<img src="/assets/shop-border/shop-border${item.border}.png" class="border-art">
 
-relic.appendChild(img);
+<img src="${item.image}" class="relic-product">
 
-layer.appendChild(relic);
+`;
+
+wall.appendChild(frame);
 
 });
 
