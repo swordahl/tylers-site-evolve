@@ -1,127 +1,90 @@
 body{
 
 margin:0;
-background:#f6f3ea;
-font-family:serif;
+background:#e9e6df;
+
+display:flex;
+justify-content:center;
 
 }
 
 
+/* WALL */
 
-.archive-title{
+.relic-wall{
 
-text-align:center;
-margin:60px 0;
+width:100%;
+max-width:900px;
 
-letter-spacing:3px;
+display:flex;
+flex-direction:column;
+align-items:center;
+
+padding:120px 0;
 
 }
 
 
+/* BORDER FRAME */
 
-.archive-panel{
+.relic-frame{
 
 position:relative;
 
-width:900px;
+width:min(420px,90vw);
 
-margin:140px auto;
+/* keeps border proportions perfect */
 
-}
-
-
-
-.archive-border{
-
-width:100%;
-display:block;
-
-/* makes border feel mounted */
-
-filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.25));
+aspect-ratio:3021 / 4016;
 
 }
 
 
+/* BORDER IMAGE */
 
-.artifact-row{
+.border-art{
 
 position:absolute;
 
-top:34%;
-left:0;
-
 width:100%;
+height:100%;
+
+object-fit:contain;
+
+pointer-events:none;
+
+}
+
+
+/* SAFE ZONE */
+
+.relic-safe{
+
+position:absolute;
+
+/* calculated from your measurements */
+
+left:36%;
+right:36%;
+
+top:27%;
+bottom:27%;
 
 display:flex;
-justify-content:space-evenly;
+
+align-items:center;
+justify-content:center;
 
 }
 
 
+/* PRODUCT IMAGE */
 
-.artifact{
+.relic-product{
 
-width:160px;
+max-width:100%;
+max-height:100%;
 
-text-align:center;
-
-}
-
-
-
-.artifact img{
-
-width:140px;
-height:auto;
-
-/* magical hover */
-
-transition:0.2s;
-
-}
-
-
-
-.artifact img:hover{
-
-transform:scale(1.05);
-
-filter: drop-shadow(0 0 12px rgba(255,220,120,0.7));
-
-}
-
-
-
-.artifact h3{
-
-margin:8px 0 4px;
-
-font-size:16px;
-
-}
-
-
-
-.artifact p{
-
-font-size:12px;
-margin-bottom:8px;
-
-}
-
-
-
-.artifact button{
-
-padding:6px 14px;
-
-border:1px solid black;
-
-background:white;
-
-cursor:pointer;
-
-font-family:serif;
+object-fit:contain;
 
 }
