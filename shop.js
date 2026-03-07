@@ -9,27 +9,25 @@ async function loadShop() {
 
     data.items.forEach(item => {
 
-      const frame = document.createElement("div");
-      frame.className = "relic";
+      const relic = document.createElement("div");
+      relic.className = "relic";
 
-      frame.style.position = "absolute";
-      frame.style.left = item.x + "%";
-      frame.style.top = item.y + "%";
-      frame.style.transform = "translate(-50%, -50%)";
+      relic.style.left = item.x + "%";
+      relic.style.top = item.y + "%";
 
       const border = document.createElement("img");
-      border.src = "/assets/shop-border/shop-border" + item.border + ".png";
       border.className = "relic-border";
+      border.src = "/assets/shop-border/shop-border" + item.border + ".png";
 
-      frame.appendChild(border);
+      relic.appendChild(border);
 
-      display.appendChild(frame);
+      display.appendChild(relic);
 
     });
 
   } catch (error) {
 
-    console.error("Shop failed:", error);
+    console.error("Shop failed to load:", error);
 
   }
 
