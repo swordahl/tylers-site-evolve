@@ -17,9 +17,9 @@ align-items:center;
 
 .relic-frame{
 position:relative;
-width:90vw;
-max-width:1400px;
-margin:120px 0;
+width:80vw;
+max-width:900px;
+margin:120px auto;
 }
 
 /* BORDER */
@@ -45,4 +45,5 @@ max-width:35%;
 max-height:45%;
 
 object-fit:contain;
+
 }
