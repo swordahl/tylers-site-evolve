@@ -255,16 +255,16 @@ alert("Layout JSON printed in console");
 /* QUESTERS DROPDOWN */
 
 const toggle=document.getElementById("questerToggle");
-const list=document.getElementById("questerList");
+const dropdownList=document.getElementById("questerList");
 
 if(toggle){
 
 toggle.onclick=()=>{
 
-if(list.style.display==="none"){
-list.style.display="block";
+if(dropdownList.style.display==="none"){
+dropdownList.style.display="block";
 }else{
-list.style.display="none";
+dropdownList.style.display="none";
 }
 
 };
