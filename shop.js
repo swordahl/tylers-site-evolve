@@ -5,6 +5,7 @@ if(editMode){
 document.body.classList.add("edit-mode");
 }
 
+
 /* LOAD LAYOUT */
 
 async function loadLayout(){
@@ -47,15 +48,12 @@ if(!data.items || data.items.length===0) return;
 
 const item = data.items[0];
 
-/* TEXT */
-
 document.getElementById("relicName").textContent = item.name || "";
 document.getElementById("relicStats").textContent = item.stats || "";
 document.getElementById("relicDesc").textContent = item.desc || "";
+
 document.getElementById("relicBuy").textContent =
 "Acquire Relic - " + (item.price || 0) + " gold";
-
-/* IMAGE */
 
 const img = document.getElementById("relicImage");
 
@@ -198,6 +196,26 @@ height:el.style.height
 console.log(JSON.stringify(layout,null,2));
 
 alert("Layout JSON printed in console");
+
+};
+
+}
+
+
+/* QUESTERS DROPDOWN */
+
+const toggle=document.getElementById("questerToggle");
+const list=document.getElementById("questerList");
+
+if(toggle){
+
+toggle.onclick=()=>{
+
+if(list.style.display==="none"){
+list.style.display="block";
+}else{
+list.style.display="none";
+}
 
 };
 
