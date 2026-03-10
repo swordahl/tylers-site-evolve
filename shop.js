@@ -35,10 +35,10 @@ console.log("layout not found");
 loadLayout();
 
 
-
-/* LOAD SHOP ITEM */
+/* LOAD SHOP ITEMS */
 
 let relics=[];
+let currentRelic=0;
 
 async function loadShop(){
 
@@ -51,8 +51,9 @@ if(!data.items || data.items.length===0) return;
 
 relics=data.items;
 
-renderRelic(0);   // show first relic
+renderRelic(0);
 buildDropdown();
+renderMobile();
 
 }catch(e){
 
@@ -63,7 +64,6 @@ console.log("shop load failed");
 }
 
 loadShop();
-
 
 
 /* RENDER RELIC */
@@ -88,7 +88,6 @@ img.src=item.image;
 }
 
 
-
 /* BUILD DROPDOWN */
 
 function buildDropdown(){
@@ -107,6 +106,8 @@ el.textContent=item.name;
 el.onclick=()=>{
 
 renderRelic(index);
+currentRelic=index;
+renderMobile();
 
 };
 
@@ -117,139 +118,49 @@ list.appendChild(el);
 }
 
 
+/* MOBILE RELIC VIEW */
 
-/* DRAG SYSTEM */
+function renderMobile(){
 
-if(editMode){
+if(relics.length===0) return;
 
-document.querySelectorAll(".ui-box").forEach(el=>{
+const item=relics[currentRelic];
 
-let offsetX=0;
-let offsetY=0;
-let dragging=false;
+const img=document.getElementById("mobileRelic");
 
-el.addEventListener("mousedown",e=>{
-
-if(el.classList.contains("locked")) return;
-
-dragging=true;
-
-offsetX=e.clientX-el.offsetLeft;
-offsetY=e.clientY-el.offsetTop;
-
-});
-
-document.addEventListener("mousemove",e=>{
-
-if(!dragging) return;
-
-el.style.left=(e.clientX-offsetX)+"px";
-el.style.top=(e.clientY-offsetY)+"px";
-
-});
-
-document.addEventListener("mouseup",()=>{
-
-dragging=false;
-
-});
-
-});
+if(img){
+img.src=item.image;
+}
 
 }
 
 
+document.getElementById("nextRelic")?.addEventListener("click",()=>{
 
-/* LOCK BUTTON */
+currentRelic++;
 
-document.querySelectorAll(".lock-btn").forEach(btn=>{
-
-btn.onclick=(e)=>{
-
-e.stopPropagation();
-
-const box=btn.parentElement;
-
-box.classList.toggle("locked");
-
-};
-
-});
-
-
-
-/* RESIZE */
-
-if(editMode){
-
-document.querySelectorAll(".resize-handle").forEach(handle=>{
-
-const box=handle.parentElement;
-
-let resizing=false;
-
-handle.addEventListener("mousedown",e=>{
-
-if(box.classList.contains("locked")) return;
-
-e.stopPropagation();
-
-resizing=true;
-
-});
-
-document.addEventListener("mousemove",e=>{
-
-if(!resizing) return;
-
-box.style.width=e.clientX-box.offsetLeft+"px";
-box.style.height=e.clientY-box.offsetTop+"px";
-
-});
-
-document.addEventListener("mouseup",()=>{
-
-resizing=false;
-
-});
-
-});
-
+if(currentRelic>=relics.length){
+currentRelic=0;
 }
 
-
-
-/* SAVE LAYOUT */
-
-if(editMode){
-
-document.getElementById("saveLayout").onclick=()=>{
-
-const layout={};
-
-document.querySelectorAll(".ui-box").forEach(el=>{
-
-const id=el.dataset.id;
-
-layout[id]={
-
-left:el.style.left,
-top:el.style.top,
-width:el.style.width,
-height:el.style.height
-
-};
+renderRelic(currentRelic);
+renderMobile();
 
 });
 
-console.log(JSON.stringify(layout,null,2));
 
-alert("Layout JSON printed in console");
+document.getElementById("prevRelic")?.addEventListener("click",()=>{
 
-};
+currentRelic--;
 
+if(currentRelic<0){
+currentRelic=relics.length-1;
 }
 
+renderRelic(currentRelic);
+renderMobile();
+
+});
 
 
 /* QUESTERS DROPDOWN */
@@ -270,7 +181,6 @@ dropdownList.style.display="none";
 };
 
 }
-
 
 
 /* NPC TYPEWRITER */
@@ -294,62 +204,3 @@ setTimeout(type,30);
 }
 
 type();
-/* MOBILE MODE */
-
-.mobile-shop{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100vw;
-height:100vh;
-background:#8b0000;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-}
-
-/* relic frame */
-
-.mobile-frame{
-position:relative;
-width:70vw;
-max-width:320px;
-}
-
-.mobile-frame::before{
-content:"";
-position:absolute;
-inset:0;
-background:url("/assets/shop-border/shop-border1.png") center/contain no-repeat;
-pointer-events:none;
-}
-
-/* relic */
-
-.mobile-relic{
-width:100%;
-height:auto;
-object-fit:contain;
-}
-
-/* arrows */
-
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:40px;
-background:none;
-border:none;
-color:white;
-cursor:pointer;
-}
-
-.arrow-left{
-left:20px;
-}
-
-.arrow-right{
-right:20px;
-}
