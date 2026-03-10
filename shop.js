@@ -35,7 +35,10 @@ console.log("layout not found");
 loadLayout();
 
 
+
 /* LOAD SHOP ITEM */
+
+let relics=[];
 
 async function loadShop(){
 
@@ -46,37 +49,10 @@ const data = await res.json();
 
 if(!data.items || data.items.length===0) return;
 
-const item = data.items[0];
+relics=data.items;
 
-
-// BUILD DROPDOWN FROM ADMIN RELICS
-
-const list = document.getElementById("questerList");
-
-data.items.forEach(i => {
-
-const el = document.createElement("div");
-
-el.className = "quester";
-el.textContent = i.name;
-
-list.appendChild(el);
-
-});
-
-
-document.getElementById("relicName").textContent = item.name || "";
-document.getElementById("relicStats").textContent = item.stats || "";
-document.getElementById("relicDesc").textContent = item.desc || "";
-
-document.getElementById("relicBuy").textContent =
-"Acquire Relic - " + (item.price || 0) + " gold";
-
-const img = document.getElementById("relicImage");
-
-if(img){
-img.src = item.image;
-}
+renderRelic(0);   // show first relic
+buildDropdown();
 
 }catch(e){
 
@@ -87,6 +63,59 @@ console.log("shop load failed");
 }
 
 loadShop();
+
+
+
+/* RENDER RELIC */
+
+function renderRelic(index){
+
+const item=relics[index];
+
+document.getElementById("relicName").textContent=item.name||"";
+document.getElementById("relicStats").textContent=item.stats||"";
+document.getElementById("relicDesc").textContent=item.desc||"";
+
+document.getElementById("relicBuy").textContent=
+"Acquire Relic - "+(item.price||0)+" gold";
+
+const img=document.getElementById("relicImage");
+
+if(img){
+img.src=item.image;
+}
+
+}
+
+
+
+/* BUILD DROPDOWN */
+
+function buildDropdown(){
+
+const list=document.getElementById("questerList");
+
+list.innerHTML="";
+
+relics.forEach((item,index)=>{
+
+const el=document.createElement("div");
+
+el.className="quester";
+el.textContent=item.name;
+
+el.onclick=()=>{
+
+renderRelic(index);
+
+};
+
+list.appendChild(el);
+
+});
+
+}
+
 
 
 /* DRAG SYSTEM */
@@ -130,6 +159,7 @@ dragging=false;
 }
 
 
+
 /* LOCK BUTTON */
 
 document.querySelectorAll(".lock-btn").forEach(btn=>{
@@ -145,6 +175,7 @@ box.classList.toggle("locked");
 };
 
 });
+
 
 
 /* RESIZE */
@@ -187,6 +218,7 @@ resizing=false;
 }
 
 
+
 /* SAVE LAYOUT */
 
 if(editMode){
@@ -219,6 +251,7 @@ alert("Layout JSON printed in console");
 }
 
 
+
 /* QUESTERS DROPDOWN */
 
 const toggle=document.getElementById("questerToggle");
@@ -237,6 +270,7 @@ list.style.display="none";
 };
 
 }
+
 
 
 /* NPC TYPEWRITER */
