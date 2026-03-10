@@ -1,26 +1,32 @@
 {
   "character-panel": {
-    "left": "58px",
-    "top": "116px",
+    "left": "19px",
+    "top": "137px",
     "width": "",
     "height": ""
   },
   "shop-frame": {
-    "left": "433px",
-    "top": "3px",
+    "left": "479px",
+    "top": "23px",
+    "width": "855px",
+    "height": "752px"
+  },
+  "relic-image": {
+    "left": "-66px",
+    "top": "-12px",
     "width": "",
     "height": ""
   },
   "quester-panel": {
-    "left": "1106px",
-    "top": "109px",
+    "left": "",
+    "top": "",
     "width": "",
     "height": ""
   },
   "npc-dialogue": {
-    "left": "835px",
-    "top": "561px",
+    "left": "",
+    "top": "",
     "width": "",
     "height": ""
   }
-}{}
+}
