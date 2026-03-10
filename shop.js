@@ -48,6 +48,23 @@ if(!data.items || data.items.length===0) return;
 
 const item = data.items[0];
 
+
+// BUILD DROPDOWN FROM ADMIN RELICS
+
+const list = document.getElementById("questerList");
+
+data.items.forEach(i => {
+
+const el = document.createElement("div");
+
+el.className = "quester";
+el.textContent = i.name;
+
+list.appendChild(el);
+
+});
+
+
 document.getElementById("relicName").textContent = item.name || "";
 document.getElementById("relicStats").textContent = item.stats || "";
 document.getElementById("relicDesc").textContent = item.desc || "";
