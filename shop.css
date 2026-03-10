@@ -4,6 +4,7 @@ background:#ded9cf;
 font-family:monospace;
 }
 
+
 /* CANVAS */
 
 .ui-canvas{
@@ -12,11 +13,13 @@ width:100vw;
 min-height:100vh;
 }
 
+
 /* UI ELEMENTS */
 
 .ui-box{
 position:absolute;
 }
+
 
 /* EDIT MODE */
 
@@ -25,6 +28,7 @@ outline:2px dashed #3b82f6;
 cursor:move;
 user-select:none;
 }
+
 
 /* SAVE BUTTON */
 
@@ -43,6 +47,7 @@ z-index:999;
 .edit-mode .save-layout{
 display:block;
 }
+
 
 /* LOCK BUTTON */
 
@@ -63,6 +68,7 @@ display:none;
 .edit-mode .lock-btn{
 display:block;
 }
+
 
 /* RESIZE HANDLE */
 
@@ -85,9 +91,32 @@ display:block;
 /* CHARACTER PANEL */
 
 .character-panel{
-left:6%;
+left:4%;
 top:12%;
-width:260px;
+width:32vw;
+max-width:520px;
+font-size:18px;
+line-height:1.5;
+}
+
+.character-name{
+font-size:24px;
+margin-bottom:8px;
+}
+
+.character-stats{
+margin-bottom:8px;
+}
+
+.character-description{
+margin-bottom:14px;
+}
+
+.character-buy{
+padding:6px 10px;
+border:2px solid black;
+background:#ded9cf;
+cursor:pointer;
 }
 
 
@@ -101,13 +130,12 @@ max-width:42vw;
 position:absolute;
 }
 
-/* BORDER IMAGE */
-
 .shopborder1{
 width:100%;
 display:block;
 pointer-events:none;
 }
+
 
 /* PRODUCT SAFE ZONE */
 
@@ -130,7 +158,7 @@ object-fit:contain;
 }
 
 
-/* QUESTERS */
+/* QUESTERS PANEL */
 
 .quester-panel{
 right:4%;
@@ -139,6 +167,16 @@ width:220px;
 border:3px solid black;
 padding:12px;
 background:#ded9cf;
+}
+
+.quester-title{
+cursor:pointer;
+font-weight:bold;
+margin-bottom:6px;
+}
+
+.quester{
+padding:3px 0;
 }
 
 
