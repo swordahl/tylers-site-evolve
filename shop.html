@@ -8,10 +8,7 @@
 
 <title>Sentia Relic Archive</title>
 
-<!-- SAME STYLE FILE AS INDEX -->
 <link rel="stylesheet" href="styles.css">
-
-<!-- SHOP LAYOUT -->
 <link rel="stylesheet" href="shop.css">
 
 </head>
@@ -21,6 +18,7 @@
 <a class="back-btn" href="index.html">← BACK</a>
 
 <button id="saveLayout" class="save-layout">Save Layout</button>
+
 
 <div class="ui-canvas">
 
@@ -91,25 +89,38 @@ Questers ▾
 </div>
 
 
-<!-- MOBILE SHOP -->
+
+<!-- ================= MOBILE SHOP ================= -->
 
 <div class="mobile-shop">
 
 <button id="prevRelic" class="arrow arrow-left">◀</button>
 
 <div class="mobile-frame">
+
 <img id="mobileRelic" class="mobile-relic">
+
 </div>
 
 <button id="nextRelic" class="arrow arrow-right">▶</button>
 
+
+<div class="mobile-info">
+
+<div id="mobileName" class="mobile-name"></div>
+
+<div id="mobileStats" class="mobile-stats"></div>
+
+<div id="mobileDesc" class="mobile-desc"></div>
+
+<button id="mobileBuy" class="mobile-buy"></button>
+
+</div>
+
 </div>
 
 
-<!-- CURSOR SYSTEM (same as index page) -->
 <script src="script.js"></script>
-
-<!-- SHOP LOGIC -->
 <script src="shop.js"></script>
 
 </body>
