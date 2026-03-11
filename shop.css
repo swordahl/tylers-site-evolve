@@ -267,7 +267,7 @@ display:flex;
 
 }
 /* ================================= */
-/* MOBILE RELIC SHOP */
+/* MOBILE RELIC SHOP (MAGICAL UI) */
 /* ================================= */
 
 .mobile-shop{
@@ -277,7 +277,10 @@ top:0;
 left:0;
 width:100vw;
 height:100vh;
-background:#8b0000;
+
+/* magical parchment tone instead of red */
+background:#ded9cf;
+
 align-items:center;
 justify-content:center;
 flex-direction:column;
@@ -285,41 +288,27 @@ overflow:hidden;
 }
 
 
-/* FRAME */
-
-.mobile-frame{
-position:relative;
-width:70vw;
-max-width:320px;
-margin-top:40px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.mobile-frame::before{
-content:"";
-position:absolute;
-inset:0;
-background:url("assets/shop-border/shop-border1.png") center/contain no-repeat;
-pointer-events:none;
-filter:drop-shadow(0 0 20px rgba(255,255,255,.2));
-}
-
-
 /* RELIC */
 
 .mobile-relic{
-width:75%;
-height:auto;
+
+width:80vw;
+max-width:420px;
 object-fit:contain;
+
+/* magical glow */
+filter:
+drop-shadow(0 0 20px rgba(0,0,0,.3))
+drop-shadow(0 0 35px rgba(140,90,255,.35));
+
 animation:relicFloat 6s ease-in-out infinite;
+
 }
 
 @keyframes relicFloat{
 
 0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
+50%{transform:translateY(-12px)}
 100%{transform:translateY(0)}
 
 }
@@ -329,33 +318,45 @@ animation:relicFloat 6s ease-in-out infinite;
 
 .mobile-info{
 
-margin-top:30px;
+margin-top:28px;
 width:85%;
-max-width:400px;
+max-width:420px;
+
 text-align:center;
-color:white;
+
+color:#111;
 
 }
+
+
+/* NAME */
 
 .mobile-name{
 
-font-size:24px;
-margin-bottom:10px;
+font-size:26px;
+letter-spacing:3px;
+margin-bottom:12px;
 
 }
+
+
+/* STATS */
 
 .mobile-stats{
 
-font-size:16px;
-margin-bottom:10px;
+font-size:17px;
+margin-bottom:6px;
 
 }
 
+
+/* DESCRIPTION */
+
 .mobile-desc{
 
-font-size:14px;
-opacity:.9;
-margin-bottom:20px;
+font-size:15px;
+opacity:.85;
+margin-bottom:22px;
 
 }
 
@@ -364,11 +365,22 @@ margin-bottom:20px;
 
 .mobile-buy{
 
-padding:10px 18px;
-background:white;
+padding:12px 22px;
+
+background:#ded9cf;
 border:2px solid black;
-font-size:16px;
+
+font-size:17px;
 cursor:pointer;
+
+transition:all .15s ease;
+
+}
+
+.mobile-buy:hover{
+
+box-shadow:
+0 0 12px rgba(140,90,255,.4);
 
 }
 
@@ -380,26 +392,21 @@ cursor:pointer;
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-font-size:38px;
+
+font-size:36px;
+
 background:none;
 border:none;
-color:white;
+
+color:black;
+
 cursor:pointer;
-z-index:10;
+opacity:.8;
 
 }
 
-.arrow-left{
-
-left:5vw;
-
-}
-
-.arrow-right{
-
-right:5vw;
-
-}
+.arrow-left{ left:6vw; }
+.arrow-right{ right:6vw; }
 
 
 /* MOBILE SWITCH */
