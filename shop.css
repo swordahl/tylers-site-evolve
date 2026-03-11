@@ -267,7 +267,7 @@ display:flex;
 
 }
 /* ================================= */
-/* MOBILE RELIC SHOP (MAGICAL UI) */
+/* MOBILE RELIC SHOP */
 /* ================================= */
 
 .mobile-shop{
@@ -278,13 +278,13 @@ left:0;
 width:100vw;
 height:100vh;
 
-/* magical parchment tone instead of red */
 background:#ded9cf;
 
-align-items:center;
-justify-content:center;
+display:flex;
 flex-direction:column;
-overflow:hidden;
+align-items:center;
+
+padding-top:90px;
 }
 
 
@@ -292,24 +292,12 @@ overflow:hidden;
 
 .mobile-relic{
 
-width:80vw;
-max-width:420px;
+width:70vw;
+max-width:320px;
+
 object-fit:contain;
 
-/* magical glow */
-filter:
-drop-shadow(0 0 20px rgba(0,0,0,.3))
-drop-shadow(0 0 35px rgba(140,90,255,.35));
-
-animation:relicFloat 6s ease-in-out infinite;
-
-}
-
-@keyframes relicFloat{
-
-0%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-100%{transform:translateY(0)}
+margin-bottom:30px;
 
 }
 
@@ -318,11 +306,9 @@ animation:relicFloat 6s ease-in-out infinite;
 
 .mobile-info{
 
-margin-top:28px;
-width:85%;
-max-width:420px;
-
 text-align:center;
+width:85%;
+max-width:360px;
 
 color:#111;
 
@@ -333,9 +319,9 @@ color:#111;
 
 .mobile-name{
 
-font-size:26px;
-letter-spacing:3px;
-margin-bottom:12px;
+font-size:24px;
+letter-spacing:2px;
+margin-bottom:10px;
 
 }
 
@@ -355,8 +341,8 @@ margin-bottom:6px;
 .mobile-desc{
 
 font-size:15px;
-opacity:.85;
-margin-bottom:22px;
+opacity:.9;
+margin-bottom:24px;
 
 }
 
@@ -365,22 +351,14 @@ margin-bottom:22px;
 
 .mobile-buy{
 
-padding:12px 22px;
+padding:12px 24px;
 
 background:#ded9cf;
 border:2px solid black;
 
 font-size:17px;
+
 cursor:pointer;
-
-transition:all .15s ease;
-
-}
-
-.mobile-buy:hover{
-
-box-shadow:
-0 0 12px rgba(140,90,255,.4);
 
 }
 
@@ -389,11 +367,10 @@ box-shadow:
 
 .arrow{
 
-position:absolute;
-top:50%;
-transform:translateY(-50%);
+position:fixed;
+top:45%;
 
-font-size:36px;
+font-size:34px;
 
 background:none;
 border:none;
@@ -401,12 +378,12 @@ border:none;
 color:black;
 
 cursor:pointer;
-opacity:.8;
 
 }
 
-.arrow-left{ left:6vw; }
-.arrow-right{ right:6vw; }
+.arrow-left{ left:18px; }
+.arrow-right{ right:18px; }
+
 
 
 /* MOBILE SWITCH */
