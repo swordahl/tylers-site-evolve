@@ -267,7 +267,7 @@ display:flex;
 
 }
 /* ================================= */
-/* MOBILE RELIC SHOP */
+/* MOBILE MODE */
 /* ================================= */
 
 .mobile-shop{
@@ -277,113 +277,51 @@ top:0;
 left:0;
 width:100vw;
 height:100vh;
-
-background:#ded9cf;
-
-display:flex;
-flex-direction:column;
+background:#8b0000;
 align-items:center;
-
-padding-top:90px;
+justify-content:center;
+flex-direction:column;
 }
 
 
 /* RELIC */
 
-.mobile-relic{
-
+.mobile-frame{
+position:relative;
 width:70vw;
 max-width:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
 
+.mobile-relic{
+width:100%;
+height:auto;
 object-fit:contain;
-
-margin-bottom:30px;
-
-}
-
-
-/* INFO */
-
-.mobile-info{
-
-text-align:center;
-width:85%;
-max-width:360px;
-
-color:#111;
-
-}
-
-
-/* NAME */
-
-.mobile-name{
-
-font-size:24px;
-letter-spacing:2px;
-margin-bottom:10px;
-
-}
-
-
-/* STATS */
-
-.mobile-stats{
-
-font-size:17px;
-margin-bottom:6px;
-
-}
-
-
-/* DESCRIPTION */
-
-.mobile-desc{
-
-font-size:15px;
-opacity:.9;
-margin-bottom:24px;
-
-}
-
-
-/* BUY BUTTON */
-
-.mobile-buy{
-
-padding:12px 24px;
-
-background:#ded9cf;
-border:2px solid black;
-
-font-size:17px;
-
-cursor:pointer;
-
 }
 
 
 /* ARROWS */
 
 .arrow{
-
-position:fixed;
-top:45%;
-
-font-size:34px;
-
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:40px;
 background:none;
 border:none;
-
-color:black;
-
+color:white;
 cursor:pointer;
-
 }
 
-.arrow-left{ left:18px; }
-.arrow-right{ right:18px; }
+.arrow-left{
+left:20px;
+}
 
+.arrow-right{
+right:20px;
+}
 
 
 /* MOBILE SWITCH */
