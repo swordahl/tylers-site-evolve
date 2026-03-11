@@ -35,6 +35,7 @@ console.log("layout not found");
 loadLayout();
 
 
+
 /* LOAD SHOP ITEMS */
 
 let relics=[];
@@ -66,6 +67,7 @@ console.log("shop load failed");
 loadShop();
 
 
+
 /* RENDER RELIC */
 
 function renderRelic(index){
@@ -76,8 +78,33 @@ document.getElementById("relicName").textContent=item.name||"";
 document.getElementById("relicStats").textContent=item.stats||"";
 document.getElementById("relicDesc").textContent=item.desc||"";
 
-document.getElementById("relicBuy").textContent=
+const buyBtn=document.getElementById("relicBuy");
+
+buyBtn.textContent=
 "Acquire Relic - "+(item.price||0)+" gold";
+
+
+/* STRIPE CHECKOUT BUTTON */
+
+if(item.checkout){
+
+buyBtn.style.opacity="1";
+buyBtn.style.cursor="pointer";
+
+buyBtn.onclick=()=>{
+
+window.open(item.checkout,"_blank");
+
+};
+
+}else{
+
+buyBtn.style.opacity="0.5";
+buyBtn.style.cursor="not-allowed";
+buyBtn.onclick=null;
+
+}
+
 
 const img=document.getElementById("relicImage");
 
@@ -86,6 +113,7 @@ img.src=item.image;
 }
 
 }
+
 
 
 /* BUILD DROPDOWN */
@@ -118,6 +146,7 @@ list.appendChild(el);
 }
 
 
+
 /* MOBILE RELIC VIEW */
 
 function renderMobile(){
@@ -134,6 +163,9 @@ img.src=item.image;
 
 }
 
+
+
+/* MOBILE ARROWS */
 
 document.getElementById("nextRelic")?.addEventListener("click",()=>{
 
@@ -163,6 +195,7 @@ renderMobile();
 });
 
 
+
 /* QUESTERS DROPDOWN */
 
 const toggle=document.getElementById("questerToggle");
@@ -181,6 +214,7 @@ dropdownList.style.display="none";
 };
 
 }
+
 
 
 /* NPC TYPEWRITER */
