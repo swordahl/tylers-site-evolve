@@ -68,7 +68,9 @@ loadShop();
 
 
 
-/* RENDER RELIC */
+/* ============================= */
+/* DESKTOP RELIC RENDER */
+/* ============================= */
 
 function renderRelic(index){
 
@@ -118,7 +120,9 @@ img.src = item.image;
 
 
 
+/* ============================= */
 /* BUILD DROPDOWN */
+/* ============================= */
 
 function buildDropdown(){
 
@@ -149,7 +153,9 @@ list.appendChild(el);
 
 
 
+/* ============================= */
 /* MOBILE RELIC VIEW */
+/* ============================= */
 
 function renderMobile(){
 
@@ -157,17 +163,81 @@ if(relics.length===0) return;
 
 const item = relics[currentRelic];
 
+
+/* IMAGE */
+
 const img = document.getElementById("mobileRelic");
 
 if(img){
 img.src = item.image;
 }
 
+
+/* NAME */
+
+const name = document.getElementById("mobileName");
+
+if(name){
+name.textContent = item.name || "";
+}
+
+
+/* STATS */
+
+const stats = document.getElementById("mobileStats");
+
+if(stats){
+stats.textContent = item.stats || "";
+}
+
+
+/* DESCRIPTION */
+
+const desc = document.getElementById("mobileDesc");
+
+if(desc){
+desc.textContent = item.desc || "";
+}
+
+
+/* BUY BUTTON */
+
+const buyBtn = document.getElementById("mobileBuy");
+
+if(buyBtn){
+
+buyBtn.textContent =
+"Acquire Relic - " + (item.price || 0) + " gold";
+
+
+if(item.stripe){
+
+buyBtn.style.opacity = "1";
+buyBtn.style.cursor = "pointer";
+
+buyBtn.onclick = () => {
+
+window.open(item.stripe,"_blank");
+
+};
+
+}else{
+
+buyBtn.style.opacity = "0.5";
+buyBtn.style.cursor = "not-allowed";
+buyBtn.onclick = null;
+
+}
+
+}
+
 }
 
 
 
+/* ============================= */
 /* MOBILE ARROWS */
+/* ============================= */
 
 document.getElementById("nextRelic")?.addEventListener("click",()=>{
 
@@ -198,7 +268,9 @@ renderMobile();
 
 
 
+/* ============================= */
 /* QUESTERS DROPDOWN */
+/* ============================= */
 
 const toggle = document.getElementById("questerToggle");
 const dropdownList = document.getElementById("questerList");
@@ -219,7 +291,9 @@ dropdownList.style.display="none";
 
 
 
+/* ============================= */
 /* NPC TYPEWRITER */
+/* ============================= */
 
 const text = "Ah… another relic uncovered within Sentia.";
 
