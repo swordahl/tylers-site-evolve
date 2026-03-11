@@ -50,7 +50,7 @@ const data = await res.json();
 
 if(!data.items || data.items.length===0) return;
 
-relics=data.items;
+relics = data.items;
 
 renderRelic(0);
 buildDropdown();
@@ -72,44 +72,46 @@ loadShop();
 
 function renderRelic(index){
 
-const item=relics[index];
+const item = relics[index];
 
-document.getElementById("relicName").textContent=item.name||"";
-document.getElementById("relicStats").textContent=item.stats||"";
-document.getElementById("relicDesc").textContent=item.desc||"";
+document.getElementById("relicName").textContent = item.name || "";
+document.getElementById("relicStats").textContent = item.stats || "";
+document.getElementById("relicDesc").textContent = item.desc || "";
 
-const buyBtn=document.getElementById("relicBuy");
+const buyBtn = document.getElementById("relicBuy");
 
-buyBtn.textContent=
-"Acquire Relic - "+(item.price||0)+" gold";
+buyBtn.textContent =
+"Acquire Relic - " + (item.price || 0) + " gold";
 
 
-/* STRIPE CHECKOUT BUTTON */
+/* ENABLE STRIPE CHECKOUT */
 
-if(item.checkout){
+if(item.stripe){
 
-buyBtn.style.opacity="1";
-buyBtn.style.cursor="pointer";
+buyBtn.style.opacity = "1";
+buyBtn.style.cursor = "pointer";
 
-buyBtn.onclick=()=>{
+buyBtn.onclick = () => {
 
-window.open(item.checkout,"_blank");
+window.open(item.stripe, "_blank");
 
 };
 
 }else{
 
-buyBtn.style.opacity="0.5";
-buyBtn.style.cursor="not-allowed";
-buyBtn.onclick=null;
+buyBtn.style.opacity = "0.5";
+buyBtn.style.cursor = "not-allowed";
+buyBtn.onclick = null;
 
 }
 
 
-const img=document.getElementById("relicImage");
+/* IMAGE */
+
+const img = document.getElementById("relicImage");
 
 if(img){
-img.src=item.image;
+img.src = item.image;
 }
 
 }
@@ -120,21 +122,21 @@ img.src=item.image;
 
 function buildDropdown(){
 
-const list=document.getElementById("questerList");
+const list = document.getElementById("questerList");
 
-list.innerHTML="";
+list.innerHTML = "";
 
 relics.forEach((item,index)=>{
 
-const el=document.createElement("div");
+const el = document.createElement("div");
 
-el.className="quester";
-el.textContent=item.name;
+el.className = "quester";
+el.textContent = item.name;
 
-el.onclick=()=>{
+el.onclick = ()=>{
 
 renderRelic(index);
-currentRelic=index;
+currentRelic = index;
 renderMobile();
 
 };
@@ -153,12 +155,12 @@ function renderMobile(){
 
 if(relics.length===0) return;
 
-const item=relics[currentRelic];
+const item = relics[currentRelic];
 
-const img=document.getElementById("mobileRelic");
+const img = document.getElementById("mobileRelic");
 
 if(img){
-img.src=item.image;
+img.src = item.image;
 }
 
 }
@@ -198,12 +200,12 @@ renderMobile();
 
 /* QUESTERS DROPDOWN */
 
-const toggle=document.getElementById("questerToggle");
-const dropdownList=document.getElementById("questerList");
+const toggle = document.getElementById("questerToggle");
+const dropdownList = document.getElementById("questerList");
 
 if(toggle){
 
-toggle.onclick=()=>{
+toggle.onclick = ()=>{
 
 if(dropdownList.style.display==="none"){
 dropdownList.style.display="block";
@@ -219,7 +221,7 @@ dropdownList.style.display="none";
 
 /* NPC TYPEWRITER */
 
-const text="Ah… another relic uncovered within Sentia.";
+const text = "Ah… another relic uncovered within Sentia.";
 
 let i=0;
 
@@ -227,7 +229,7 @@ function type(){
 
 if(i<text.length){
 
-document.getElementById("npcText").innerHTML+=text.charAt(i);
+document.getElementById("npcText").innerHTML += text.charAt(i);
 
 i++;
 
