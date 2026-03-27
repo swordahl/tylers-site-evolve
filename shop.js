@@ -6,6 +6,28 @@ if(editMode){
 }
 
 
+/* ============================= */
+/* SOLD SYSTEM STORAGE */
+/* ============================= */
+
+let soldRelics = JSON.parse(localStorage.getItem("soldRelics") || "[]");
+
+/* detect successful purchase return */
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get("success")) {
+  const boughtIndex = localStorage.getItem("pendingRelic");
+
+  if (boughtIndex !== null) {
+    soldRelics.push(parseInt(boughtIndex));
+    localStorage.setItem("soldRelics", JSON.stringify(soldRelics));
+
+    localStorage.removeItem("pendingRelic");
+  }
+}
+
+
+
 /* LOAD LAYOUT */
 
 async function loadLayout(){
@@ -59,7 +81,7 @@ loadShop();
 /* STRIPE CHECKOUT FUNCTION */
 /* ============================= */
 
-async function buyRelic(name, price) {
+async function buyRelic(name, price, index) {
   try {
     const res = await fetch("/.netlify/functions/create-checkout", {
       method: "POST",
@@ -69,11 +91,13 @@ async function buyRelic(name, price) {
     const data = await res.json();
 
     if (data.url) {
+      localStorage.setItem("pendingRelic", index);
       window.location.href = data.url;
     } else {
       alert("Checkout failed");
       console.error(data);
     }
+
   } catch (err) {
     console.error(err);
     alert("Error connecting to checkout");
@@ -96,32 +120,36 @@ function renderRelic(index){
 
   const buyBtn = document.getElementById("relicBuy");
 
-  buyBtn.textContent =
-  "Acquire Relic - " + (item.price || 0) + " gold";
+  const isSold = soldRelics.includes(index);
 
-
-  /* 🔥 NEW STRIPE LOGIC */
-
-  if(item.price){
-
-    buyBtn.style.opacity = "1";
-    buyBtn.style.cursor = "pointer";
-
-    buyBtn.onclick = () => {
-
-      // convert gold → cents (assuming gold = USD)
-      const priceInCents = Math.round(item.price * 100);
-
-      buyRelic(item.name, priceInCents);
-
-    };
-
-  }else{
-
-    buyBtn.style.opacity = "0.5";
+  if (isSold) {
+    buyBtn.textContent = "SOLD";
+    buyBtn.style.opacity = "0.4";
     buyBtn.style.cursor = "not-allowed";
     buyBtn.onclick = null;
 
+  } else {
+
+    buyBtn.textContent =
+    "Acquire Relic - " + (item.price || 0) + " gold";
+
+    if(item.price){
+
+      buyBtn.style.opacity = "1";
+      buyBtn.style.cursor = "pointer";
+
+      buyBtn.onclick = () => {
+        const priceInCents = Math.round(item.price * 100);
+        buyRelic(item.name, priceInCents, index);
+      };
+
+    }else{
+
+      buyBtn.style.opacity = "0.5";
+      buyBtn.style.cursor = "not-allowed";
+      buyBtn.onclick = null;
+
+    }
   }
 
 
@@ -131,6 +159,12 @@ function renderRelic(index){
 
   if(img){
     img.src = item.image;
+
+    if(isSold){
+      img.style.filter = "grayscale(1)";
+    } else {
+      img.style.filter = "none";
+    }
   }
 
 }
@@ -178,48 +212,29 @@ function renderMobile(){
 
   const item = relics[currentRelic];
 
-
-  /* IMAGE */
-
   const img = document.getElementById("mobileRelic");
-
-  if(img){
-    img.src = item.image;
-  }
-
-
-  /* NAME */
+  if(img) img.src = item.image;
 
   const name = document.getElementById("mobileName");
-
-  if(name){
-    name.textContent = item.name || "";
-  }
-
-
-  /* STATS */
+  if(name) name.textContent = item.name || "";
 
   const stats = document.getElementById("mobileStats");
-
-  if(stats){
-    stats.textContent = item.stats || "";
-  }
-
-
-  /* DESCRIPTION */
+  if(stats) stats.textContent = item.stats || "";
 
   const desc = document.getElementById("mobileDesc");
-
-  if(desc){
-    desc.textContent = item.desc || "";
-  }
-
-
-  /* 🔥 MOBILE BUY BUTTON */
+  if(desc) desc.textContent = item.desc || "";
 
   const buyBtn = document.getElementById("mobileBuy");
 
-  if(buyBtn){
+  const isSold = soldRelics.includes(currentRelic);
+
+  if (isSold) {
+    buyBtn.textContent = "SOLD";
+    buyBtn.style.opacity = "0.4";
+    buyBtn.style.cursor = "not-allowed";
+    buyBtn.onclick = null;
+
+  } else {
 
     buyBtn.textContent =
     "Acquire Relic - " + (item.price || 0) + " gold";
@@ -230,11 +245,8 @@ function renderMobile(){
       buyBtn.style.cursor = "pointer";
 
       buyBtn.onclick = () => {
-
         const priceInCents = Math.round(item.price * 100);
-
-        buyRelic(item.name, priceInCents);
-
+        buyRelic(item.name, priceInCents, currentRelic);
       };
 
     }else{
@@ -244,7 +256,6 @@ function renderMobile(){
       buyBtn.onclick = null;
 
     }
-
   }
 
 }
@@ -292,17 +303,10 @@ const toggle = document.getElementById("questerToggle");
 const dropdownList = document.getElementById("questerList");
 
 if(toggle){
-
   toggle.onclick = ()=>{
-
-    if(dropdownList.style.display==="none"){
-      dropdownList.style.display="block";
-    }else{
-      dropdownList.style.display="none";
-    }
-
+    dropdownList.style.display =
+      dropdownList.style.display==="none" ? "block" : "none";
   };
-
 }
 
 
@@ -316,17 +320,11 @@ const text = "Ah… another relic uncovered within Sentia.";
 let i=0;
 
 function type(){
-
   if(i<text.length){
-
     document.getElementById("npcText").innerHTML += text.charAt(i);
-
     i++;
-
     setTimeout(type,30);
-
   }
-
 }
 
 type();
