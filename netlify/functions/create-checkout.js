@@ -4,9 +4,15 @@ exports.handler = async (event) => {
   try {
     const { name, price } = JSON.parse(event.body);
 
+    // safety check
+    if (!price) {
+      throw new Error("Missing price");
+    }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
+
       line_items: [
         {
           price_data: {
@@ -14,20 +20,25 @@ exports.handler = async (event) => {
             product_data: {
               name: name,
             },
-            unit_amount: price,
+            unit_amount: price, // already in cents
           },
           quantity: 1,
         },
       ],
-      success_url: "https://your-site.netlify.app/success.html",
-      cancel_url: "https://your-site.netlify.app/cancel.html",
+
+      // 🔥 FIXED URLS (THIS WAS BREAKING EVERYTHING)
+      success_url: "https://swordahl.quest/shop",
+      cancel_url: "https://swordahl.quest/shop",
     });
 
     return {
       statusCode: 200,
       body: JSON.stringify({ url: session.url }),
     };
+
   } catch (err) {
+    console.error("Stripe error:", err); // 🔥 helps debugging
+
     return {
       statusCode: 500,
       body: JSON.stringify({ error: err.message }),
