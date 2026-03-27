@@ -26,7 +26,17 @@ exports.handler = async (event) => {
         },
       ],
 
-      // 🔥 FIXED URLS (THIS WAS BREAKING EVERYTHING)
+      // ✅ ADD SHIPPING (THIS IS WHAT YOU WANTED)
+      shipping_address_collection: {
+        allowed_countries: ["US"],
+      },
+
+      // ✅ OPTIONAL (nice UX)
+      phone_number_collection: {
+        enabled: true,
+      },
+
+      // 🔥 YOUR REAL DOMAIN (correct)
       success_url: "https://swordahl.quest/shop",
       cancel_url: "https://swordahl.quest/shop",
     });
@@ -37,7 +47,7 @@ exports.handler = async (event) => {
     };
 
   } catch (err) {
-    console.error("Stripe error:", err); // 🔥 helps debugging
+    console.error("Stripe error:", err);
 
     return {
       statusCode: 500,
