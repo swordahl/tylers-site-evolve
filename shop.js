@@ -314,3 +314,23 @@ setTimeout(type,30);
 }
 
 type();
+async function buyRelic(name, price) {
+  try {
+    const res = await fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      body: JSON.stringify({ name, price }),
+    });
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Checkout failed");
+      console.error(data);
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Error connecting to checkout");
+  }
+}
