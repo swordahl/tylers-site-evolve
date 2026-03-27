@@ -4,7 +4,7 @@ exports.handler = async (event) => {
   try {
     const { name, price } = JSON.parse(event.body);
 
-    // safety check
+    // Safety check
     if (!price) {
       throw new Error("Missing price");
     }
@@ -26,19 +26,19 @@ exports.handler = async (event) => {
         },
       ],
 
-      // ✅ ADD SHIPPING (THIS IS WHAT YOU WANTED)
+      // 🔥 THIS ENABLES SOLD SYSTEM RETURN
+      success_url: "https://swordahl.quest/shop?success=true",
+      cancel_url: "https://swordahl.quest/shop",
+
+      // 📦 SHIPPING (you already wanted this)
       shipping_address_collection: {
         allowed_countries: ["US"],
       },
 
-      // ✅ OPTIONAL (nice UX)
+      // 📱 optional but clean
       phone_number_collection: {
         enabled: true,
       },
-
-      // 🔥 YOUR REAL DOMAIN (correct)
-      success_url: "https://swordahl.quest/shop",
-      cancel_url: "https://swordahl.quest/shop",
     });
 
     return {
