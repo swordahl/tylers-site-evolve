@@ -1,47 +1,27 @@
 const params = new URLSearchParams(window.location.search);
 const editMode = params.get("edit") === "true";
 
-if(editMode){
+if (editMode) {
   document.body.classList.add("edit-mode");
 }
 
 
 /* ============================= */
-/* SOLD SYSTEM STORAGE */
+/* LOAD LAYOUT */
 /* ============================= */
 
-let soldRelics = JSON.parse(localStorage.getItem("soldRelics") || "[]");
-
-/* detect successful purchase return */
-const urlParams = new URLSearchParams(window.location.search);
-
-if (urlParams.get("success")) {
-  const boughtIndex = localStorage.getItem("pendingRelic");
-
-  if (boughtIndex !== null) {
-    soldRelics.push(parseInt(boughtIndex));
-    localStorage.setItem("soldRelics", JSON.stringify(soldRelics));
-
-    localStorage.removeItem("pendingRelic");
-  }
-}
-
-
-
-/* LOAD LAYOUT */
-
-async function loadLayout(){
-  try{
+async function loadLayout() {
+  try {
     const res = await fetch("/content/shop/layout.json");
     const layout = await res.json();
 
-    Object.keys(layout).forEach(id=>{
+    Object.keys(layout).forEach(id => {
       const el = document.querySelector(`[data-id="${id}"]`);
-      if(!el) return;
+      if (!el) return;
       Object.assign(el.style, layout[id]);
     });
 
-  }catch(e){
+  } catch (e) {
     console.log("layout not found");
   }
 }
@@ -49,18 +29,19 @@ async function loadLayout(){
 loadLayout();
 
 
-
+/* ============================= */
 /* LOAD SHOP ITEMS */
+/* ============================= */
 
-let relics=[];
-let currentRelic=0;
+let relics = [];
+let currentRelic = 0;
 
-async function loadShop(){
-  try{
+async function loadShop() {
+  try {
     const res = await fetch("/content/shop/index.json");
     const data = await res.json();
 
-    if(!data.items || data.items.length===0) return;
+    if (!data.items || data.items.length === 0) return;
 
     relics = data.items;
 
@@ -68,7 +49,7 @@ async function loadShop(){
     buildDropdown();
     renderMobile();
 
-  }catch(e){
+  } catch (e) {
     console.log("shop load failed");
   }
 }
@@ -76,9 +57,8 @@ async function loadShop(){
 loadShop();
 
 
-
 /* ============================= */
-/* STRIPE CHECKOUT FUNCTION */
+/* STRIPE CHECKOUT */
 /* ============================= */
 
 async function buyRelic(name, price, index) {
@@ -91,7 +71,6 @@ async function buyRelic(name, price, index) {
     const data = await res.json();
 
     if (data.url) {
-      localStorage.setItem("pendingRelic", index);
       window.location.href = data.url;
     } else {
       alert("Checkout failed");
@@ -105,12 +84,11 @@ async function buyRelic(name, price, index) {
 }
 
 
-
 /* ============================= */
 /* DESKTOP RELIC RENDER */
 /* ============================= */
 
-function renderRelic(index){
+function renderRelic(index) {
 
   const item = relics[index];
 
@@ -120,7 +98,7 @@ function renderRelic(index){
 
   const buyBtn = document.getElementById("relicBuy");
 
-  const isSold = soldRelics.includes(index);
+  const isSold = item.sold === true;
 
   if (isSold) {
     buyBtn.textContent = "SOLD";
@@ -131,9 +109,9 @@ function renderRelic(index){
   } else {
 
     buyBtn.textContent =
-    "Acquire Relic - " + (item.price || 0) + " gold";
+      "Acquire Relic - " + (item.price || 0) + " gold";
 
-    if(item.price){
+    if (item.price) {
 
       buyBtn.style.opacity = "1";
       buyBtn.style.cursor = "pointer";
@@ -143,7 +121,7 @@ function renderRelic(index){
         buyRelic(item.name, priceInCents, index);
       };
 
-    }else{
+    } else {
 
       buyBtn.style.opacity = "0.5";
       buyBtn.style.cursor = "not-allowed";
@@ -157,10 +135,10 @@ function renderRelic(index){
 
   const img = document.getElementById("relicImage");
 
-  if(img){
+  if (img) {
     img.src = item.image;
 
-    if(isSold){
+    if (isSold) {
       img.style.filter = "grayscale(1)";
     } else {
       img.style.filter = "none";
@@ -170,25 +148,24 @@ function renderRelic(index){
 }
 
 
-
 /* ============================= */
-/* BUILD DROPDOWN */
+/* DROPDOWN */
 /* ============================= */
 
-function buildDropdown(){
+function buildDropdown() {
 
   const list = document.getElementById("questerList");
 
   list.innerHTML = "";
 
-  relics.forEach((item,index)=>{
+  relics.forEach((item, index) => {
 
     const el = document.createElement("div");
 
     el.className = "quester";
     el.textContent = item.name;
 
-    el.onclick = ()=>{
+    el.onclick = () => {
       renderRelic(index);
       currentRelic = index;
       renderMobile();
@@ -201,32 +178,31 @@ function buildDropdown(){
 }
 
 
-
 /* ============================= */
-/* MOBILE RELIC VIEW */
+/* MOBILE VIEW */
 /* ============================= */
 
-function renderMobile(){
+function renderMobile() {
 
-  if(relics.length===0) return;
+  if (relics.length === 0) return;
 
   const item = relics[currentRelic];
 
   const img = document.getElementById("mobileRelic");
-  if(img) img.src = item.image;
+  if (img) img.src = item.image;
 
   const name = document.getElementById("mobileName");
-  if(name) name.textContent = item.name || "";
+  if (name) name.textContent = item.name || "";
 
   const stats = document.getElementById("mobileStats");
-  if(stats) stats.textContent = item.stats || "";
+  if (stats) stats.textContent = item.stats || "";
 
   const desc = document.getElementById("mobileDesc");
-  if(desc) desc.textContent = item.desc || "";
+  if (desc) desc.textContent = item.desc || "";
 
   const buyBtn = document.getElementById("mobileBuy");
 
-  const isSold = soldRelics.includes(currentRelic);
+  const isSold = item.sold === true;
 
   if (isSold) {
     buyBtn.textContent = "SOLD";
@@ -237,9 +213,9 @@ function renderMobile(){
   } else {
 
     buyBtn.textContent =
-    "Acquire Relic - " + (item.price || 0) + " gold";
+      "Acquire Relic - " + (item.price || 0) + " gold";
 
-    if(item.price){
+    if (item.price) {
 
       buyBtn.style.opacity = "1";
       buyBtn.style.cursor = "pointer";
@@ -249,7 +225,7 @@ function renderMobile(){
         buyRelic(item.name, priceInCents, currentRelic);
       };
 
-    }else{
+    } else {
 
       buyBtn.style.opacity = "0.5";
       buyBtn.style.cursor = "not-allowed";
@@ -261,17 +237,16 @@ function renderMobile(){
 }
 
 
-
 /* ============================= */
 /* MOBILE ARROWS */
 /* ============================= */
 
-document.getElementById("nextRelic")?.addEventListener("click",()=>{
+document.getElementById("nextRelic")?.addEventListener("click", () => {
 
   currentRelic++;
 
-  if(currentRelic>=relics.length){
-    currentRelic=0;
+  if (currentRelic >= relics.length) {
+    currentRelic = 0;
   }
 
   renderRelic(currentRelic);
@@ -280,12 +255,12 @@ document.getElementById("nextRelic")?.addEventListener("click",()=>{
 });
 
 
-document.getElementById("prevRelic")?.addEventListener("click",()=>{
+document.getElementById("prevRelic")?.addEventListener("click", () => {
 
   currentRelic--;
 
-  if(currentRelic<0){
-    currentRelic=relics.length-1;
+  if (currentRelic < 0) {
+    currentRelic = relics.length - 1;
   }
 
   renderRelic(currentRelic);
@@ -294,21 +269,19 @@ document.getElementById("prevRelic")?.addEventListener("click",()=>{
 });
 
 
-
 /* ============================= */
-/* QUESTERS DROPDOWN */
+/* DROPDOWN TOGGLE */
 /* ============================= */
 
 const toggle = document.getElementById("questerToggle");
 const dropdownList = document.getElementById("questerList");
 
-if(toggle){
-  toggle.onclick = ()=>{
+if (toggle) {
+  toggle.onclick = () => {
     dropdownList.style.display =
-      dropdownList.style.display==="none" ? "block" : "none";
+      dropdownList.style.display === "none" ? "block" : "none";
   };
 }
-
 
 
 /* ============================= */
@@ -317,13 +290,13 @@ if(toggle){
 
 const text = "Ah… another relic uncovered within Sentia.";
 
-let i=0;
+let i = 0;
 
-function type(){
-  if(i<text.length){
+function type() {
+  if (i < text.length) {
     document.getElementById("npcText").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type,30);
+    setTimeout(type, 30);
   }
 }
 
