@@ -6,14 +6,16 @@
       "price": 4,
       "frame": 1,
       "stats": "The original Guul of the dungeon.",
-      "desc": "Gawndela does not like verrfolk.."
+      "desc": "Gawndela does not like verrfolk..",
+      "sold": true
     },
     {
       "name": "ꂟꀎꂚꍌꏂꉻꂚ ꍌꀎ꒐ꂟꏂ ꏂ꒒꒦ꐞ꒐ꏂ꓄",
       "image": "/assets/uploads/img_0517.png",
-      "stats": "𝘚𝘢𝘯𝘥𝘳𝘢 𝘚𝘵𝘰𝘯𝘦𝘴 𝘰𝘯𝘭𝘺 𝘥𝘢𝘶𝘨𝘩𝘵𝘦𝘳.\n𝘚𝘩𝘦 𝘩𝘢𝘴 𝘥𝘦𝘦𝘱 𝘬𝘯𝘰𝘸𝘭𝘦𝘥𝘨𝘦...",
+      "stats": "𝘚𝘢𝘯𝘥𝘳𝘢 𝘚𝘵𝘰𝘯𝘦𝘴 𝘰𝘯𝘭𝘺 𝘥𝘢𝘶𝘨𝘩𝘵𝘦𝘳...",
       "desc": "ᴜᴘᴏɴ ᴛʜɪᴇʀ ғɪʀsᴛ ᴍᴇᴇᴛɪɴɢ...",
-      "price": 1
+      "price": 1,
+      "sold": false
     }
   ]
 }
