@@ -267,29 +267,3 @@ display:flex;
 }
 
 }
-/* ============================= */
-/* MOBILE SCROLL FIX (SHOP ONLY) */
-/* ============================= */
-
-@media (max-width: 768px) {
-
-  html, body {
-    overflow-y: auto !important;
-    height: auto !important;
-  }
-
-  .ui-canvas {
-    position: relative !important;
-    height: auto !important;
-    min-height: 120vh;
-  }
-
-  .ui-box {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    width: 100% !important;
-    margin-bottom: 24px;
-  }
-
-}
