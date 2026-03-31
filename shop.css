@@ -267,3 +267,15 @@ display:flex;
 }
 
 }
+@media (max-width: 768px) {
+
+  html, body {
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+
+  .ui-canvas {
+    min-height: 120vh; /* gives extra space to scroll */
+  }
+
+}
