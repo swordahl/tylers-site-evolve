@@ -666,5 +666,15 @@ body{
   opacity: 1;
 }
 #loreModal {
-  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.9);
+  z-index: 2147483647; /* max safe */
+}
+
+#loreModal.open {
+  display: flex;
 }
