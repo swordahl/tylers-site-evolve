@@ -113,16 +113,16 @@ function renderBlock(b){
   wrap.className = "lore-block";
 
   const text = safeText(b.text);
-  const src = cleanSrc(b.src || "");
+
+  // 🔥 FIX: support both src AND media_file
+  const src = cleanSrc(b.src || b.media_file || "");
+
   const caption = safeText(b.caption);
 
   if(text){
     const p = document.createElement("div");
     p.className = "lore-text";
-
-    // 🔥 CHANGE: now allows clickable links
     p.innerHTML = linkify(text);
-
     wrap.appendChild(p);
   }
 
