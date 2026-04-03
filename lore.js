@@ -287,3 +287,10 @@ async function boot(){
 }
 
 boot();
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
