@@ -665,3 +665,6 @@ body{
   transform: scale(1.08);
   opacity: 1;
 }
+#loreModal {
+  z-index: 9999;
+}
