@@ -665,3 +665,34 @@ body{
   transform: scale(1.08);
   opacity: 1;
 }
+/* ===========================
+   🔥 VIDEO MODAL FIX
+=========================== */
+
+#loreModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.9);
+
+  z-index: 99999;
+}
+
+.lore-modal-media {
+  max-width: 80vw;
+  max-height: 80vh;
+  z-index: 100000;
+}
+
+/* prevent background from covering modal */
+.lore-stage,
+.lore-art {
+  z-index: 1;
+}
