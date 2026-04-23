@@ -16,6 +16,14 @@
       "desc": "ᴜᴘᴏɴ ᴛʜɪᴇʀ ғɪʀsᴛ ᴍᴇᴇᴛɪɴɢ...",
       "price": 1,
       "sold": false
+    },
+    {
+      "name": "GemCloakSsoul",
+      "image": "/assets/uploads/img_1685.jpg",
+      "stats": "April 22nd\n 2026 Tyler Rosendahl Art",
+      "desc": "This is a rare type of armor only found in deep rainbow cavern expedition. \n\n(drawing) \n\n(paper)",
+      "price": 12,
+      "stripe": "https://buy.stripe.com/test_00w3cufOC1fo55IdoUdAk01"
     }
   ]
 }
