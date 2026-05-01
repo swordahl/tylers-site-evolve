@@ -24,6 +24,14 @@
       "desc": "This is a rare type of armor only found in deep rainbow cavern expedition. \n\n(drawing) \n\n(paper)",
       "price": 12,
       "stripe": "https://buy.stripe.com/test_00w3cufOC1fo55IdoUdAk01"
+    },
+    {
+      "name": "Holder Of Sceirs Witch Hilt",
+      "image": "/assets/uploads/03144549-60db-481c-94a4-9e7f85914f7d.jpg",
+      "stats": "*Drawing* ꓄ꌩ꒒ꍟꋪ ꋪꂦꌗꍟꈤꀸꍏꃅ꒒ 2026\n",
+      "desc": "Sciers Witch Hilt has been sewn and paired with many different metal blades, and has destroyed all of them. The only Crafter to succesfully assemble Sciers hilt to a blade crafted one harvested by thousands of delrox. He stands at the lowest floors of the sentia",
+      "price": 4,
+      "stripe": "https://buy.stripe.com/test_aFa6oGauigai55IbgMdAk03"
     }
   ]
 }
