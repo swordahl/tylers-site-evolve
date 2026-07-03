@@ -61,7 +61,15 @@
       ]
     },
     {
-      "pg": 5
+      "pg": 5,
+      "blocks": [
+        {
+          "type": "image",
+          "side": "left",
+          "src": "/assets/uploads/img_2700.heic",
+          "text": "Kryskolysk Royal"
+        }
+      ]
     }
   ]
 }
