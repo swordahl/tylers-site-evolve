@@ -104,163 +104,111 @@ body{
 /* ========================= */
 
 
-.archive-container{
+/* ========================= */
+/* SHOP LIST */
+/* ========================= */
 
-    min-height:100vh;
+.shop-list{
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding-top:120px;
-
-}
-
-
-
-.relic-display{
-
-    width:90vw;
-
+    width:100%;
     max-width:1400px;
 
-    display:flex;
+    margin:0 auto;
 
+    padding:180px 40px 120px;
+
+    display:flex;
+    flex-direction:column;
     align-items:center;
 
-    justify-content:center;
-
-    gap:120px;
+    gap:180px;
 
 }
-
 
 
 /* ========================= */
 /* PRODUCT */
 /* ========================= */
 
+.shop-item{
 
-.product-stage{
-
-    width:55%;
-
-    height:75vh;
+    width:100%;
+    max-width:900px;
 
     display:flex;
-
-    justify-content:center;
-
+    flex-direction:column;
     align-items:center;
+    text-align:center;
 
 }
 
 
+.shop-image{
 
-.relic-product{
-
-    max-width:100%;
-
-    max-height:75vh;
+    width:100%;
+    max-width:700px;
+    max-height:700px;
 
     object-fit:contain;
 
-    filter:
+    filter:drop-shadow(0 45px 70px rgba(0,0,0,.75));
 
-    drop-shadow(0 50px 80px rgba(0,0,0,.8));
-
-    animation:fadeIn 1.2s ease;
+    margin-bottom:50px;
 
 }
 
 
-
-
-/* ========================= */
-/* INFORMATION */
-/* ========================= */
-
-
-.product-information{
-
-    width:30%;
-
-}
-
-
-
-.collection-number{
-
-    font-size:11px;
-
-    letter-spacing:5px;
-
-    color:#817969;
-
-    margin-bottom:35px;
-
-}
-
-
-
-#relicName{
+.shop-title{
 
     font-family:"Cormorant Garamond", serif;
 
-    font-size:60px;
-
+    font-size:64px;
     font-weight:400;
 
-    line-height:1;
-
-    margin:0 0 30px;
-
-}
-
-
-
-.relic-details{
-
-    font-size:13px;
-
-    line-height:2;
+    margin:0 0 20px;
 
     letter-spacing:2px;
 
-    color:#bdb4a5;
+}
+
+
+.shop-stats{
+
+    font-size:13px;
+
+    letter-spacing:3px;
+
+    color:#9f9687;
+
+    margin-bottom:25px;
+
+    text-transform:uppercase;
 
 }
 
 
+.shop-description{
 
-.relic-description{
+    max-width:650px;
 
-    margin-top:30px;
+    font-size:16px;
 
-    font-size:15px;
+    line-height:1.9;
 
-    line-height:1.8;
+    color:#cfc7bb;
 
-    color:#c9c1b5;
+    margin-bottom:40px;
 
 }
-
 
 
 /* ========================= */
 /* BUTTON */
 /* ========================= */
 
-
 .acquire-button{
 
-
-    margin-top:45px;
-
-    padding:18px 45px;
-
+    padding:18px 46px;
 
     background:none;
 
@@ -268,19 +216,15 @@ body{
 
     color:#eee5d5;
 
-    cursor:pointer;
-
-
     font-size:12px;
 
     letter-spacing:4px;
 
+    cursor:pointer;
 
-    transition:.4s;
-
+    transition:.35s;
 
 }
-
 
 
 .acquire-button:hover{
@@ -292,210 +236,56 @@ body{
 }
 
 
-
-/* ========================= */
-/* NAVIGATION */
-/* ========================= */
-
-
-.archive-navigation{
-
-    position:fixed;
-
-    bottom:50px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-
-    display:flex;
-
-    gap:60px;
-
-}
-
-
-
-.archive-navigation button{
-
-    background:none;
-
-    border:none;
-
-    color:#aaa18f;
-
-    letter-spacing:3px;
-
-    cursor:pointer;
-
-}
-
-
-
 /* ========================= */
 /* MOBILE */
 /* ========================= */
 
+@media (max-width:900px){
 
-.mobile-shop{
+    .archive-header{
 
-    display:none;
+        padding:24px;
 
-}
+    }
 
+    .brand-logo{
 
+        font-size:34px;
+        letter-spacing:8px;
 
+    }
 
-@media(max-width:900px){
+    .archive-title{
 
+        display:none;
 
-.archive-header{
+    }
 
-    padding:25px;
+    .back-link{
 
-}
+        left:24px;
 
+    }
 
-.brand-logo{
+    .shop-list{
 
-    font-size:34px;
+        padding:140px 24px 80px;
 
-}
+        gap:120px;
 
+    }
 
+    .shop-title{
 
-.archive-title{
+        font-size:42px;
 
-    display:none;
+    }
 
-}
+    .shop-image{
 
+        max-width:100%;
+        max-height:450px;
 
-
-.archive-container{
-
-    display:none;
-
-}
-
-
-
-.mobile-shop{
-
-    display:flex;
-
-    min-height:100vh;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:40px;
-
-}
-
-
-
-.mobile-stage{
-
-    width:85vw;
-
-}
-
-
-
-.mobile-relic{
-
-    width:100%;
-
-}
-
-
-
-.mobile-info{
-
-    text-align:center;
-
-}
-
-
-
-.mobile-info h1{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:42px;
-
-}
-
-
-
-.mobile-buy{
-
-    margin-top:25px;
-
-    padding:15px 35px;
-
-    background:none;
-
-    border:1px solid #aaa;
-
-    color:white;
-
-}
-
-
-
-.mobile-controls{
-
-    margin-top:40px;
-
-    display:flex;
-
-    gap:60px;
-
-}
-
-
-
-.mobile-controls button{
-
-    background:none;
-
-    border:none;
-
-    color:white;
-
-    font-size:30px;
-
-}
-
-
-}
-
-
-
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
+    }
 
 }
