@@ -3,191 +3,46 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sentia Relic Archive</title>
+    <title>Sentia Relic Archive</title>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shop.css">
 
 </head>
 
-
 <body>
 
+    <!-- HEADER -->
 
-<!-- HEADER -->
+    <header class="archive-header">
 
-<header class="archive-header">
+        <a href="index.html" class="back-link">
+            ← RETURN
+        </a>
 
-    <a href="index.html" class="back-link">
-        ← RETURN
-    </a>
-
-    <div class="brand-logo">
-        SENTIA
-    </div>
-
-    <div class="archive-title">
-        RELIC ARCHIVE
-    </div>
-
-</header>
-
-
-
-<!-- MAIN COLLECTION -->
-
-<main class="archive-container">
-
-
-<section class="relic-display">
-
-
-    <!-- PRODUCT IMAGE -->
-
-    <div class="product-stage">
-
-        <img 
-        id="relicImage" 
-        class="relic-product"
-        >
-
-    </div>
-
-
-
-    <!-- PRODUCT INFORMATION -->
-
-    <div class="product-information">
-
-
-        <div class="collection-number">
-            COLLECTION I
+        <div class="brand-logo">
+            SENTIA
         </div>
 
-
-        <h1 id="relicName">
-        </h1>
-
-
-        <div 
-        id="relicStats"
-        class="relic-details">
+        <div class="archive-title">
+            RELIC ARCHIVE
         </div>
 
+    </header>
 
-        <p 
-        id="relicDesc"
-        class="relic-description">
-        </p>
+    <!-- PRODUCTS -->
 
+    <main class="shop-list" id="shopList">
 
+        <!-- Products are automatically inserted here by shop.js -->
 
-        <button 
-        id="relicBuy"
-        class="acquire-button"
-        onclick="handleBuy()">
+    </main>
 
-            Acquire Relic
-
-        </button>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- COLLECTION NAVIGATION -->
-
-<section class="archive-navigation">
-
-
-<button id="prevRelic">
-    ← Previous
-</button>
-
-
-<button id="nextRelic">
-    Next →
-</button>
-
-
-</section>
-
-
-</main>
-
-
-
-<!-- MOBILE VERSION -->
-
-<div class="mobile-shop">
-
-
-<div class="mobile-stage">
-
-<img 
-id="mobileRelic"
-class="mobile-relic"
->
-
-</div>
-
-
-
-<div class="mobile-info">
-
-
-<h1 id="mobileName"></h1>
-
-
-<div id="mobileStats"></div>
-
-
-<p id="mobileDesc"></p>
-
-
-
-<button 
-id="mobileBuy"
-class="mobile-buy"
-onclick="handleBuy()">
-
-Acquire Relic
-
-</button>
-
-
-</div>
-
-
-
-<div class="mobile-controls">
-
-<button id="prevMobile">
-←
-</button>
-
-
-<button id="nextMobile">
-→
-</button>
-
-</div>
-
-
-</div>
-
-
-
-<script src="script.js"></script>
-<script src="shop.js"></script>
-
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
 
 </body>
 
