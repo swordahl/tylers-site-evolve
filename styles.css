@@ -5,12 +5,21 @@
 }
 
 /* ===== GLOBAL BASE ===== */
-html,body{
-  cursor:none;
-  height:100%;
-  margin:0;
-  background:#000;
-  overflow:hidden;
+html,
+body{
+    cursor:none;
+    height:100%;
+    margin:0;
+    background:#000;
+}
+
+body:not(.shop-page){
+    overflow:hidden;
+}
+
+body.shop-page{
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 .backdrop{
