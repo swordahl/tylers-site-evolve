@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
-
 *{
     box-sizing:border-box;
 }
-
 
 html,
 body{
@@ -18,16 +16,14 @@ body{
     background:#080808;
     color:#e8e2d5;
 
-    font-family:Inter, sans-serif;
+    font-family:Inter,sans-serif;
 
 }
-
 
 
 /* ========================= */
 /* HEADER */
 /* ========================= */
-
 
 .archive-header{
 
@@ -45,11 +41,13 @@ body{
     justify-content:center;
     align-items:center;
 
-    z-index:20;
+    z-index:100;
+
+    background:rgba(8,8,8,.88);
+
+    backdrop-filter:blur(12px);
 
 }
-
-
 
 .back-link{
 
@@ -65,13 +63,19 @@ body{
 
     letter-spacing:3px;
 
+    transition:.3s;
+
 }
 
+.back-link:hover{
 
+    color:#fff;
+
+}
 
 .brand-logo{
 
-    font-family:"Cormorant Garamond", serif;
+    font-family:"Cormorant Garamond",serif;
 
     font-size:48px;
 
@@ -80,8 +84,6 @@ body{
     color:#f1eadc;
 
 }
-
-
 
 .archive-title{
 
@@ -98,12 +100,6 @@ body{
 }
 
 
-
-/* ========================= */
-/* MAIN ARCHIVE */
-/* ========================= */
-
-
 /* ========================= */
 /* SHOP LIST */
 /* ========================= */
@@ -111,6 +107,7 @@ body{
 .shop-list{
 
     width:100%;
+
     max-width:1400px;
 
     margin:0 auto;
@@ -118,7 +115,9 @@ body{
     padding:180px 40px 120px;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
 
     gap:180px;
@@ -133,71 +132,82 @@ body{
 .shop-item{
 
     width:100%;
+
     max-width:900px;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     text-align:center;
 
 }
 
-
 .shop-image{
 
     width:100%;
+
     max-width:700px;
+
     max-height:700px;
 
     object-fit:contain;
 
     filter:drop-shadow(0 45px 70px rgba(0,0,0,.75));
 
-    margin-bottom:50px;
+    transition:.35s;
 
 }
 
+.shop-image:hover{
+
+    transform:scale(1.015);
+
+}
 
 .shop-title{
 
-    font-family:"Cormorant Garamond", serif;
+    margin:45px 0 18px;
+
+    font-family:"Cormorant Garamond",serif;
 
     font-size:64px;
-    font-weight:400;
 
-    margin:0 0 20px;
+    font-weight:400;
 
     letter-spacing:2px;
 
+    color:#f2ece0;
+
 }
 
-
 .shop-stats{
+
+    margin-bottom:25px;
 
     font-size:13px;
 
     letter-spacing:3px;
 
-    color:#9f9687;
-
-    margin-bottom:25px;
-
     text-transform:uppercase;
 
-}
+    color:#948b7d;
 
+}
 
 .shop-description{
 
     max-width:650px;
 
+    margin-bottom:45px;
+
     font-size:16px;
 
     line-height:1.9;
 
-    color:#cfc7bb;
-
-    margin-bottom:40px;
+    color:#cbc3b7;
 
 }
 
@@ -216,22 +226,29 @@ body{
 
     color:#eee5d5;
 
+    cursor:pointer;
+
     font-size:12px;
 
     letter-spacing:4px;
 
-    cursor:pointer;
-
     transition:.35s;
 
 }
-
 
 .acquire-button:hover{
 
     background:#eee5d5;
 
     color:#080808;
+
+}
+
+.acquire-button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
 
 }
 
@@ -251,6 +268,7 @@ body{
     .brand-logo{
 
         font-size:34px;
+
         letter-spacing:8px;
 
     }
@@ -265,13 +283,23 @@ body{
 
         left:24px;
 
+        font-size:11px;
+
     }
 
     .shop-list{
 
         padding:140px 24px 80px;
 
-        gap:120px;
+        gap:110px;
+
+    }
+
+    .shop-image{
+
+        max-width:100%;
+
+        max-height:450px;
 
     }
 
@@ -281,10 +309,9 @@ body{
 
     }
 
-    .shop-image{
+    .shop-description{
 
-        max-width:100%;
-        max-height:450px;
+        font-size:15px;
 
     }
 
