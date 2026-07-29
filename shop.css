@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
-/* ================================= */
-/* SHOP PAGE OVERRIDES */
-/* ================================= */
+*{
+    box-sizing:border-box;
+}
 
 html,
 body{
@@ -18,17 +18,12 @@ body{
 
     font-family:Inter,sans-serif;
 
-    height:auto !important;
-
-    overflow-y:auto !important;
-    overflow-x:hidden !important;
-
 }
 
 
-/* ================================= */
+/* ========================= */
 /* HEADER */
-/* ================================= */
+/* ========================= */
 
 .archive-header{
 
@@ -74,7 +69,7 @@ body{
 
 .back-link:hover{
 
-    color:#ffffff;
+    color:#fff;
 
 }
 
@@ -105,9 +100,9 @@ body{
 }
 
 
-/* ================================= */
-/* SHOP */
-/* ================================= */
+/* ========================= */
+/* SHOP LIST */
+/* ========================= */
 
 .shop-list{
 
@@ -127,9 +122,12 @@ body{
 
     gap:180px;
 
-    min-height:max-content;
-
 }
+
+
+/* ========================= */
+/* PRODUCT */
+/* ========================= */
 
 .shop-item{
 
@@ -213,6 +211,11 @@ body{
 
 }
 
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
 .acquire-button{
 
     padding:18px 46px;
@@ -250,9 +253,9 @@ body{
 }
 
 
-/* ================================= */
+/* ========================= */
 /* MOBILE */
-/* ================================= */
+/* ========================= */
 
 @media (max-width:900px){
 
