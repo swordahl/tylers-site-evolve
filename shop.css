@@ -1,281 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+html,
 body{
-margin:0;
-background:#ded9cf;
-font-family:monospace;
+
+    margin:0;
+    padding:0;
+
+    width:100%;
+    min-height:100%;
+
+    background:#080808;
+    color:#e8e2d5;
+
+    font-family:Inter, sans-serif;
+
 }
 
 
-/* CANVAS */
 
-.ui-canvas{
-position:relative;
-width:100vw;
-min-height:100vh;
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
+
+.archive-header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:35px 50px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:20;
+
 }
 
 
-/* UI ELEMENTS */
 
-.ui-box{
-position:absolute;
+.back-link{
+
+    position:absolute;
+
+    left:50px;
+
+    color:#b9b0a0;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
 }
 
 
-/* EDIT MODE */
 
-.edit-mode .ui-box{
-outline:2px dashed #3b82f6;
-cursor:move;
-user-select:none;
+.brand-logo{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:48px;
+
+    letter-spacing:15px;
+
+    color:#f1eadc;
+
 }
 
 
-/* SAVE BUTTON */
 
-.save-layout{
-position:fixed;
-top:20px;
-right:20px;
-padding:10px 16px;
-background:black;
-color:white;
-border:none;
-display:none;
-z-index:999;
-}
+.archive-title{
 
-.edit-mode .save-layout{
-display:block;
+    position:absolute;
+
+    right:50px;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    color:#8c8578;
+
 }
 
 
-/* LOCK BUTTON */
 
-.lock-btn{
-position:absolute;
-top:-10px;
-right:-10px;
-background:black;
-color:white;
-border:none;
-width:22px;
-height:22px;
-font-size:12px;
-cursor:pointer;
-display:none;
-}
-
-.edit-mode .lock-btn{
-display:block;
-}
+/* ========================= */
+/* MAIN ARCHIVE */
+/* ========================= */
 
 
-/* RESIZE HANDLE */
+.archive-container{
 
-.resize-handle{
-position:absolute;
-width:14px;
-height:14px;
-right:-7px;
-bottom:-7px;
-background:#3b82f6;
-cursor:nwse-resize;
-display:none;
-}
+    min-height:100vh;
 
-.edit-mode .resize-handle{
-display:block;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding-top:120px;
+
 }
 
 
-/* CHARACTER PANEL */
 
-.character-panel{
-left:4%;
-top:12%;
-width:32vw;
-max-width:520px;
-font-size:18px;
-line-height:1.5;
-}
+.relic-display{
 
-.character-name{
-font-size:24px;
-margin-bottom:8px;
-}
+    width:90vw;
 
-.character-stats{
-margin-bottom:8px;
-}
+    max-width:1400px;
 
-.character-description{
-margin-bottom:14px;
-}
+    display:flex;
 
-.character-buy{
-padding:6px 10px;
-border:2px solid black;
-background:#ded9cf;
-cursor:pointer;
+    align-items:center;
+
+    justify-content:center;
+
+    gap:120px;
+
 }
 
 
-/* SHOP FRAME */
 
-.shop-frame{
-left:38%;
-top:18%;
-width:900px;
-max-width:42vw;
+/* ========================= */
+/* PRODUCT */
+/* ========================= */
+
+
+.product-stage{
+
+    width:55%;
+
+    height:75vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
 }
 
-.shopborder1{
-width:100%;
-display:block;
-pointer-events:none;
-}
 
-
-/* PRODUCT SAFE ZONE */
-
-.product-zone{
-position:absolute;
-left:18%;
-top:45%;
-width:32%;
-height:45%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-}
 
 .relic-product{
-max-width:100%;
-max-height:100%;
-object-fit:contain;
-}
 
+    max-width:100%;
 
-/* QUESTERS PANEL */
+    max-height:75vh;
 
-.quester-panel{
-right:4%;
-top:12%;
-width:220px;
-border:3px solid black;
-padding:12px;
-background:#ded9cf;
-}
+    object-fit:contain;
 
-.quester-title{
-cursor:pointer;
-font-weight:bold;
-margin-bottom:6px;
-}
+    filter:
 
-.quester{
-padding:3px 0;
-}
+    drop-shadow(0 50px 80px rgba(0,0,0,.8));
 
+    animation:fadeIn 1.2s ease;
 
-/* NPC */
-
-.npc-dialogue{
-right:60px;
-bottom:40px;
-max-width:260px;
-}
-
-.dialogue-bubble{
-background:white;
-border:3px solid black;
-padding:14px;
-line-height:1.4;
 }
 
 
 
-/* ================================= */
-/* MOBILE SHOP */
-/* ================================= */
+
+/* ========================= */
+/* INFORMATION */
+/* ========================= */
+
+
+.product-information{
+
+    width:30%;
+
+}
+
+
+
+.collection-number{
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    color:#817969;
+
+    margin-bottom:35px;
+
+}
+
+
+
+#relicName{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:60px;
+
+    font-weight:400;
+
+    line-height:1;
+
+    margin:0 0 30px;
+
+}
+
+
+
+.relic-details{
+
+    font-size:13px;
+
+    line-height:2;
+
+    letter-spacing:2px;
+
+    color:#bdb4a5;
+
+}
+
+
+
+.relic-description{
+
+    margin-top:30px;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:#c9c1b5;
+
+}
+
+
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
+
+.acquire-button{
+
+
+    margin-top:45px;
+
+    padding:18px 45px;
+
+
+    background:none;
+
+    border:1px solid #8d8372;
+
+    color:#eee5d5;
+
+    cursor:pointer;
+
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.acquire-button:hover{
+
+    background:#eee5d5;
+
+    color:#080808;
+
+}
+
+
+
+/* ========================= */
+/* NAVIGATION */
+/* ========================= */
+
+
+.archive-navigation{
+
+    position:fixed;
+
+    bottom:50px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+
+    display:flex;
+
+    gap:60px;
+
+}
+
+
+
+.archive-navigation button{
+
+    background:none;
+
+    border:none;
+
+    color:#aaa18f;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
 
 .mobile-shop{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100vw;
-height:100vh;
-background:#8b0000;
-align-items:center;
-justify-content:center;
-flex-direction:column;
+
+    display:none;
+
 }
 
 
-/* RELIC FRAME */
 
-.mobile-frame{
-position:relative;
-width:70vw;
-max-width:320px;
+
+@media(max-width:900px){
+
+
+.archive-header{
+
+    padding:25px;
+
 }
 
 
-/* RELIC IMAGE */
+.brand-logo{
+
+    font-size:34px;
+
+}
+
+
+
+.archive-title{
+
+    display:none;
+
+}
+
+
+
+.archive-container{
+
+    display:none;
+
+}
+
+
+
+.mobile-shop{
+
+    display:flex;
+
+    min-height:100vh;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+
+
+.mobile-stage{
+
+    width:85vw;
+
+}
+
+
 
 .mobile-relic{
-width:100%;
-height:auto;
-object-fit:contain;
+
+    width:100%;
+
+}
+
+
+
+.mobile-info{
+
+    text-align:center;
+
 }
 
 
-/* ARROWS */
 
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:40px;
-background:none;
-border:none;
-color:white;
-cursor:pointer;
-}
+.mobile-info h1{
 
-.arrow-left{
-left:20px;
-}
+    font-family:"Cormorant Garamond",serif;
 
-.arrow-right{
-right:20px;
-}
-
-
-/* MOBILE SWITCH */
-
-@media (max-width:900px){
-
-.ui-canvas{
-display:none;
-}
-
-.mobile-shop{
-display:flex;
-}
+    font-size:42px;
 
 }
-@media (max-width: 768px) {
 
-  html, body {
-    height: auto !important;
-    overflow-y: auto !important;
-  }
 
-  .ui-canvas {
-    min-height: 120vh; /* gives extra space to scroll */
-  }
+
+.mobile-buy{
+
+    margin-top:25px;
+
+    padding:15px 35px;
+
+    background:none;
+
+    border:1px solid #aaa;
+
+    color:white;
+
+}
+
+
+
+.mobile-controls{
+
+    margin-top:40px;
+
+    display:flex;
+
+    gap:60px;
+
+}
+
+
+
+.mobile-controls button{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:30px;
+
+}
+
+
+}
+
+
+
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
 
 }
