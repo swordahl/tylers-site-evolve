@@ -1,318 +1,187 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
+{--shop-x:14%; --shop-y:22%;--lore-x:50%; --lore-y:26%;--music-x:72%; --music-y:18%;}
 
-/* ================================= */
-/* SHOP PAGE OVERRIDES */
-/* ================================= */
+/* ===== GLOBAL BASE ===== */html,body{cursor;height:100%;margin:0;background:#000;overflow;}
 
-html,
-body{
+.backdrop{position;inset:0;background(assets/landing.png) center/cover no-repeat;filter(26px) brightness(.9);transform(1.05);}
 
-    margin:0;
-    padding:0;
+.stage{position;inset:0;display;place-items;}.art{width:100vw;height:100vh;object-fit;}
 
-    width:100%;
-    min-height:100%;
+/* ================================================= // ================= LORE PAGE ===================== // ================================================= */
 
-    background:#080808;
-    color:#e8e2d5;
+.lore-body{margin:0;overflow;background:#000;}
 
-    font-family:Inter,sans-serif;
+.lore-stage{position;width:100vw;height:100vh;overflow;}
 
-    height:auto !important;
+/* Background book image */.lore-art{position;inset:0;width:100%;height:100%;object-fit;pointer-events;z-index:1;}
 
-    overflow-y:auto !important;
-    overflow-x:hidden !important;
+/* ================================================= // ================= LEFT PAGE ===================== // ================================================= */
 
-}
+.lore-left{position;left:20%;top:20%;width:24%;height:55%;padding:22px 26px;overflow-y;overflow-x;box-sizing;word-break;z-index:10;}
 
+/* ================================================= // ================= RIGHT PAGE ==================== // ================================================= */
 
-/* ================================= */
-/* HEADER */
-/* ================================= */
+.lore-right{position;left:56%;top:20%;width:24%;height:55%;padding:22px 26px;overflow-y;overflow-x;box-sizing;word-break;z-index:10;}
 
-.archive-header{
+/* Scrollbar subtle */.lore-left::-webkit-scrollbar,.lore-right::-webkit-scrollbar{width:6px;}
 
-    position:fixed;
+.lore-left::-webkit-scrollbar-thumb,.lore-right::-webkit-scrollbar-thumb{background(255,255,255,.2);border-radius:6px;}
 
-    top:0;
-    left:0;
+/* ================================================= // =============== NAVIGATION ====================== // ================================================= */
 
-    width:100%;
+.lore-prev,.lore-next{position;top:80%;font-size:28px;background;border;color;cursor;z-index:20;}
 
-    padding:35px 50px;
+.lore-prev{ left:42%; }.lore-next{ left:55%; }
 
-    display:flex;
+/* Page number */.lore-pg{position;bottom:9%;left:50%;transform(-50%);color;font-family;font-size:14px;z-index:20;}
 
-    justify-content:center;
-    align-items:center;
+/* ================================================= // ============ LEGENDARY LATEST BUTTON ============ // ================================================= */
 
-    z-index:100;
+.lore-latest-legendary{position;top:6%;left:50%;transform(-50%);z-index:40;
 
-    background:rgba(8,8,8,.88);
+padding:10px 28px;
 
-    backdrop-filter:blur(12px);
+font-family:'Cinzel', serif;font-size:14px;letter-spacing:3px;
 
-}
+color:#e9ddff;background(20,0,40,.75);border:1px solid rgba(180,140,255,.6);
 
-.back-link{
+cursor;overflow;
 
-    position:absolute;
+text-shadow:0 0 8px rgba(200,160,255,.8);
 
-    left:50px;
+transition .35s ease;
 
-    color:#b9b0a0;
+animation 3.5s ease-in-out infinite;}
 
-    text-decoration:none;
+/* breathing glow */@keyframes legendaryBreath{0%   { box-shadow:0 0 8px rgba(150,100,255,.4); }50%  { box-shadow:0 0 22px rgba(180,120,255,.9); }100% { box-shadow:0 0 8px rgba(150,100,255,.4); }}
 
-    font-size:12px;
+.lore-latest-legendary{transform(-50%) scale(1.05);box-shadow:0 0 30px rgba(200,150,255,1);}
 
-    letter-spacing:3px;
+/* Mana shimmer sweep */.lore-latest-legendary::before{content:'';position;top:0;left:-120%;width:120%;height:100%;background(120deg,transparent,rgba(255,255,255,.25),transparent);animation 5s linear infinite;}
 
-    transition:.3s;
+@keyframes manaSweep{0%{ left:-120%; }100%{ left:120%; }}
 
-}
+/* Flash burst when clicked */.lore-flash{animation .4s ease;}
 
-.back-link:hover{
+@keyframes flashBurst{0%{ box-shadow:0 0 0 rgba(255,255,255,0); }50%{ box-shadow:0 0 60px rgba(255,255,255,1); }100%{ box-shadow:0 0 0 rgba(255,255,255,0); }}
 
-    color:#ffffff;
+/* ================================================= // ============== LANDING PAGE ===================== // ================================================= */
 
-}
+.label{position;transform(-50%,-50%);}.label img{width:14vw;max-width:260px;min-width:120px;filter(0 0 8px rgba(160,90,255,.55));transition: transform .18s ease, filter .18s ease, opacity .18s ease;opacity:.98;}
 
-.brand-logo{
+.label-shop img{ transform(0.67); }.label-lore img{ transform(0.67); }.label-music img{ transform(2.00); }
 
-    font-family:"Cormorant Garamond",serif;
+.label-shop img,.label-lore img{transform(0.70);filter(0 0 10px rgba(255,255,255,.20))drop-shadow(0 0 22px rgba(160,90,255,.65));}
 
-    font-size:48px;
+.label-music img{transform(2.06);filter(0 0 12px rgba(255,255,255,.25))drop-shadow(0 0 30px rgba(160,90,255,.75));opacity:1;}
 
-    letter-spacing:15px;
+.label-shop{left(--shop-x);top(--shop-y);}.label-lore{left(--lore-x);top(--lore-y);}.label-music{left(--music-x);top(--music-y);}
 
-    color:#f1eadc;
+.zone{position;background;}.zone-shop{left:2%;top:28%;width:28%;height:62%;}.zone-lore{left:28%;top:20%;width:38%;height:78%;}.zone-music{left:66%;top:20%;width:32%;height:78%;}
 
-}
+/* ================================================= // ============== RUNE SPILL ======================= // ================================================= */
 
-.archive-title{
+.rune-spill{position;left:0; top:0;pointer-events;z-index:99999;}
 
-    position:absolute;
+.rune-particle{position;font-size:14px;color(255,255,255,.85);text-shadow:0 0 10px rgba(160,90,255,.85),0 0 22px rgba(90,220,255,.35);animation 700ms ease-out forwards;}
 
-    right:50px;
+@keyframes runeDrift{0%{ transform: translate(0,0) scale(.95); opacity:0; }15%{ opacity:1; }100%{transform: translate(var(--dx), var(--dy)) scale(1.05);opacity:0;}}
 
-    font-size:11px;
+/* ================================================= // ================= MUSIC PAGE ==================== // ================================================= */
 
-    letter-spacing:5px;
+.music-stage{position;inset:0;display;place-items;}
 
-    color:#8c8578;
+.music-art{width:100vw;height:100vh;object-fit;display;}
 
-}
+/* PLAY BUTTONS /.play-btn{position;width:44px;height:44px;transform: translate(-50%,-50%);border-radius:14px;display;place-items;background(0,0,0,.18);border:1px solid rgba(255,255,255,.10);box-shadow: 0 8px 22px rgba(0,0,0,.25);}.play-btn img{width:22px;height:22px;image-rendering: pixelated;transform: translateX(1px);opacity:.95;filter: drop-shadow(0 0 10px rgba(160,90,255,.65));}/ ============================= // SOUNDCLOUD ICON // ============================= */
 
+.soundcloud-link{position: absolute;top: 140px;right: 475px;z-index: 20;}
 
-/* ================================= */
-/* SHOP */
-/* ================================= */
+.soundcloud-link img{width: 28px;height: auto;}/* ===== ORIGINAL RUNE HALO ===== */
 
-.shop-list{
+.play-btn::after{content:"ᚠᚢᚦᚨᚱᚲᚷ";position;inset:-10px;font-size:12px;letter-spacing:3px;opacity:.60;color(255,255,255,.92);text-shadow:0 0 8px rgba(160,90,255,.95),0 0 18px rgba(90,220,255,.50);animation 2.8s linear infinite;pointer-events;}
 
-    width:100%;
+@keyframes runeHalo{0%{ transform: rotate(0deg) scale(.95); opacity:.50; }50%{ transform: rotate(180deg) scale(1.06); opacity:.85; }100%{ transform: rotate(360deg) scale(.95); opacity:.50; }}
 
-    max-width:1400px;
+/* Play button positions */.pb1{left:34.822%; top:22.644%;}.pb2{left:74.486%; top:29.925%;}.pb3{left:33.310%; top:38.220%;}.pb4{left:68.907%; top:43.026%;}.pb5{left:62.279%; top:53.231%;}.pb6{left:40.117%; top:55.368%;}.pb7{left:52.741%; top:58.222%;}
 
-    margin:0 auto;
+#rune-layer{position;inset:0;pointer-events;overflow;z-index:5;}
 
-    padding:180px 40px 120px;
+.rune{position;font-size:18px;opacity:0;filter:drop-shadow(0 0 10px rgba(140,90,255,.75))drop-shadow(0 0 22px rgba(0,255,255,.30));animation var(--dur) ease-out forwards;transform: translate(-50%,-50%);}
 
-    display:flex;
+@keyframes runeFloat{0%{opacity:0;transform: translate(-50%,-50%) translate(0,0) scale(0.9);}12%{ opacity:.75; }100%{opacity:0;transform: translate(-50%,-50%) translate(var(--dx), var(--dy)) scale(1.08);}}
 
-    flex-direction:column;
+/* ================================================= // ================= BACK BUTTON =================== // ================================================= */
 
-    align-items:center;
+.back-btn{position;left:18px;top:16px;z-index:99999;padding:10px 14px;background:#cfd2d8;border:2px solid #ffffff;box-shadow:0 0 0 2px #9aa0aa,0 0 12px rgba(200,220,255,.35);color:#111;text-decoration;font-weight:700;font-family: monospace;letter-spacing:1px;}/* ========================================= // ===== LORE DESKTOP HARD CONTAINMENT ===== // ========================================= */
 
-    gap:180px;
+.lore-stage{overflow; /* nothing can escape the book */}
 
-    min-height:max-content;
+/* Left page container */.lore-left,.lore-right{position;overflow-y;overflow-x;box-sizing;max-height:100%;word-break;z-index:10;}
 
-}
+/* Prevent child overflow */.lore-left *,.lore-right *{max-width:100%;box-sizing;}
 
-.shop-item{
+/* Images & videos locked inside */.lore-left img,.lore-right img,.lore-left video,.lore-right video{max-width:100%;height;display;}
 
-    width:100%;
+/* Hide scrollbars visually but keep scroll */.lore-left::-webkit-scrollbar,.lore-right::-webkit-scrollbar{width:6px;}
 
-    max-width:900px;
+.lore-left::-webkit-scrollbar-thumb,.lore-right::-webkit-scrollbar-thumb{background(255,255,255,.25);border-radius:6px;}/* ================================= // ===== LORE BUTTON VISIBILITY ==== // ================================= */
 
-    display:flex;
+.lore-prev,.lore-next{position;z-index:25;font-size:28px;font-weight:700;color:#ffffff;background(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);padding:6px 14px;border-radius:6px;backdrop-filter(6px);cursor;transition .15s ease;}
 
-    flex-direction:column;
+.lore-prev,.lore-next{background(0,0,0,0.75);box-shadow:0 0 12px rgba(255,255,255,0.35);}
 
-    align-items:center;
+/* Positioning (adjust if needed slightly) */.lore-prev{left:22%;bottom:14%;}
 
-    text-align:center;
+.lore-next{right:22%;bottom:14%;}
 
-}
+/* Page number styling /.lore-pg{position;bottom:10%;left:50%;transform(-50%);z-index:25;font-family;font-size:14px;letter-spacing:2px;color:#ffffff;background(0,0,0,0.55);padding:4px 10px;border-radius:4px;}/ ===== LORE TEXT VISIBILITY FIX ===== */
 
-.shop-image{
+.lore-left,.lore-right{color: #f5f5f5;             /* visible on dark background */font-family: serif;font-size: 16px;line-height: 1.6;text-shadow: 0 0 6px rgba(0,0,0,.6);}
 
-    width:100%;
+.lore-text{white-space: pre-wrap;      /* preserve line breaks */word-break: break-word;}
 
-    max-width:700px;
+.lore-caption{font-size: 13px;opacity: .7;margin-top: 6px;}body{min-width:1100px;}/* ================================= // ===== TRACK POPUP RESTORE ======= // ================================= */
 
-    max-height:700px;
+.track-popup{position;left:14%;top:20%;transform(-50%,-50%);z-index:99999;
 
-    object-fit:contain;
+display;flex-direction;align-items;
 
-    filter:drop-shadow(0 45px 70px rgba(0,0,0,.75));
+max-width:260px;padding:14px 16px;
 
-    transition:.35s;
+background: rgba(10,10,12,.78);border:1px solid rgba(255,255,255,.25);border-radius:16px;
 
-}
+box-shadow:0 10px 26px rgba(0,0,0,.55),inset 0 0 0 1px rgba(160,90,255,.25);
 
-.shop-image:hover{
+color:#fff;font-family;font-size:12px;backdrop-filter(12px);}
 
-    transform:scale(1.015);
+.track-popup.show{display;}
 
-}
+.track-title{font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
 
-.shop-title{
+.track-label{font-size:11px;letter-spacing:2px;opacity:.65;}
 
-    margin:45px 0 18px;
+.track-bar{margin-top:8px;height:6px;border-radius:999px;background(255,255,255,.10);overflow;width:100%;}
 
-    font-family:"Cormorant Garamond",serif;
+.track-bar > i{display;height:100%;width:0%;background(220,240,255,.65);}
 
-    font-size:64px;
+/* ================= MOBILE ACCESS LOCK ================= */
 
-    font-weight:400;
+.mobile-lock {position: fixed;inset: 0;background: #000;color: #e6d6a8;display: none;align-items: center;justify-content: center;text-align: center;z-index: 9999;padding: 40px;}
 
-    letter-spacing:2px;
+.mobile-lock-inner h1 {font-size: 28px;margin-bottom: 20px;letter-spacing: 2px;}
 
-    color:#f2ece0;
+.mobile-lock-inner p {font-size: 16px;opacity: .8;line-height: 1.6;max-width: 420px;margin: 0 auto;}
 
-}
+@media (max-width: 900px) {.mobile-lock { display: flex; }.shop-content { display: none; }}/* ===================================== // ===== LORE DESKTOP YOUTUBE LINK ===== // ===================================== */
 
-.shop-stats{
+.youtube-link {position: fixed;bottom: 4%;right: 4%;z-index: 9999;
 
-    margin-bottom:25px;
+width: 48px;height: 48px;
 
-    font-size:13px;
+display: flex;align-items: center;justify-content: center;}
 
-    letter-spacing:3px;
+.youtube-link img {width: 100%;height: auto;opacity: 0.85;transition: 0.2s ease;}
 
-    text-transform:uppercase;
+.youtube-link img {transform: scale(1.08);opacity: 1;}#loreModal {position: fixed;inset: 0;display: none;align-items: center;justify-content: center;background: rgba(0,0,0,0.9);z-index: 2147483647; /* max safe */}
 
-    color:#948b7d;
-
-}
-
-.shop-description{
-
-    max-width:650px;
-
-    margin-bottom:45px;
-
-    font-size:16px;
-
-    line-height:1.9;
-
-    color:#cbc3b7;
-
-}
-
-.acquire-button{
-
-    padding:18px 46px;
-
-    background:none;
-
-    border:1px solid #8d8372;
-
-    color:#eee5d5;
-
-    cursor:pointer;
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
-    transition:.35s;
-
-}
-
-.acquire-button:hover{
-
-    background:#eee5d5;
-
-    color:#080808;
-
-}
-
-.acquire-button:disabled{
-
-    opacity:.45;
-
-    cursor:not-allowed;
-
-}
-
-
-/* ================================= */
-/* MOBILE */
-/* ================================= */
-
-@media (max-width:900px){
-
-    .archive-header{
-
-        padding:24px;
-
-    }
-
-    .brand-logo{
-
-        font-size:34px;
-
-        letter-spacing:8px;
-
-    }
-
-    .archive-title{
-
-        display:none;
-
-    }
-
-    .back-link{
-
-        left:24px;
-
-        font-size:11px;
-
-    }
-
-    .shop-list{
-
-        padding:140px 24px 80px;
-
-        gap:110px;
-
-    }
-
-    .shop-image{
-
-        max-width:100%;
-
-        max-height:450px;
-
-    }
-
-    .shop-title{
-
-        font-size:42px;
-
-    }
-
-    .shop-description{
-
-        font-size:15px;
-
-    }
-
-}
-    }
-
-}
+#loreModal.open {display: flex;}
