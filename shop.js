@@ -34,8 +34,6 @@ loadLayout();
 /* ============================= */
 
 let relics = [];
-let currentRelic = 0;
-
 async function loadShop() {
   try {
     const res = await fetch("/content/shop/index.json");
