@@ -43,9 +43,7 @@ async function loadShop() {
 
     relics = data.items;
 
-    renderRelic(0);
-    buildDropdown();
-    renderMobile();
+    renderShop();
 
   } catch (e) {
     console.log("shop load failed");
