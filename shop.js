@@ -86,216 +86,76 @@ async function buyRelic(name, price, index) {
 /* DESKTOP RELIC RENDER */
 /* ============================= */
 
-function renderRelic(index) {
+function renderShop() {
 
-  const item = relics[index];
+    const shop = document.getElementById("shopList");
 
-  document.getElementById("relicName").textContent = item.name || "";
-  document.getElementById("relicStats").textContent = item.stats || "";
-  document.getElementById("relicDesc").textContent = item.desc || "";
+    if (!shop) return;
 
-  const buyBtn = document.getElementById("relicBuy");
+    shop.innerHTML = "";
 
-  const isSold = item.sold === true;
+    relics.forEach((item, index) => {
 
-  if (isSold) {
-    buyBtn.textContent = "SOLD";
-    buyBtn.style.opacity = "0.4";
-    buyBtn.style.cursor = "not-allowed";
-    buyBtn.onclick = null;
+        const article = document.createElement("article");
+        article.className = "shop-item";
 
-  } else {
+        const sold = item.sold === true;
 
-    buyBtn.textContent =
-      "Acquire Relic - " + (item.price || 0) + " gold";
+        article.innerHTML = `
 
-    if (item.price) {
+            <img
+                class="shop-image"
+                src="${item.image}"
+                alt="${item.name || ""}">
 
-      buyBtn.style.opacity = "1";
-      buyBtn.style.cursor = "pointer";
+            <h2 class="shop-title">
+                ${item.name || ""}
+            </h2>
 
-      buyBtn.onclick = () => {
-        const priceInCents = Math.round(item.price * 100);
-        buyRelic(item.name, priceInCents, index);
-      };
+            <div class="shop-stats">
+                ${item.stats || ""}
+            </div>
 
-    } else {
+            <p class="shop-description">
+                ${item.desc || ""}
+            </p>
 
-      buyBtn.style.opacity = "0.5";
-      buyBtn.style.cursor = "not-allowed";
-      buyBtn.onclick = null;
+            <button class="acquire-button">
+                ${
+                    sold
+                        ? "SOLD"
+                        : `Acquire Relic — ${item.price || 0} Gold`
+                }
+            </button>
 
-    }
-  }
+        `;
 
+        const button = article.querySelector(".acquire-button");
 
-  /* IMAGE */
+        if (sold || !item.price) {
 
-  const img = document.getElementById("relicImage");
+            button.disabled = true;
+            button.style.opacity = ".45";
+            button.style.cursor = "not-allowed";
 
-  if (img) {
-    img.src = item.image;
+            article.querySelector(".shop-image").style.filter = "grayscale(1)";
 
-    if (isSold) {
-      img.style.filter = "grayscale(1)";
-    } else {
-      img.style.filter = "none";
-    }
-  }
+        } else {
 
-}
+            button.onclick = () => {
 
+                buyRelic(
+                    item.name,
+                    Math.round(item.price * 100),
+                    index
+                );
 
-/* ============================= */
-/* DROPDOWN */
-/* ============================= */
+            };
 
-function buildDropdown() {
+        }
 
-  const list = document.getElementById("questerList");
+        shop.appendChild(article);
 
-  list.innerHTML = "";
-
-  relics.forEach((item, index) => {
-
-    const el = document.createElement("div");
-
-    el.className = "quester";
-    el.textContent = item.name;
-
-    el.onclick = () => {
-      renderRelic(index);
-      currentRelic = index;
-      renderMobile();
-    };
-
-    list.appendChild(el);
-
-  });
+    });
 
 }
-
-
-/* ============================= */
-/* MOBILE VIEW */
-/* ============================= */
-
-function renderMobile() {
-
-  if (relics.length === 0) return;
-
-  const item = relics[currentRelic];
-
-  const img = document.getElementById("mobileRelic");
-  if (img) img.src = item.image;
-
-  const name = document.getElementById("mobileName");
-  if (name) name.textContent = item.name || "";
-
-  const stats = document.getElementById("mobileStats");
-  if (stats) stats.textContent = item.stats || "";
-
-  const desc = document.getElementById("mobileDesc");
-  if (desc) desc.textContent = item.desc || "";
-
-  const buyBtn = document.getElementById("mobileBuy");
-
-  const isSold = item.sold === true;
-
-  if (isSold) {
-    buyBtn.textContent = "SOLD";
-    buyBtn.style.opacity = "0.4";
-    buyBtn.style.cursor = "not-allowed";
-    buyBtn.onclick = null;
-
-  } else {
-
-    buyBtn.textContent =
-      "Acquire Relic - " + (item.price || 0) + " gold";
-
-    if (item.price) {
-
-      buyBtn.style.opacity = "1";
-      buyBtn.style.cursor = "pointer";
-
-      buyBtn.onclick = () => {
-        const priceInCents = Math.round(item.price * 100);
-        buyRelic(item.name, priceInCents, currentRelic);
-      };
-
-    } else {
-
-      buyBtn.style.opacity = "0.5";
-      buyBtn.style.cursor = "not-allowed";
-      buyBtn.onclick = null;
-
-    }
-  }
-
-}
-
-
-/* ============================= */
-/* MOBILE ARROWS */
-/* ============================= */
-
-document.getElementById("nextRelic")?.addEventListener("click", () => {
-
-  currentRelic++;
-
-  if (currentRelic >= relics.length) {
-    currentRelic = 0;
-  }
-
-  renderRelic(currentRelic);
-  renderMobile();
-
-});
-
-
-document.getElementById("prevRelic")?.addEventListener("click", () => {
-
-  currentRelic--;
-
-  if (currentRelic < 0) {
-    currentRelic = relics.length - 1;
-  }
-
-  renderRelic(currentRelic);
-  renderMobile();
-
-});
-
-
-/* ============================= */
-/* DROPDOWN TOGGLE */
-/* ============================= */
-
-const toggle = document.getElementById("questerToggle");
-const dropdownList = document.getElementById("questerList");
-
-if (toggle) {
-  toggle.onclick = () => {
-    dropdownList.style.display =
-      dropdownList.style.display === "none" ? "block" : "none";
-  };
-}
-
-
-/* ============================= */
-/* NPC TYPEWRITER */
-/* ============================= */
-
-const text = "Ah… another relic uncovered within Sentia.";
-
-let i = 0;
-
-function type() {
-  if (i < text.length) {
-    document.getElementById("npcText").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 30);
-  }
-}
-
-type();
