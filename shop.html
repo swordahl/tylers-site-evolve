@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sentia Relic Archive</title>
 
@@ -13,121 +13,182 @@
 
 </head>
 
+
 <body>
 
-<a class="back-btn" href="index.html">← BACK</a>
 
-<button id="saveLayout" class="save-layout">Save Layout</button>
+<!-- HEADER -->
+
+<header class="archive-header">
+
+    <a href="index.html" class="back-link">
+        ← RETURN
+    </a>
+
+    <div class="brand-logo">
+        SENTIA
+    </div>
+
+    <div class="archive-title">
+        RELIC ARCHIVE
+    </div>
+
+</header>
 
 
-<div class="ui-canvas">
 
-<!-- CHARACTER PANEL -->
+<!-- MAIN COLLECTION -->
 
-<div class="ui-box character-panel" data-id="character-panel">
+<main class="archive-container">
 
-<button class="lock-btn">🔒</button>
-<div class="resize-handle"></div>
 
-<div class="character-name" id="relicName"></div>
-<div class="character-stats" id="relicStats"></div>
-<div class="character-description" id="relicDesc"></div>
+<section class="relic-display">
 
-<!-- 🔥 UPDATED BUTTON -->
-<button class="character-buy" id="relicBuy" onclick="handleBuy()">
-  Acquire Relic
+
+    <!-- PRODUCT IMAGE -->
+
+    <div class="product-stage">
+
+        <img 
+        id="relicImage" 
+        class="relic-product"
+        >
+
+    </div>
+
+
+
+    <!-- PRODUCT INFORMATION -->
+
+    <div class="product-information">
+
+
+        <div class="collection-number">
+            COLLECTION I
+        </div>
+
+
+        <h1 id="relicName">
+        </h1>
+
+
+        <div 
+        id="relicStats"
+        class="relic-details">
+        </div>
+
+
+        <p 
+        id="relicDesc"
+        class="relic-description">
+        </p>
+
+
+
+        <button 
+        id="relicBuy"
+        class="acquire-button"
+        onclick="handleBuy()">
+
+            Acquire Relic
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- COLLECTION NAVIGATION -->
+
+<section class="archive-navigation">
+
+
+<button id="prevRelic">
+    ← Previous
 </button>
 
-</div>
+
+<button id="nextRelic">
+    Next →
+</button>
 
 
-<!-- SHOP FRAME -->
-
-<div class="ui-box shop-frame" data-id="shop-frame">
-
-<button class="lock-btn">🔒</button>
-<div class="resize-handle"></div>
-
-<img class="shopborder1" src="assets/shop-border/shop-border1.png">
-
-<div class="product-zone ui-box" data-id="product-zone">
-
-<button class="lock-btn">🔒</button>
-<div class="resize-handle"></div>
-
-<img id="relicImage" class="relic-product">
-
-</div>
-
-</div>
+</section>
 
 
-<!-- QUESTERS DROPDOWN -->
-
-<div class="ui-box quester-panel" data-id="quester-panel">
-
-<button class="lock-btn">🔒</button>
-<div class="resize-handle"></div>
-
-<div class="quester-title" id="questerToggle">
-Questers ▾
-</div>
-
-<div id="questerList" style="display:none"></div>
-
-</div>
-
-</div>
-
-
-<!-- NPC -->
-
-<div class="npc-dialogue ui-box" data-id="npc-dialogue">
-
-<button class="lock-btn">🔒</button>
-<div class="resize-handle"></div>
-
-<div class="dialogue-bubble" id="npcText"></div>
-
-</div>
+</main>
 
 
 
-<!-- ================= MOBILE SHOP ================= -->
+<!-- MOBILE VERSION -->
 
 <div class="mobile-shop">
 
-<button id="prevRelic" class="arrow arrow-left">◀</button>
 
-<div class="mobile-frame">
+<div class="mobile-stage">
 
-<img id="mobileRelic" class="mobile-relic">
+<img 
+id="mobileRelic"
+class="mobile-relic"
+>
 
 </div>
 
-<button id="nextRelic" class="arrow arrow-right">▶</button>
 
 
 <div class="mobile-info">
 
-<div id="mobileName" class="mobile-name"></div>
 
-<div id="mobileStats" class="mobile-stats"></div>
+<h1 id="mobileName"></h1>
 
-<div id="mobileDesc" class="mobile-desc"></div>
 
-<!-- 🔥 MOBILE BUTTON -->
-<button id="mobileBuy" class="mobile-buy" onclick="handleBuy()">
-  Acquire Relic
+<div id="mobileStats"></div>
+
+
+<p id="mobileDesc"></p>
+
+
+
+<button 
+id="mobileBuy"
+class="mobile-buy"
+onclick="handleBuy()">
+
+Acquire Relic
+
+</button>
+
+
+</div>
+
+
+
+<div class="mobile-controls">
+
+<button id="prevMobile">
+←
+</button>
+
+
+<button id="nextMobile">
+→
 </button>
 
 </div>
 
+
 </div>
+
 
 
 <script src="script.js"></script>
 <script src="shop.js"></script>
 
+
 </body>
+
 </html>
