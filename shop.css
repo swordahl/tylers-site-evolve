@@ -122,8 +122,8 @@ body{
 
 .shop-image{
     width:100%;
-    max-width:700px;
-    max-height:700px;
+    max-width:560px;
+    height:560px;
 
     object-fit:contain;
 
@@ -131,7 +131,6 @@ body{
 
     transition:.35s;
 }
-
 .shop-image:hover{
     transform:scale(1.015);
 }
