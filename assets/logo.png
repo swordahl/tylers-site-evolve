@@ -1,1 +1,11 @@
+.brand-logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
+.brand-logo img{
+    height:110px;
+    width:auto;
+    display:block;
+}
