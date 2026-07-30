@@ -157,3 +157,12 @@ function renderShop() {
     });
 
 }
+const header = document.querySelector(".archive-header");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+        header.classList.add("hidden");
+    } else {
+        header.classList.remove("hidden");
+    }
+});
