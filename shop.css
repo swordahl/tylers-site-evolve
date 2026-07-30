@@ -73,15 +73,27 @@ body{
 
 }
 
+/* ===== LOGO ===== */
+
 .brand-logo{
 
-    font-family:"Cormorant Garamond",serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    font-size:48px;
+}
 
-    letter-spacing:15px;
+.brand-logo img{
 
-    color:#f1eadc;
+    height:105px;
+    width:auto;
+
+    display:block;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,220,150,.15));
 
 }
 
@@ -265,11 +277,9 @@ body{
 
     }
 
-    .brand-logo{
+    .brand-logo img{
 
-        font-size:34px;
-
-        letter-spacing:8px;
+        height:70px;
 
     }
 
