@@ -25,21 +25,27 @@ body{
     left:0;
     width:100%;
     padding:35px 50px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     z-index:100;
-    background:rgba(8,8,8,.88);
-    backdrop-filter:blur(12px);
+
+    background:transparent;
+    backdrop-filter:none;
 }
 
 .back-link{
     position:absolute;
     left:50px;
+
     color:#b9b0a0;
     text-decoration:none;
+
     font-size:12px;
     letter-spacing:3px;
+
     transition:.3s;
 }
 
@@ -56,7 +62,7 @@ body{
 }
 
 .brand-logo img{
-    height:200px;
+    height:170px;
     width:auto;
     display:block;
     object-fit:contain;
@@ -66,8 +72,10 @@ body{
 .archive-title{
     position:absolute;
     right:50px;
+
     font-size:11px;
     letter-spacing:5px;
+
     color:#8c8578;
 }
 
@@ -78,11 +86,15 @@ body{
 .shop-list{
     width:100%;
     max-width:1400px;
+
     margin:0 auto;
+
     padding:240px 40px 120px;
+
     display:flex;
     flex-direction:column;
     align-items:center;
+
     gap:180px;
 }
 
@@ -93,6 +105,7 @@ body{
 .shop-item{
     width:100%;
     max-width:900px;
+
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -103,8 +116,11 @@ body{
     width:100%;
     max-width:700px;
     max-height:700px;
+
     object-fit:contain;
+
     filter:drop-shadow(0 45px 70px rgba(0,0,0,.75));
+
     transition:.35s;
 }
 
@@ -114,26 +130,34 @@ body{
 
 .shop-title{
     margin:45px 0 18px;
+
     font-family:"Cormorant Garamond",serif;
     font-size:64px;
     font-weight:400;
+
     letter-spacing:2px;
+
     color:#f2ece0;
 }
 
 .shop-stats{
     margin-bottom:25px;
+
     font-size:13px;
     letter-spacing:3px;
     text-transform:uppercase;
+
     color:#948b7d;
 }
 
 .shop-description{
     max-width:650px;
+
     margin-bottom:45px;
+
     font-size:16px;
     line-height:1.9;
+
     color:#cbc3b7;
 }
 
@@ -143,12 +167,18 @@ body{
 
 .acquire-button{
     padding:18px 46px;
+
     background:none;
+
     border:1px solid #8d8372;
+
     color:#eee5d5;
+
     cursor:pointer;
+
     font-size:12px;
     letter-spacing:4px;
+
     transition:.35s;
 }
 
