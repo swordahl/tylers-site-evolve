@@ -34,6 +34,14 @@ body{
 
     background:transparent;
     backdrop-filter:none;
+
+    transition:opacity .35s ease, transform .35s ease;
+}
+
+.archive-header.hidden{
+    opacity:0;
+    transform:translateY(-25px);
+    pointer-events:none;
 }
 
 .back-link{
