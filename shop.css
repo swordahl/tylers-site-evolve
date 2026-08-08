@@ -12,7 +12,7 @@ body {
     min-height: 100%;
     background: #080808;
     color: #e8e2d5;
-    font-family: Inter, sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 
@@ -55,6 +55,7 @@ body {
     text-decoration: none;
 
     font-size: 12px;
+    font-weight: 400;
     letter-spacing: 3px;
 
     transition:
@@ -92,6 +93,7 @@ body {
     right: 50px;
 
     font-size: 11px;
+    font-weight: 400;
     letter-spacing: 5px;
 
     color: #8c8578;
@@ -108,7 +110,7 @@ body {
 
     margin: 0 auto;
 
-    padding: 240px 40px 120px;
+    padding: 240px 40px 140px;
 
     display: flex;
     flex-direction: column;
@@ -133,6 +135,11 @@ body {
     text-align: center;
 }
 
+
+/* ========================= */
+/* PRODUCT IMAGE */
+/* ========================= */
+
 .shop-image {
     width: 100%;
     max-width: 560px;
@@ -155,37 +162,64 @@ body {
         drop-shadow(0 55px 85px rgba(0, 0, 0, .85));
 }
 
-.shop-title {
-    margin: 45px 0 18px;
 
-    font-family: "Cormorant Garamond", serif;
-    font-size: 64px;
+/* ========================= */
+/* PRODUCT NAME */
+/* ========================= */
+
+.shop-title {
+    margin: 38px 0 18px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
     font-weight: 400;
 
-    letter-spacing: 2px;
+    letter-spacing: 5px;
+    line-height: 1.4;
 
-    color: #f2ece0;
-}
-
-.shop-stats {
-    margin-bottom: 25px;
-
-    font-size: 13px;
-    letter-spacing: 3px;
     text-transform: uppercase;
 
-    color: #948b7d;
+    color: #e8e2d5;
 }
+
+
+/* ========================= */
+/* PRODUCT DETAILS */
+/* ========================= */
+
+.shop-stats {
+    margin-bottom: 28px;
+
+    font-size: 10px;
+    font-weight: 400;
+
+    letter-spacing: 4px;
+    line-height: 1.6;
+
+    text-transform: uppercase;
+
+    color: #817a70;
+}
+
+
+/* ========================= */
+/* DESCRIPTION */
+/* ========================= */
 
 .shop-description {
     max-width: 650px;
 
-    margin-bottom: 45px;
+    margin: 0 0 45px;
 
-    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+
     line-height: 1.9;
 
-    color: #cbc3b7;
+    letter-spacing: .3px;
+
+    color: #bdb5a9;
 }
 
 
@@ -245,7 +279,7 @@ body {
 }
 
 
-/* keep text above sweep */
+/* keep button content above effect */
 
 .acquire-button {
     isolation: isolate;
@@ -261,7 +295,9 @@ body {
 }
 
 
-/* hover */
+/* ========================= */
+/* BUTTON HOVER */
+/* ========================= */
 
 .acquire-button:hover {
     border-color: rgba(238, 232, 220, .85);
@@ -279,14 +315,18 @@ body {
 }
 
 
-/* click */
+/* ========================= */
+/* BUTTON CLICK */
+/* ========================= */
 
 .acquire-button:active {
     transform: translateY(0);
 }
 
 
-/* disabled / sold */
+/* ========================= */
+/* SOLD / DISABLED */
+/* ========================= */
 
 .acquire-button:disabled {
     opacity: .4;
@@ -327,7 +367,7 @@ body {
     }
 
     .shop-list {
-        padding: 190px 24px 80px;
+        padding: 190px 24px 90px;
         gap: 110px;
     }
 
@@ -338,15 +378,31 @@ body {
     }
 
     .shop-title {
-        font-size: 42px;
+        margin-top: 30px;
+
+        font-size: 12px;
+        letter-spacing: 4px;
+    }
+
+    .shop-stats {
+        margin-bottom: 22px;
+
+        font-size: 9px;
+        letter-spacing: 3px;
     }
 
     .shop-description {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.8;
+
+        max-width: 500px;
+
+        margin-bottom: 36px;
     }
 
     .acquire-button {
         min-width: 190px;
+
         padding: 16px 32px;
 
         font-size: 10px;
