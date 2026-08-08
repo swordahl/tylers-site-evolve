@@ -70,6 +70,17 @@
           "text": "Kryskolysk Royal\n\n"
         }
       ]
+    },
+    {
+      "pg": 1,
+      "blocks": [
+        {
+          "type": "text",
+          "side": "left",
+          "text": "The iridescent letter holder bag 2026\n\nFirst Item on the shop page live now",
+          "src": "/assets/uploads/img_3320.jpg"
+        }
+      ]
     }
   ]
 }
