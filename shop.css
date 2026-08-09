@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
+/* =========================
+GLOBAL
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -16,7 +20,6 @@ body {
 
     font-family: Inter, sans-serif;
 }
-
 
 /* =========================
 HEADER
@@ -68,7 +71,6 @@ HEADER
     color: #111111;
 }
 
-
 /* =========================
 LOGO
 ========================= */
@@ -91,7 +93,6 @@ LOGO
         brightness(0)
         invert(1);
 }
-
 
 /* =========================
 ARCHIVE TITLE
@@ -127,7 +128,6 @@ ARCHIVE TITLE
     color: #4f4b45;
 }
 
-
 /* =========================
 SHOP LIST
 ========================= */
@@ -147,7 +147,6 @@ SHOP LIST
     gap: 180px;
 }
 
-
 /* =========================
 PRODUCT
 ========================= */
@@ -162,7 +161,6 @@ PRODUCT
 
     text-align: center;
 }
-
 
 /* =========================
 PRODUCT IMAGE
@@ -190,23 +188,24 @@ PRODUCT IMAGE
         drop-shadow(0 55px 85px rgba(0, 0, 0, .22));
 }
 
-
 /* =========================
 PRODUCT NAME
 ========================= */
 
 .shop-title {
-    margin: 45px 0 18px;
+    margin: 38px 0 18px;
 
-    font-family: "Cormorant Garamond", serif;
-    font-size: 64px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
     font-weight: 400;
 
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+    line-height: 1.4;
+
+    text-transform: uppercase;
 
     color: #171717;
 }
-
 
 /* =========================
 PRODUCT DETAILS
@@ -222,7 +221,6 @@ PRODUCT DETAILS
     color: #77736c;
 }
 
-
 /* =========================
 DESCRIPTION
 ========================= */
@@ -237,7 +235,6 @@ DESCRIPTION
 
     color: #5f5b55;
 }
-
 
 /* =========================
 LUXURY PURCHASE BUTTON
@@ -275,8 +272,17 @@ LUXURY PURCHASE BUTTON
     overflow: hidden;
 }
 
+/* =========================
+BUTTON ISOLATION
+========================= */
 
-/* subtle light sweep */
+.acquire-button {
+    isolation: isolate;
+}
+
+/* =========================
+SUBTLE LIGHT SWEEP
+========================= */
 
 .acquire-button::before {
     content: "";
@@ -294,13 +300,6 @@ LUXURY PURCHASE BUTTON
     pointer-events: none;
 }
 
-
-/* keep text above sweep */
-
-.acquire-button {
-    isolation: isolate;
-}
-
 .acquire-button::after {
     content: "";
 
@@ -309,7 +308,6 @@ LUXURY PURCHASE BUTTON
 
     z-index: -1;
 }
-
 
 /* =========================
 HOVER
@@ -330,7 +328,6 @@ HOVER
     transform: translateX(0);
 }
 
-
 /* =========================
 CLICK
 ========================= */
@@ -338,7 +335,6 @@ CLICK
 .acquire-button:active {
     transform: translateY(0);
 }
-
 
 /* =========================
 DISABLED / SOLD
@@ -357,7 +353,6 @@ DISABLED / SOLD
 .acquire-button:disabled::before {
     display: none;
 }
-
 
 /* =========================
 MOBILE
@@ -394,7 +389,10 @@ MOBILE
     }
 
     .shop-title {
-        font-size: 42px;
+        margin-top: 30px;
+
+        font-size: 12px;
+        letter-spacing: 3px;
     }
 
     .shop-description {
