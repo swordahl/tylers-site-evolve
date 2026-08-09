@@ -1,28 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
-
 /* =========================
-   GLOBAL
+GLOBAL
 ========================= */
 
 * {
     box-sizing: border-box;
 }
 
-html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-
-    background: #f4f2ed;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-}
-
+html,
 body {
     margin: 0;
     padding: 0;
@@ -33,16 +19,10 @@ body {
     color: #171717;
 
     font-family: "Inter", sans-serif;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
 }
 
-
 /* =========================
-   HEADER
+HEADER
 ========================= */
 
 .archive-header {
@@ -62,9 +42,7 @@ body {
     z-index: 100;
 
     background: transparent;
-
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
 
     transition:
         opacity .35s ease,
@@ -77,16 +55,15 @@ body {
     pointer-events: none;
 }
 
-
 /* =========================
-   RETURN
+BACK LINK
 ========================= */
 
 .back-link {
     position: absolute;
     left: 50px;
 
-    color: #3f3c37;
+    color: #4d4a45;
 
     text-decoration: none;
 
@@ -104,9 +81,8 @@ body {
     color: #111111;
 }
 
-
 /* =========================
-   LOGO
+LOGO
 ========================= */
 
 .brand-logo {
@@ -123,50 +99,34 @@ body {
 
     object-fit: contain;
 
-    /*
-       Existing logo converted to white.
-       No gold glow.
-    */
-
     filter:
         grayscale(1)
         brightness(0)
         invert(1);
 
     opacity: .92;
-
-    transition:
-        opacity .4s ease,
-        transform .4s ease;
 }
-
-.brand-logo img:hover {
-    opacity: 1;
-    transform: translateY(-1px);
-}
-
 
 /* =========================
-   ARTIST / ARCHIVE
+ARCHIVE TITLE
 ========================= */
 
 .archive-title {
     position: absolute;
-
     right: 50px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 
-    gap: 9px;
+    gap: 7px;
 
     text-align: right;
 
     font-size: 10px;
     font-weight: 400;
 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     line-height: 1.3;
 
     color: #77736c;
@@ -176,20 +136,16 @@ body {
 
 .archive-title span:last-child {
     font-size: 11px;
-
-    letter-spacing: 6px;
+    letter-spacing: 5px;
 
     color: #4f4b45;
 }
 
-
 /* =========================
-   SHOP LIST
+SHOP LIST
 ========================= */
 
 .shop-list {
-    position: relative;
-
     width: 100%;
     max-width: 1400px;
 
@@ -204,9 +160,8 @@ body {
     gap: 180px;
 }
 
-
 /* =========================
-   PRODUCT
+PRODUCT
 ========================= */
 
 .shop-item {
@@ -220,9 +175,8 @@ body {
     text-align: center;
 }
 
-
 /* =========================
-   PRODUCT IMAGE
+PRODUCT IMAGE
 ========================= */
 
 .shop-image {
@@ -247,9 +201,8 @@ body {
         drop-shadow(0 45px 65px rgba(0, 0, 0, .22));
 }
 
-
 /* =========================
-   PRODUCT NAME
+PRODUCT NAME
 ========================= */
 
 .shop-title {
@@ -268,9 +221,8 @@ body {
     color: #171717;
 }
 
-
 /* =========================
-   PRODUCT DETAILS
+PRODUCT DETAILS
 ========================= */
 
 .shop-stats {
@@ -287,9 +239,8 @@ body {
     color: #77736c;
 }
 
-
 /* =========================
-   DESCRIPTION
+DESCRIPTION
 ========================= */
 
 .shop-description {
@@ -309,9 +260,8 @@ body {
     color: #5f5b55;
 }
 
-
 /* =========================
-   PURCHASE BUTTON
+PURCHASE BUTTON
 ========================= */
 
 .acquire-button {
@@ -346,14 +296,11 @@ body {
         box-shadow .45s ease;
 
     overflow: hidden;
-
-    isolation: isolate;
 }
 
-
-/* =========================
-   BUTTON LIGHT SWEEP
-========================= */
+.acquire-button {
+    isolation: isolate;
+}
 
 .acquire-button::before {
     content: "";
@@ -382,9 +329,8 @@ body {
     z-index: -1;
 }
 
-
 /* =========================
-   BUTTON HOVER
+BUTTON HOVER
 ========================= */
 
 .acquire-button:hover {
@@ -402,18 +348,16 @@ body {
     transform: translateX(0);
 }
 
-
 /* =========================
-   BUTTON CLICK
+BUTTON CLICK
 ========================= */
 
 .acquire-button:active {
     transform: translateY(0);
 }
 
-
 /* =========================
-   SOLD / DISABLED
+SOLD / DISABLED
 ========================= */
 
 .acquire-button:disabled {
@@ -430,9 +374,8 @@ body {
     display: none;
 }
 
-
 /* =========================
-   MOBILE
+MOBILE
 ========================= */
 
 @media (max-width: 900px) {
@@ -448,16 +391,14 @@ body {
     .archive-title {
         right: 24px;
 
-        gap: 6px;
+        gap: 5px;
 
         font-size: 8px;
-
-        letter-spacing: 2.5px;
+        letter-spacing: 2px;
     }
 
     .archive-title span:last-child {
         font-size: 9px;
-
         letter-spacing: 4px;
     }
 
@@ -469,7 +410,6 @@ body {
 
     .shop-list {
         padding: 190px 24px 90px;
-
         gap: 110px;
     }
 
@@ -483,7 +423,6 @@ body {
         margin-top: 30px;
 
         font-size: 12px;
-
         letter-spacing: 4px;
     }
 
@@ -491,13 +430,11 @@ body {
         margin-bottom: 22px;
 
         font-size: 9px;
-
         letter-spacing: 3px;
     }
 
     .shop-description {
         font-size: 14px;
-
         line-height: 1.8;
 
         max-width: 500px;
@@ -511,7 +448,6 @@ body {
         padding: 16px 32px;
 
         font-size: 10px;
-
         letter-spacing: 3px;
     }
 }
