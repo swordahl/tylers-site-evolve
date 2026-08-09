@@ -21,6 +21,7 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+
 /* =========================
 HEADER
 ========================= */
@@ -55,6 +56,7 @@ HEADER
     pointer-events: none;
 }
 
+
 /* =========================
 BACK LINK
 ========================= */
@@ -80,6 +82,7 @@ BACK LINK
 .back-link:hover {
     color: #111111;
 }
+
 
 /* =========================
 LOGO
@@ -107,8 +110,9 @@ LOGO
     opacity: .92;
 }
 
+
 /* =========================
-ARCHIVE TITLE
+ARTIST / ARCHIVE
 ========================= */
 
 .archive-title {
@@ -141,6 +145,7 @@ ARCHIVE TITLE
     color: #4f4b45;
 }
 
+
 /* =========================
 SHOP LIST
 ========================= */
@@ -160,6 +165,7 @@ SHOP LIST
     gap: 180px;
 }
 
+
 /* =========================
 PRODUCT
 ========================= */
@@ -174,6 +180,7 @@ PRODUCT
 
     text-align: center;
 }
+
 
 /* =========================
 PRODUCT IMAGE
@@ -201,6 +208,7 @@ PRODUCT IMAGE
         drop-shadow(0 45px 65px rgba(0, 0, 0, .22));
 }
 
+
 /* =========================
 PRODUCT NAME
 ========================= */
@@ -221,6 +229,7 @@ PRODUCT NAME
     color: #171717;
 }
 
+
 /* =========================
 PRODUCT DETAILS
 ========================= */
@@ -238,6 +247,7 @@ PRODUCT DETAILS
 
     color: #77736c;
 }
+
 
 /* =========================
 DESCRIPTION
@@ -259,6 +269,7 @@ DESCRIPTION
 
     color: #5f5b55;
 }
+
 
 /* =========================
 PURCHASE BUTTON
@@ -298,6 +309,11 @@ PURCHASE BUTTON
     overflow: hidden;
 }
 
+
+/* =========================
+BUTTON LIGHT SWEEP
+========================= */
+
 .acquire-button {
     isolation: isolate;
 }
@@ -329,6 +345,7 @@ PURCHASE BUTTON
     z-index: -1;
 }
 
+
 /* =========================
 BUTTON HOVER
 ========================= */
@@ -348,6 +365,7 @@ BUTTON HOVER
     transform: translateX(0);
 }
 
+
 /* =========================
 BUTTON CLICK
 ========================= */
@@ -355,6 +373,7 @@ BUTTON CLICK
 .acquire-button:active {
     transform: translateY(0);
 }
+
 
 /* =========================
 SOLD / DISABLED
@@ -373,6 +392,7 @@ SOLD / DISABLED
 .acquire-button:disabled::before {
     display: none;
 }
+
 
 /* =========================
 MOBILE
@@ -410,6 +430,7 @@ MOBILE
 
     .shop-list {
         padding: 190px 24px 90px;
+
         gap: 110px;
     }
 
