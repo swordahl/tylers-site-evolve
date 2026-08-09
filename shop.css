@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
+
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -10,21 +15,26 @@ body {
     padding: 0;
     width: 100%;
     min-height: 100%;
-    background: #080808;
-    color: #e8e2d5;
+
+    background: #f4f2ed;
+    color: #171717;
+
     font-family: "Inter", sans-serif;
 }
 
 
-/* ========================= */
-/* HEADER */
-/* ========================= */
+/* =========================
+   HEADER
+========================= */
 
 .archive-header {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
+
     padding: 35px 50px;
 
     display: flex;
@@ -47,15 +57,22 @@ body {
     pointer-events: none;
 }
 
+
+/* =========================
+   BACK LINK
+========================= */
+
 .back-link {
     position: absolute;
     left: 50px;
 
-    color: #b9b0a0;
+    color: #4d4a45;
+
     text-decoration: none;
 
     font-size: 12px;
     font-weight: 400;
+
     letter-spacing: 3px;
 
     transition:
@@ -64,13 +81,13 @@ body {
 }
 
 .back-link:hover {
-    color: #eee8dc;
+    color: #111111;
 }
 
 
-/* ========================= */
-/* LOGO */
-/* ========================= */
+/* =========================
+   LOGO
+========================= */
 
 .brand-logo {
     display: flex;
@@ -81,12 +98,37 @@ body {
 .brand-logo img {
     height: 170px;
     width: auto;
+
     display: block;
+
     object-fit: contain;
 
+    /*
+       Keep the existing logo,
+       but make it white/neutral.
+    */
+
     filter:
-        drop-shadow(0 0 10px rgba(255, 220, 150, .18));
+        grayscale(1)
+        brightness(0)
+        invert(1);
+
+    opacity: .92;
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
 }
+
+.brand-logo img:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   ARCHIVE TITLE
+========================= */
 
 .archive-title {
     position: absolute;
@@ -94,15 +136,16 @@ body {
 
     font-size: 11px;
     font-weight: 400;
+
     letter-spacing: 5px;
 
-    color: #8c8578;
+    color: #77736c;
 }
 
 
-/* ========================= */
-/* SHOP LIST */
-/* ========================= */
+/* =========================
+   SHOP LIST
+========================= */
 
 .shop-list {
     width: 100%;
@@ -120,9 +163,9 @@ body {
 }
 
 
-/* ========================= */
-/* PRODUCT */
-/* ========================= */
+/* =========================
+   PRODUCT
+========================= */
 
 .shop-item {
     width: 100%;
@@ -136,9 +179,9 @@ body {
 }
 
 
-/* ========================= */
-/* PRODUCT IMAGE */
-/* ========================= */
+/* =========================
+   PRODUCT IMAGE
+========================= */
 
 .shop-image {
     width: 100%;
@@ -148,7 +191,7 @@ body {
     object-fit: contain;
 
     filter:
-        drop-shadow(0 45px 70px rgba(0, 0, 0, .75));
+        drop-shadow(0 35px 50px rgba(0, 0, 0, .18));
 
     transition:
         transform .6s cubic-bezier(.22, 1, .36, 1),
@@ -159,18 +202,19 @@ body {
     transform: scale(1.015);
 
     filter:
-        drop-shadow(0 55px 85px rgba(0, 0, 0, .85));
+        drop-shadow(0 45px 65px rgba(0, 0, 0, .22));
 }
 
 
-/* ========================= */
-/* PRODUCT NAME */
-/* ========================= */
+/* =========================
+   PRODUCT NAME
+========================= */
 
 .shop-title {
     margin: 38px 0 18px;
 
     font-family: "Inter", sans-serif;
+
     font-size: 14px;
     font-weight: 400;
 
@@ -179,13 +223,13 @@ body {
 
     text-transform: uppercase;
 
-    color: #e8e2d5;
+    color: #171717;
 }
 
 
-/* ========================= */
-/* PRODUCT DETAILS */
-/* ========================= */
+/* =========================
+   PRODUCT DETAILS
+========================= */
 
 .shop-stats {
     margin-bottom: 28px;
@@ -198,13 +242,13 @@ body {
 
     text-transform: uppercase;
 
-    color: #817a70;
+    color: #77736c;
 }
 
 
-/* ========================= */
-/* DESCRIPTION */
-/* ========================= */
+/* =========================
+   DESCRIPTION
+========================= */
 
 .shop-description {
     max-width: 650px;
@@ -212,6 +256,7 @@ body {
     margin: 0 0 45px;
 
     font-family: "Inter", sans-serif;
+
     font-size: 14px;
     font-weight: 300;
 
@@ -219,13 +264,13 @@ body {
 
     letter-spacing: .3px;
 
-    color: #bdb5a9;
+    color: #5f5b55;
 }
 
 
-/* ========================= */
-/* LUXURY PURCHASE BUTTON */
-/* ========================= */
+/* =========================
+   PURCHASE BUTTON
+========================= */
 
 .acquire-button {
     position: relative;
@@ -236,17 +281,19 @@ body {
 
     background: transparent;
 
-    border: 1px solid rgba(220, 210, 190, .45);
+    border: 1px solid rgba(30, 30, 30, .35);
 
-    color: #eee8dc;
+    color: #202020;
 
     cursor: pointer;
 
     font-family: "Inter", sans-serif;
+
     font-size: 11px;
     font-weight: 400;
 
     letter-spacing: 4px;
+
     text-transform: uppercase;
 
     transition:
@@ -257,18 +304,23 @@ body {
         box-shadow .45s ease;
 
     overflow: hidden;
+
+    isolation: isolate;
 }
 
 
-/* subtle light sweep */
+/* =========================
+   BUTTON LIGHT SWEEP
+========================= */
 
 .acquire-button::before {
     content: "";
 
     position: absolute;
+
     inset: 0;
 
-    background: rgba(238, 232, 220, .08);
+    background: rgba(0, 0, 0, .055);
 
     transform: translateX(-101%);
 
@@ -278,36 +330,30 @@ body {
     pointer-events: none;
 }
 
-
-/* keep button content above effect */
-
-.acquire-button {
-    isolation: isolate;
-}
-
 .acquire-button::after {
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     z-index: -1;
 }
 
 
-/* ========================= */
-/* BUTTON HOVER */
-/* ========================= */
+/* =========================
+   BUTTON HOVER
+========================= */
 
 .acquire-button:hover {
-    border-color: rgba(238, 232, 220, .85);
+    border-color: rgba(20, 20, 20, .75);
 
-    color: #ffffff;
+    color: #000000;
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 12px 35px rgba(0, 0, 0, .35);
+        0 12px 30px rgba(0, 0, 0, .12);
 }
 
 .acquire-button:hover::before {
@@ -315,18 +361,18 @@ body {
 }
 
 
-/* ========================= */
-/* BUTTON CLICK */
-/* ========================= */
+/* =========================
+   BUTTON CLICK
+========================= */
 
 .acquire-button:active {
     transform: translateY(0);
 }
 
 
-/* ========================= */
-/* SOLD / DISABLED */
-/* ========================= */
+/* =========================
+   SOLD / DISABLED
+========================= */
 
 .acquire-button:disabled {
     opacity: .4;
@@ -343,9 +389,9 @@ body {
 }
 
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 900px) {
 
@@ -363,11 +409,13 @@ body {
 
     .back-link {
         left: 24px;
+
         font-size: 11px;
     }
 
     .shop-list {
         padding: 190px 24px 90px;
+
         gap: 110px;
     }
 
