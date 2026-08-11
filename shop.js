@@ -1,10 +1,10 @@
-```javascript
 const params = new URLSearchParams(window.location.search);
 const editMode = params.get("edit") === "true";
 
 if (editMode) {
     document.body.classList.add("edit-mode");
 }
+
 
 /* ============================= */
 /* LOAD LAYOUT */
@@ -29,6 +29,7 @@ async function loadLayout() {
 
 loadLayout();
 
+
 /* ============================= */
 /* LOAD SHOP ITEMS */
 /* ============================= */
@@ -52,6 +53,7 @@ async function loadShop() {
 }
 
 loadShop();
+
 
 /* ============================= */
 /* STRIPE CHECKOUT */
@@ -82,6 +84,7 @@ async function buyRelic(name, price, index) {
     }
 }
 
+
 /* ============================= */
 /* DESKTOP RELIC RENDER */
 /* ============================= */
@@ -109,6 +112,10 @@ function renderShop() {
                 class="shop-image"
                 src="${item.image}"
                 alt="${item.name || ""}">
+
+            <h2 class="shop-title">
+                ${item.name || ""}
+            </h2>
 
             <div class="shop-stats">
                 ${item.stats || ""}
@@ -176,6 +183,7 @@ function renderShop() {
 
 }
 
+
 /* ============================= */
 /* HEADER HIDE ON SCROLL */
 /* ============================= */
@@ -197,4 +205,3 @@ window.addEventListener("scroll", () => {
     }
 
 });
-```
