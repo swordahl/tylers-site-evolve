@@ -1,4 +1,3 @@
-```css
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
 /* =========================
@@ -408,12 +407,3 @@ MOBILE
         letter-spacing: 3px;
     }
 }
-
-/* =========================
-HIDE PRODUCT NAME ONLY
-========================= */
-
-.shop-title {
-    display: none;
-}
-```
