@@ -81,6 +81,17 @@
           "src": "/assets/uploads/img_3320.jpg"
         }
       ]
+    },
+    {
+      "pg": 6,
+      "blocks": [
+        {
+          "type": "text",
+          "side": "left",
+          "text": "Be careful with a witch, thats a tricky stitch\n\nlol\n\n\n\n",
+          "src": "/assets/uploads/pixil-frame-0-16-.png"
+        }
+      ]
     }
   ]
 }
